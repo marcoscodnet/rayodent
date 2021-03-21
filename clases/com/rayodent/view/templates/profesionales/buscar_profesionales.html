@@ -1,0 +1,84 @@
+<!-- BEGIN:main -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        // definimos las opciones del plugin AJAX FORM
+        var opciones= {
+            success: mostrarRespuesta //funcion que se ejecuta una vez enviado el formulario
+        };
+        //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
+        $('#buscar').ajaxForm(opciones);
+        function mostrarRespuesta (responseText){
+            document.getElementById("listado_profesionales").innerHTML = responseText;
+        };
+    });
+</script>
+
+
+<div class="titulo_listar">{titulo}</div>
+
+<div class="tablaCentro">
+    <!-- BEGIN: botones_tabla -->
+    <div class="botonesTabla">
+        <form name="buscar" id="buscar" action="doAction?action=buscar_profesionales" method="GET" >
+            <input type="hidden" name="accion" id="accion" value="{accion_listar}" />
+            <input type="hidden" name="campoOrden" id="campoOrden" value="{campoOrden}" />
+            <input type="hidden" name="orden" id="orden" value="{orden}" />
+            <input type="hidden" name="validar" id="validar" value="false" />
+            <!-- BEGIN: combo_filtros -->
+            <select name="campoFiltro" id="campoFiltro">
+                <!-- BEGIN: opcion_filtro -->
+                <option value={value_filtro}>{ds_filtro}</option>
+                <!-- END: opcion_filtro -->
+            </select>
+            <input type="text" name="filtro" id="filtro" value="{txt_filtro}" />
+            <!-- END: combo_filtros -->
+            <!-- BEGIN: filtrosEspeciales --> {filtrosEspeciales} <!-- END: filtrosEspeciales -->
+            <input type="submit" name="buttonbuscar"  id="buttonbuscar" value="Buscar">
+        </form>
+    </div>
+    <!-- END: botones_tabla -->
+
+    <div id="listado_profesionales">
+        <div class="paginas" id="paginador">
+            <div style="float:left">
+                <!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+            </div>
+            <!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+        </div>
+        <br />
+        <div class="{classMsj}"><!-- BEGIN: msj --> {msj} <!-- END: msj -->
+        </div>
+        <!-- BEGIN: header -->
+        <div class='tablaSummaryHeader'>{header}</div>
+        <!-- END: header -->
+        <div id="tablaListado">
+            <table class="tablaListado" border="1">
+                <tr>
+                    <!-- BEGIN: TH -->
+                    <th>{encabezado}</th>
+                    <!-- END: TH -->
+                    <th>Acciones</th>
+                </tr>
+                <!-- BEGIN: row -->
+                <tr>
+                    <!-- BEGIN: column -->
+                    <td>{value}</td>
+                    <!-- END: column -->
+                    <td class="acciones">
+                        <!-- BEGIN: accion -->
+                        <a href="#" onClick="SeleccionarProfesional('{cd_profesional}','{ds_apynom}');">Seleccionar</a>
+                        <!-- END: accion -->
+                    </td>
+                </tr>
+                <!-- END: row -->
+            </table>
+            <p style="text-align:center;">
+        <a href="#" style="font-weight:bold; text-decoration: underline;" onClick="javascript:abrir_alta_profesional('{action_add}'); return false;">Agregar Profesional</a>
+    </p>
+        </div>
+        <!-- BEGIN: footer -->
+        <div class='tablaSummaryFooter'>{footer}</div>
+        <!-- END: footer -->
+    </div>
+</div>
+<!-- END: main -->

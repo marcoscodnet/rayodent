@@ -1,0 +1,46 @@
+<!-- BEGIN:main -->
+<div id="editar">
+	<div align="justify"><p class="titulo">{titulo}</p></div>
+
+	<!-- BEGIN:msj -->
+	<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+		</p>
+	</div>
+	<br />
+	<!-- END:msj -->
+
+	<form name='editartipoDocumento' id='editartipoDocumento' action='doAction?action={submit}' method='post' onsubmit="return validate('editartipoDocumento');">
+		
+		<table>
+			<tr>
+				<td align="right">{cd_tipodocumento_label}:</td>
+				<td align="left">
+					{cd_tipodocumento}
+					<input type="hidden" readonly name="cd_tipodocumento" id="cd_tipodocumento" value="{cd_tipodocumento}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{ds_tipodocumento_label} *</td>
+				<td align="left">
+					<input type='text' name='ds_tipodocumento' id='ds_tipodocumento' size='40' value="{ds_tipodocumento}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+			
+			
+			
+			
+		</table>
+		
+		<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar'/>
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_tipodocumentos';"/>
+		</p>
+		
+		
+	</form>		
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

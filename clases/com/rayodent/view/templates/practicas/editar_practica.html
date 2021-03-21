@@ -1,0 +1,43 @@
+<!-- BEGIN:main -->
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarpractica' id='editarpractica' action='doAction?action={submit}' method='post' onsubmit="return validate('editarpractica');">
+        <input type="hidden" readonly name="cd_practica" id="cd_practica" value="{cd_practica}"/>
+        <table>
+            <tr>
+                <td align="right">{ds_practica_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_practica' id='ds_practica' size='40' value="{ds_practica}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+			<tr>
+                <td align="right">{bl_activa_label}</td>
+                <td align="left">
+                    <input type="checkbox" name="bl_activa" id="bl_activa" {checked_bl_activa} value="1"/>
+                </td>
+            </tr>	
+
+
+
+        </table>
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Aceptar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_practicas';"/>
+        </p>
+
+
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

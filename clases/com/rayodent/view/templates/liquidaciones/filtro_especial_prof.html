@@ -1,0 +1,42 @@
+<!-- BEGIN:main -->
+
+<script type="text/javascript">
+    $(function() {
+        $("#dt_inicio_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+    $(function() {
+        $("#dt_fin_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+    $(function() {
+        // Use default settings
+        $("#hs_inicio_filtro, #hs_fin_filtro").timePicker({
+            startTime: "00:15", // Using string. Can take string or Date object.
+            endTime: "23:45", // Using Date object here.
+            show24Hours: true,
+            separator: ':',
+            step: 30});
+    });
+</script>
+<br/>
+<p style="color: black;">
+    <span>Fecha desde: <input type="text" name="dt_inicio_filtro" id="dt_inicio_filtro" size="10" value="{dt_inicio_filtro}"></span>
+    <span>Fecha hasta: <input type="text" name="dt_fin_filtro" id="dt_fin_filtro" size="10" value="{dt_fin_filtro}"></span>
+</p>
+<p style="color: black;">
+    <span>Hora desde: <input type="text" name="hs_inicio_filtro" id="hs_inicio_filtro" size="10" value="{hs_inicio_filtro}"></span>
+    <span>Hora hasta: <input type="text" name="hs_fin_filtro" id="hs_fin_filtro" size="10" value="{hs_fin_filtro}"></span>
+</p>
+<p style="color: black;">
+    <span>Profesional *: </span>
+    <input type='hidden' name='cd_profesional' id='cd_profesional' size='40' value="{cd_profesional}" readonly/>
+    <input type='text' name='ds_profesional' id='ds_profesional' size='40' value="{ds_profesional}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" onClick="abrir_busquedaProfesional();" readonly/>
+    <a href="#" onClick="abrir_busquedaProfesional();"><img src="css/desktop/images/search.gif" alt="Buscar Profesional"></a>
+</p>
+<p style="color: black;">
+    <span>Importe: <input type="text" name="valor" id="valor" size="10" value="{valor}"  jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"></span>
+    <span><input type="radio" name="tipo" id="porcentaje" value="p" {checked_p}>%</span>
+    <span><input type="radio" name="tipo" id="fijo" value="f" {checked_f}>$</span>
+</p>
+<div style="display: none;" id="ui-dialog"></div>
+<!-- END:main -->

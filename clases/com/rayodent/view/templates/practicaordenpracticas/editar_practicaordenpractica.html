@@ -1,0 +1,105 @@
+<!-- BEGIN:main -->
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarpracticaordenpractica' id='editarpracticaordenpractica' action='doAction?action={submit}' method='post' onsubmit="return validate('editarpracticaordenpractica');">
+        <input type="hidden" readonly name="cd_practicaordenpractica" id="cd_practicaordenpractica" value="{cd_practicaordenpractica}"/>
+        <input type='hidden' name='cd_practicaobrasocial' id='cd_practicaobrasocial' size='40' value="{cd_practicaobrasocial}" />
+        <input type='hidden' name='cd_ordenpractica' id='cd_ordenpractica' size='40' value="{cd_ordenpractica}" />
+        <input type='hidden' name='nu_cantplacas' id='nu_cantplacas' size='40' value="{nu_cantplacas}" />
+        <input type='hidden' name='cd_movcajaconcepto' id='cd_movcajaconcepto' size='40' value="{cd_movcajaconcepto}" />
+
+        <table>
+            <tr>
+                <td align="right">{cd_practica_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_practica' id='ds_practica' size='40' value="{ds_practica}" disabled/>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{cd_obrasocial_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_obrasocial' id='ds_obrasocial' size='40' value="{ds_obrasocial}" disabled/>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{nu_cantplacas_label} *</td>
+                <td align="left">
+                    <input type='text' name='cantplacas' id='cantplacas' size='40' value="{nu_cantplacas}" disabled/>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{nu_repeticiones_label} *</td>
+                <td align="left">
+                    <input type='text' name='nu_repeticiones' id='nu_repeticiones' size='40' value="{nu_repeticiones}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <input type="hidden" readonly name="cd_informe" id="cd_informe" value="{cd_informe}"/>
+                    <table>
+                        <tr>
+                            <th colspan="2">Informe</th>
+                        </tr>
+                        <tr>
+                            <td align="right">{ds_apynom_label} *</td>
+                            <td align="left">
+                                <input type='text' name='ds_apynom' id='ds_apynom' size='40' value="{ds_apynom}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="right">{ds_profesional_label} *</td>
+                            <td align="left">
+                                <input type='text' name='ds_profesional' id='ds_profesional' size='40' value="{ds_profesional}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="right">{ds_estudiorx_label} *</td>
+                            <td align="left">
+                                <input type='text' name='ds_estudiorx' id='ds_estudiorx' size='40' value="{ds_estudiorx}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="right">{ds_informe_label} *</td>
+                            <td align="left">
+                                <textarea name='ds_informe' id='ds_informe' cols='50' rows="10" value="" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}">{ds_informe}</textarea>
+                            </td>
+                        </tr>
+                        
+                </td>
+                </td>
+            </tr>
+
+
+
+
+
+
+        </table>
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Aceptar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_practicaordenpracticas';"/>
+        </p>
+
+
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

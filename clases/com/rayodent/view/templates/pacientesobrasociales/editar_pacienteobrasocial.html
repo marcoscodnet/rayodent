@@ -1,0 +1,61 @@
+<!-- BEGIN:main -->
+<div id="editar">
+	<div align="justify"><p class="titulo">{titulo}</p></div>
+
+	<!-- BEGIN:msj -->
+	<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+		</p>
+	</div>
+	<br />
+	<!-- END:msj -->
+
+	<form name='editarpacienteobrasocial' id='editarpacienteobrasocial' action='doAction?action={submit}' method='post' onsubmit="return validate('editarpacienteobrasocial');">
+		
+		<table>
+			<tr>
+				<td align="right">{cd_pacienteobrasocial_label}:</td>
+				<td align="left">
+					{cd_pacienteobrasocial}
+					<input type="hidden" readonly name="cd_pacienteobrasocial" id="cd_pacienteobrasocial" value="{cd_pacienteobrasocial}"/>
+				</td>
+			</tr>
+			
+			
+						
+			<tr>
+				<td align="right">{cd_paciente_label} *</td>
+				<td align="left">
+					<select name='cd_paciente' id='cd_paciente'>
+						<!-- BEGIN: pacientes_option -->				
+						<option value={cd_paciente}>{ds_paciente}</option>
+						<!-- END: pacientes_option -->
+					</select>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{cd_obrasocial_label} *</td>
+				<td align="left">
+					<select name='cd_obrasocial' id='cd_obrasocial'>
+						<!-- BEGIN: obrasocials_option -->				
+						<option value={cd_obrasocial}>{ds_obrasocial}</option>
+						<!-- END: obrasocials_option -->
+					</select>
+				</td>
+			</tr>
+			
+			
+		</table>
+		
+		<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar'/>
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_pacientesobrasociales';"/>
+		</p>
+		
+		
+	</form>		
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

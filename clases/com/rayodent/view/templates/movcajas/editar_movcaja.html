@@ -1,0 +1,188 @@
+<!-- BEGIN:main -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        // definimos las opciones del plugin AJAX FORM
+        var opciones= {
+            beforeSubmit: function() {
+                return validate('editarmovcaja');
+            },
+            success: mostrarRespuestaOS //funcion que se ejecuta una vez enviado el formulario
+        };
+        //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
+        $('#editarmovcaja').ajaxForm(opciones);
+        function mostrarRespuestaOS (responseText){
+            document.getElementById("movcajaconceptos").innerHTML = responseText;
+            document.getElementById("campos_restantes").innerHTML = "";
+            document.getElementById("cd_tipoconcepto").value = "";
+            document.getElementById("cd_tipoconcepto").setAttribute("jVal", "");
+            document.getElementById("cd_concepto").value = "";
+            document.getElementById("cd_concepto").setAttribute("jVal", "");
+            document.getElementById("msg-valid-movcaja").innerHTML = "";
+
+        };
+        
+    });
+    function ajax_validar_repeticiones(){
+        if(document.getElementById('cd_practicaobrasocial') != undefined && document.getElementById('cd_practicaobrasocial').value!= null){
+            cd_obrasocial = document.getElementById('cd_obrasocial').value;
+            cd_paciente = document.getElementById('cd_paciente').value;
+            cd_practicaobrasocial = document.getElementById('cd_practicaobrasocial').value;
+            nu_practicaos = document.getElementById('nu_practicaos').value;
+            cd_movcaja = document.getElementById('cd_movcaja').value;
+            if(cd_obrasocial!=undefined && cd_obrasocial!="" && cd_practicaobrasocial!=undefined && cd_practicaobrasocial!="" && cd_practicaobrasocial!=null && cd_paciente!=""){
+                $.blockUI({
+                    message: "Controlando límite de repeticiones...",
+                    fadeIn: 1000,
+                    timeout:   1000
+                });
+                url = 'doAction?action=validar_repeticiones&cd_obrasocial='+cd_obrasocial+'&cd_practicaobrasocial='+cd_practicaobrasocial+'&cd_paciente='+cd_paciente+'&cd_movcaja='+cd_movcaja;
+                jQuery.ajax({
+                    url:url,
+                    success: function(datos){
+                        document.getElementById("msg-valid-movcaja").innerHTML = datos;
+                        $.unblockUI();
+                        if(datos!=""){
+                            document.getElementById("cd_concepto").value = "3";
+                            CargarOsParticular('cd_concepto','{cd_concepto_practica_particular}','{cd_practica_particular}', '{ds_practica_particular}');
+                            document.getElementById('cd_practicaobrasocial').value = "";
+                            document.getElementById('nu_practicaos').value = "";
+                            $.fn.jVal.clean($('#editarmovcaja'));
+                        }else{
+                            $.fn.jVal.clean($('#editarmovcaja'));
+
+                        }
+                    }
+                });
+            }
+        }
+    }
+</script>
+<style type="text/css">
+    div.jfVal{
+        display:none;
+    }
+</style>
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+    <div id="msg-valid-movcaja"></div>
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarmovcaja' id='editarmovcaja' action='doAction?action={submit}' method='post' onsubmit="return validate('editarmovcaja');">
+        <input type="hidden" readonly name="cd_movcaja" id="cd_movcaja" value="{cd_movcaja}"/>
+        <input type='hidden' name='dt_movcaja' id='dt_movcaja' size='40' value="{dt_movcaja}" />
+        <input type='hidden' name='cd_paciente' id='cd_paciente' size='40' value="{cd_paciente}" />
+        <input type='hidden' name='cd_profesional' id='cd_profesional' size='40' value="{cd_profesional}" />
+        <input type='hidden' name='cd_empleado' id='cd_empleado' size='40' value="{cd_empleado}" />
+        <input type='hidden' name='cd_usuario' id='cd_usuario' size='40' value="{cd_usuario}" />
+        <input type='hidden' name='cd_turno' id='cd_turno' size='40' value="{cd_turno}" />
+        <input type='hidden' name='nu_caja' id='nu_caja' size='40' value="{nu_caja}" />
+        <input type='hidden' name='nu_etiquetasimple' id='nu_etiquetasimple' size='40' value="{nu_etiquetasimple}" />
+        <input type='hidden' name='nu_etiquetadoble' id='nu_etiquetadoble' size='40' value="{nu_etiquetadoble}" />
+        <table style="border-bottom:none;">
+            <tr>
+                <td align="right">{ds_paciente_label}:</td>
+                <td align="left">
+                    <input type='text' name='ds_paciente' id='ds_paciente' size='40' value="{ds_paciente}" readonly />
+                    <a href="#" onClick="abrir_busquedaPaciente();"><img src="css/desktop/images/search.gif" alt="Buscar Paciente" alt="Buscar Paciente"></a>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{ds_profesional_label}:</td>
+                <td align="left">
+                    <input type='text' name='ds_profesional' id='ds_profesional' size='40' value="{ds_profesional}" readonly />
+                    <a href="#" onClick="abrir_busquedaProfesional();"><img src="css/desktop/images/search.gif" alt="Buscar Paciente" alt="Buscar Paciente"></a>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{ds_personal_label}:</td>
+                <td align="left">
+                    <input type='text' name='ds_personal' id='ds_personal' size='40' value="{ds_personal}" readonly/>
+                    <a href="#" onClick="abrir_busquedaPersonal();"><img src="css/desktop/images/search.gif" alt="Buscar Paciente" alt="Buscar Paciente"></a>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{cd_tipoconcepto_label} *</td>
+                <td align="left">
+                    <!--  <select name='cd_tipoconcepto' id='cd_tipoconcepto' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" onChange="cargarConcepto('cd_tipoconcepto', 'combo_concepto', '{idTipoConceptoBono}', '{idTipoConceptoPractica}', '{idTipoConceptoReintegro}')">-->
+                    <select name='cd_tipoconcepto' id='cd_tipoconcepto' onChange="cargarConcepto('cd_tipoconcepto', 'combo_concepto', '{idTipoConceptoBono}', '{idTipoConceptoPractica}', '{idTipoConceptoReintegro}')">
+                        <option value="">--Seleccione--</option>
+                        <!-- BEGIN: tipoconceptos_option -->
+                        <option value={cd_tipoconcepto}>{ds_tipoconcepto}</option>
+                        <!-- END: tipoconceptos_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+
+                <td align="right">{ds_concepto_label} *</td>
+                <td align="left">
+                    <div id="combo_concepto">
+                        <!--  <select name='cd_concepto' id='cd_concepto' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" onChange="CargarOsParticular('cd_concepto','{cd_concepto_practica_particular}','{cd_practica_particular}', '{ds_practica_particular}');">-->
+                        <select name='cd_concepto' id='cd_concepto' onChange="CargarOsParticular('cd_concepto','{cd_concepto_practica_particular}','{cd_practica_particular}', '{ds_practica_particular}');">
+                            <option value="">--Seleccione--</option>
+                            <!-- BEGIN: conceptos_option -->
+                            <option value={cd_concepto}>{ds_concepto}</option>
+                            <!-- END: conceptos_option -->
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div id="campos_restantes">
+        </div>
+        <p>
+            <!-- BEGIN:boton_agregar -->
+        <p style="text-align:center"><input type="submit" name="buttonSendAjax" id="buttonSendAjax" value="Agregar"></p>
+        <!-- END:boton_agregar -->
+
+
+        </tr>
+        <div id="movcajaconceptos">
+            <table>
+                <tr>
+                    <th>Tipo Concepto</th>
+                    <th>Concepto</th>
+                    <th>Pr&aacute;ctica</th>
+                    <th>Obra social</th>
+                    <th>Importe</th>
+                    <th>PosNet</th>
+                    <th>Acciones</th>
+                </tr>
+                <!-- BEGIN: movscajas_conceptos -->
+                <tr>
+                    <td>{ds_tipoconcepto}</td>
+                    <td>{ds_concepto}</td>
+                    <td>{ds_practica}</td>
+                    <td>{ds_obrasocial}</td>
+                    <td>{nu_importe}</td>
+                    <td>{ds_posnet}</td>
+                    <td><a href="" onclick="return confirmaEliminarAjax('doAction?action=eliminarmovcajaconcepto&k={key}', 'movcajaconceptos')"><img title="eliminar concepto" src="css/desktop/images/del.gif" class="hrefImg"/></a></td>
+                </tr>
+                <!-- END: movscajas_conceptos -->
+                <tr>
+			        <td colspan="4" style="text-align:right;"><b>TOTAL</b></td>
+			        <td>$ {nu_total}</td>
+			    </tr>
+            </table>
+        </div>
+
+        <p style="text-align:center">
+            <!-- BEGIN:boton_aceptar -->
+            <input type='button' onClick="validate_and_submit_self('doAction?action={submit}','editarmovcaja');" name='buttonSubmit' value='Aceptar'/>
+            <!-- END:boton_aceptar -->
+
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_movcajas';"/>
+        </p>
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+    <div style="display: none;" id="ui-dialog"></div>
+</div>
+<!-- END:main -->

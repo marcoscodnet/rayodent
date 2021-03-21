@@ -1,0 +1,8 @@
+<!-- BEGIN: main -->
+<select name='cd_concepto' id='cd_concepto' value="{cd_concepto}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" onChange="CargarOsParticular('cd_concepto','{cd_concepto_practica_particular}','{cd_practica_particular}', '{ds_practica_particular}');">
+    <option value="">--Seleccione--</option>
+    <!-- BEGIN: conceptos_option -->
+    <option value={cd_concepto}>{ds_concepto}</option>
+    <!-- END: conceptos_option -->
+</select>
+<!-- END: main -->

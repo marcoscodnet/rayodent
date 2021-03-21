@@ -1,0 +1,102 @@
+<!-- BEGIN: main -->
+
+<div id="editar">
+
+    <div align="justify"><p class="titulo">Modificar Usuario</p></div>
+
+    <!-- BEGIN: msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END: msj -->
+
+    <form name='modificarusuario' id='modificarusuario' action='doAction?action=modificar_usuarioryt' onsubmit="return validate('modificarusuario');" method='post' autocomplete="off">
+
+        <table>
+            <tr>
+                <td colspan=2 align="right">
+                    <p  style='display:{display_codigo};'>
+						C&oacute;digo: {cd_usuario}
+                        <input type="hidden" name="cd_usuario" id="cd_usuario" value="{cd_usuario}"/>
+                    </p>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td align="right">Nombre y Apellido (*):</td>
+                <td align="left">
+                    <input type='text' name='apynom' id='apynom'  value="{ds_apynom}" size='40'
+                           jVal="{valid:function (val) { return requerido(val,'Ingrese nombre y apellido'); }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Nombre Usuario (*):</td>
+                <td align="left">
+                    <input type='text' name='usuario' id='usuario' value="{ds_nomusuario}" size='40'
+                           jVal="{valid:function (val) { return requerido(val,'Ingrese un nombre de usuario'); }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">E-mail (*):</td>
+                <td align="left">
+                    <input type='text' name='mail' id='mail' value="{ds_mail}" size='40'
+                           jVal="{valid:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, message:'El e-mail no es v&aacute;lido'}"
+                           jValKey="{valid:/[a-zA-Z0-9._%+-@]/, cFunc:'alert', cArgs:['E-mail: '+$(this).val()]}"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Nro. Caja (*):</td>
+                <td align="left">
+                    <input type='text' name='nu_caja' id='nu_caja' value="{nu_caja}" size='40'/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Tel&eacute;fono:</td>
+                <td align="left">
+                    <input type='text' name='telefono' id='telefono' value="{ds_telefono}" size='40'/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Pa&iacute;s:</td>
+                <td align="left">
+                    <select name='pais' id='pais'>
+                        <option value=""> -- Seleccione uno -- </option>
+                        <!-- BEGIN: option_pais -->
+                        <option value={cd_pais}>{ds_pais}</option>
+                        <!-- END: option_pais -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Perfil (*):</td>
+                <td align="left">
+                    <select name='perfil' id='perfil'>
+                        <!-- BEGIN: option -->
+                        <option value={cd_perfil}>{ds_perfil}</option>
+                        <!-- END: option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Resetear Contrase&ntilde;a:</td>
+                <td align="left">
+                    <label><input type='radio' name='reset' id='reset' size='25' value="true"/>Si</label>
+                    <label><input type='radio' name='reset' id='reset' size='25' value="false" checked/>No</label>
+                </td>
+            </tr>
+
+        </table>
+
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Modificar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);"/>
+        </p>
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END: main -->

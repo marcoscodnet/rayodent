@@ -1,0 +1,79 @@
+<!-- BEGIN:main -->
+<style>
+    .detallemcc tr td{
+        font-size:11px;
+    }
+    .detallemcc tr td.os{
+        max-width: 22px;
+    }
+    .detallemcc tr td.paciente{
+        max-width: 22px;
+    }
+    .detallemcc tr td.profesional{
+        max-width: 22px;
+    }
+
+</style>
+
+<div class="divver">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+    <table class="tablaVer">
+        <tr>
+            <td style="width:90px;"><p><strong>{cd_movcaja_label} :</strong></p></td>
+            <td><p>{cd_movcaja}</p></td>
+        </tr>        
+        <tr>
+            <td style="width:90px;"><p><strong>{dt_movcaja_label} :</strong></p></td>
+            <td><p>{dt_movcaja}</p></td>
+        </tr>        
+        <tr>
+            <td style="width:90px;"><p><strong>{nu_caja_label} :</strong></p></td>
+            <td><p>{nu_caja}</p></td>
+        </tr>        
+        <tr>
+            <td style="width:90px;"><p><strong>{cd_usuario_label} :</strong></p></td>
+            <td><p>{cd_usuario}</p></td>
+        </tr>        
+        <tr>
+            <td style="width:90px;"><p><strong>{cd_turno_label} :</strong></p></td>
+            <td><p>{cd_turno}</p></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table class="detallemcc">
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Pr&aacute;ctica</th>
+                        <th>Obra social</th>                        
+                        <th>Voluntario</th>
+                        <th># Placas</th>
+                        <th>Profesional</th>
+                        <th>Paciente</th>
+                        <th>Importe</th>
+                    </tr>
+                    <!-- BEGIN: movscajas_conceptos -->
+                    <tr>
+                        <td>{ds_concepto}</td>
+                        <td>{ds_practica}</td>
+                        <td class="os">{ds_obrasocial}</td>
+                        <td>{cd_aporteos}</td>
+                        <td>{nu_cantplacas}</td>
+                        <td class="profesional"><a target="_blank" href="doAction?action=ver_profesional&id={cd_profesional}">{ds_profesional}</a></td>
+                        <td class="paciente"><a target="_blank" href="doAction?action=ver_paciente&id={cd_paciente}">{ds_paciente}</a></td>
+                        <td>{nu_importe}</td>
+                    </tr>
+                    <!-- END: movscajas_conceptos -->
+                    <tr>
+                        <td colspan="7"><b>Total</b></td>
+                        <td>{nu_total}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <p><input type='button' name='Imprimir' value='Imprimir etiqueta' onclick="{onclick_imprimir}"/>&nbsp;
+        <input type='button' name='volver' value='Volver' onclick="javascript:history.back(-1);"/></p>
+</div>
+<!-- END:main -->

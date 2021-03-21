@@ -1,0 +1,137 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{titulo}</title>
+        <!-- BEGIN: meta_tag -->
+        <meta http-equiv='{http_equiv}' content='{meta_content}' />
+        <!-- END: meta_tag -->
+
+
+
+        <!-- BEGIN: estilo -->
+        <link rel="stylesheet" href="{css}" type="text/css" />
+        <!-- END: estilo -->
+
+
+        <script type = "text/javascript">
+            //endcolor for close element flashing
+            closeEndcolor = '#377814';
+            //endcolor for delete element flashing
+            deleteEndcolor = '#c62424';
+        </script>
+
+        <!-- BEGIN: script -->
+        <script language="javascript" src="{js}"></script>
+        <!-- END: script -->
+
+
+    </head>
+
+    <body >
+
+        <div id = "jslog" style = "color:red;position:absolute;top:70%;right:5%;width:300px;"></div>
+
+        <a href = "#logme" id = "logit" ></a>
+
+        <div id = "logme">
+
+            <div id="sitebody">
+
+                <div id="header-wrapper">
+                    <div id="header">
+                        <div class="header-in">
+
+                            <div class="left">
+                                <div class="logo">
+						{header}
+                                </div>
+                            <span class="loggedUser">Usuario Actual: {user}</span>
+                            </div>
+                            
+                            <div class="right">                                
+                                <ul id="mainmenue">
+                                    <!-- BEGIN: menu_superior_derecha -->
+                                    <li class="{css_class}"><a href="doAction?action={action}"><span>{action_description}</span></a>
+
+                                        <!-- BEGIN: hijos -->
+                                        <div class="submen">
+                                            <ul>
+                                                <!-- BEGIN: hijos_item -->
+                                                <li class="{css_class}"><a href="doAction?action={action}"><span>{action_description}</span></a></li>
+                                                <!-- END: hijos_item -->
+                                            </ul>
+                                        </div>
+                                        <!-- END: hijos -->
+                                    </li>
+                                    <!-- END: menu_superior_derecha -->
+                                    <li class="logout">
+                                        <a href="doAction?action=salir"><span>cerrar sessi&oacute;n {user}</span></a>
+                                    </li>
+                                </ul><!-- mainmenue end -->
+
+                            </div> <!-- Right End -->
+
+                        </div> <!-- Header-In End -->
+                    </div> <!-- Header End -->
+                </div> <!-- Header-Wrapper End -->
+
+                <div id="contentwrapper">
+                    <div class="tabswrapper">
+                        <ul class="tabs">
+                            <!-- BEGIN: menu_solapas -->
+                            <li class="{css_li_class}"><a class="{css_a_class}" href="{href}"><span>{action_description}</span></a></li>
+                            <!-- END: menu_solapas -->
+                        </ul>
+
+                    </div>
+
+                    <div id="content">
+                        <div id="content-in">
+
+                            <!-- BEGIN: error_message -->
+                            <div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+                                <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+					{error_message}
+                                </p>
+                            </div>
+                            <br />
+                            <!-- END: error_message -->
+
+
+                            <br />
+
+			{content}
+
+                            <br />
+                        </div> <!-- content-left-in -->
+
+                        <div id="footer-wrapper">
+                            <div class="footer">
+                                <div class="footer-in">
+						{footer}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- content-left -->
+
+
+
+                </div><!-- contentwrapper -->
+            </div> <!-- sitebody -->
+
+
+            <!--
+	<div id="footer-wrapper">
+		<div class="footer">
+			<div class="footer-in">
+				{footer}
+			</div>
+		</div>
+	</div>
+ 	-->
+    </body>
+
+</html>
+<!-- END: main -->

@@ -1,0 +1,92 @@
+<!-- BEGIN:main -->
+<div id="editar">
+	<div align="justify"><p class="titulo">{titulo}</p></div>
+
+	<!-- BEGIN:msj -->
+	<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+		</p>
+	</div>
+	<br />
+	<!-- END:msj -->
+
+	<form name='editarprofesional' id='editarprofesional' action='doAction?action={submit}' method='post' onsubmit="return validate('editarprofesional');">
+		
+		<table>
+			<tr>
+				<td align="right">{cd_profesional_label}:</td>
+				<td align="left">
+					{cd_profesional}
+					<input type="hidden" readonly name="cd_profesional" id="cd_profesional" value="{cd_profesional}"/>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">{cd_tipodocumento_label}</td>
+				<td align="left">
+					<select name='cd_tipodocumento' id='cd_tipodocumento'>
+						<!-- BEGIN: tipodocumentos_option -->				
+						<option value={cd_tipoDocumento}>{ds_tipoDocumento}</option>
+						<!-- END: tipodocumentos_option -->
+					</select>
+				</td>
+			</tr>			
+			<tr>
+				<td align="right">{nu_documento_label}</td>
+				<td align="left">
+					<input type='text' name='nu_documento' id='nu_documento' size='40' value="{nu_documento}" />
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{ds_nombre_label}</td>
+				<td align="left">
+					<input type='text' name='ds_nombre' id='ds_nombre' size='40' value="{ds_nombre}" />
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{nu_matricula_label}</td>
+				<td align="left">
+					<input type='text' name='nu_matricula' id='nu_matricula' size='40' value="{nu_matricula}" />
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{ds_domicilio_label}</td>
+				<td align="left">
+					<input type='text' name='ds_domicilio' id='ds_domicilio' size='40' value="{ds_domicilio}" />
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{ds_telefono_label}</td>
+				<td align="left">
+					<input type='text' name='ds_telefono' id='ds_telefono' size='40' value="{ds_telefono}" />
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{ds_email_label}</td>
+				<td align="left">
+					<input type='text' name='ds_email' id='ds_email' size='40' value="{ds_email}" />
+				</td>
+			</tr>
+			
+			
+						
+			
+			
+			
+		</table>
+		
+		<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar'/>
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_profesionales';"/>
+		</p>
+		
+		
+	</form>		
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

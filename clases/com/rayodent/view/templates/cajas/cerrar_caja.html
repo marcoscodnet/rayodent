@@ -1,0 +1,51 @@
+<!-- BEGIN:main -->
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='abrircaja' id='abrircaja' action='doAction?action={submit}' method='post' onsubmit="return validate('abrircaja');">
+        <input type='hidden' name='cd_turno' id='cd_turno' size='40' value="{cd_turno}" readonly/>
+        <table>
+            <tr>
+                <td align="right">{nu_caja_label}:</td>
+                <td align="left">
+                    <input type='text' name='nu_caja' id='nu_caja' size='40' value="{nu_caja}" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{cd_turno_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_turno' id='ds_turno' size='40' value="{ds_turno}" readonly/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{nu_importe_label} *</td>
+                <td align="left">
+                    $&nbsp;<input type='text' name='nu_importe' id='nu_importe' size='10' value="{nu_importe}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+
+
+
+        </table>
+        <p class="comentario">NOTA:El cierre de caja transferirá el total del saldo a la caja central</p>
+        <p style="text-align:center">
+            <!-- BEGIN:boton_aceptar -->
+            <input type='submit' name='submit' value='Aceptar'/>
+            <!-- END:boton_aceptar -->
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:history.back(-1);"/>
+        </p>
+
+
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

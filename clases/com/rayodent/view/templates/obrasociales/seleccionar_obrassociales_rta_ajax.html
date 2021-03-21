@@ -1,0 +1,40 @@
+<!-- BEGIN:main -->
+<div class="paginas" id="paginador">
+    <div style="float:left">
+        <!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+    </div>
+    <!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+</div>
+<br />
+<div class="{classMsj}"><!-- BEGIN: msj --> {msj} <!-- END: msj -->
+</div>
+<!-- BEGIN: header -->
+<div class='tablaSummaryHeader'>{header}</div>
+<!-- END: header -->
+<div id="tablaListado">
+    <table class="tablaListado" border="1">
+        <tr>
+            <!-- BEGIN: TH -->
+            <th>{encabezado}</th>
+            <!-- END: TH -->
+            <th>Acciones</th>
+        </tr>
+        <!-- BEGIN: row -->
+        <tr>
+            <!-- BEGIN: column -->
+            <td>{value}</td>
+            <!-- END: column -->
+            <td class="acciones">
+                <!-- BEGIN: accion -->
+                <input type="checkbox" name="checkbox_{cd_obrasocial}" id="checkbox_{cd_obrasocial}" onClick="seleccion_obrasocial_a_agregar({cd_obrasocial})" {checked}>
+                       <!-- END: accion -->
+            </td>
+        </tr>
+        <!-- END: row -->
+    </table>
+    <p style="text-align:center;"><input type="button" name="actualizar_seleccionados"  id="actualizar_seleccionados" value="Actualizar" onclick="actualizar_obrassociales_seleccionadas('listado_pacientesobrassociales');"></p>
+</div>
+<!-- BEGIN: footer -->
+<div class='tablaSummaryFooter'>{footer}</div>
+<!-- END: footer -->
+<!-- END: main -->

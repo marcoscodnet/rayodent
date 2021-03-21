@@ -1,0 +1,28 @@
+<!-- BEGIN: main -->
+<table>
+    <tr>
+        <th>Tipo Concepto</th>
+        <th>Concepto</th>
+        <th>Pr&aacute;ctica</th>
+        <th>Obra social</th>
+        <th>Importe</th>
+        <th>PosNet</th>
+        <th>Acciones</th>
+    </tr>
+    <!-- BEGIN: movscajas_conceptos -->
+    <tr>
+        <td>{ds_tipoconcepto}</td>
+        <td>{ds_concepto}</td>
+        <td>{ds_practica}</td>
+        <td>{ds_obrasocial}</td>
+        <td>{nu_importe}</td>
+        <td>{ds_posnet}</td>
+        <td><a href="" onclick="return confirmaEliminarAjax('doAction?action=eliminarmovcajaconcepto&k={key}', 'movcajaconceptos')"><img title="eliminar concepto" src="css/desktop/images/del.gif" class="hrefImg"/></a></td>
+    </tr>
+    <!-- END: movscajas_conceptos -->
+    <tr>
+        <td colspan="4" style="text-align:right;"><b>TOTAL</b></td>
+        <td>$ {nu_total}</td>
+    </tr>
+</table>
+<!-- END: main -->

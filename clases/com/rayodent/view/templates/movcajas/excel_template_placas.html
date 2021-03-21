@@ -1,0 +1,46 @@
+<!-- BEGIN: main -->
+<div class="tablaCentro">
+    <!-- BEGIN: header -->
+    <div>{header}</div>
+    <!-- END: header -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>
+                    <a>
+			{dt_movcaja_label}
+                    </a>
+                </th>
+                <th>
+                    <a>
+			{ds_practica_label}
+                    </a>
+                </th>
+                <th>
+                    <a>
+			{nu_cantplacas_label}
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <!-- BEGIN: row -->
+        <tbody class="{row_class}">
+            <!-- BEGIN: rowtotal -->
+            <tr>
+                <td colspan="3">Cant. pacientes: {nu_cantpacientes}</td>
+            </tr>
+            <!-- END: rowtotal -->
+            <tr>
+                <td>{dt_movcaja}</td>
+                <td>{ds_practica}</td>
+                <td>{nu_cantplacas}</td>
+            </tr>
+        </tbody>
+        <!-- END: row -->
+    </table>
+    <!-- BEGIN: footer -->
+    <div>{footer}</div>
+    <!-- END: footer -->
+</div>
+
+<!-- END: main -->

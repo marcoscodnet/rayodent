@@ -1,0 +1,24 @@
+<!-- BEGIN: main -->
+<table style="border-top: none;">
+    <tr>
+        <td align="right" style="width:208px;">{ds_obrasocial_label}*:</td>
+        <td align="left">
+            <input type='hidden' name='cd_obrasocial' id='cd_obrasocial' size='40' value="{cd_obrasocial}" readonly/>
+            <input type='text' name='ds_obrasocial' id='ds_obrasocial' size='40' value="{ds_obrasocial}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" readonly/>
+            <a href="#" onClick="abrir_busquedaObrasocial();"><img src="css/desktop/images/search.gif" alt="Buscar Obra Social"></a>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{nu_importe_label} *:</td>
+        <td align="left">
+            $&nbsp;<input type='text' name='nu_importe' id='nu_importe' size='15' value="{nu_importe}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{bl_tarjeta_label}:</td>
+        <td align="left">
+            &nbsp;<input type='checkbox' name='bl_tarjeta' id='bl_tarjeta' size='15' {checked_bl_tarjeta} value="1" />
+        </td>
+    </tr>
+</table>
+<!-- END: main -->

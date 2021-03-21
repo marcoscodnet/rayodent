@@ -1,0 +1,537 @@
+<?xml version='1.0' standalone='yes'?>
+<navegacion>
+	<!-- Acciones por default. 
+		 Permite definir para una entidad, las acciones por default:
+		 	- agregar, modificar, eliminar, listar, ver.
+		 Se debe indicar el nombre de la entidad y su plural.
+		 Las acciones quedaran definidas de la siguiente manera, tomando
+		 como ejemplo 'usuario'.
+		    - alta_usuario_init		
+		    - alta_usuario		
+		    - modificar_usuario_init		
+		    - modifiar_usuario		
+		    - eliminar_usuario		
+		    - listar_usuarios
+		 Ademas se le agregan los forwards por default.
+	-->
+
+	<!-- inicio y login -->
+    <accion nombre='login_init' clase='LoginInitAction' />
+    <accion nombre='login' clase='LoginAction' />
+    <forward nombre='login_success' url='doAction?action=inicio' />
+    <forward nombre='login_error' url='doAction?action=login_init' />
+
+    <accion nombre='inicio' clase='DesktopPanelAction'  menuGroupActivo=''/>
+    <accion nombre='salir' clase='SalirAction' />
+    <forward nombre='salir_success' url='doAction?action=login_init' />
+
+	<!-- usuarios y perfiles -->
+    <accion nombre='listar_usuariosryt' clase='ListarUsuariosRYTAction' menuGroupActivo='1'/>
+    <accion nombre='alta_usuarioryt' clase='AltaUsuarioRYTAction' />
+    <accion nombre='alta_usuarioryt_init' clase='AltaUsuarioRYTInitAction' />
+    <accion nombre='modificar_usuarioryt' clase='ModificarUsuarioRYTAction' />
+    <accion nombre='modificar_usuarioryt_init' clase='ModificarUsuarioRYTInitAction' />
+    <accion nombre='ver_usuarioryt' clase='VerUsuarioRYTAction' />
+    <accion nombre='eliminar_usuario' clase='EliminarUsuarioAction' />
+    <accion nombre='pdf_accionfunciones' clase='PDFAccionFuncionesAction' />
+    <accion nombre='excel_accionfunciones' clase='ExcelAccionFuncionesAction' />
+    <accion nombre='pdf_usuarios' clase='PDFUsuariosAction' />
+    <accion nombre='excel_usuarios' clase='ExcelUsuariosAction' />
+
+    
+    <forward nombre='alta_usuarioryt_success' url='doAction?action=listar_usuariosryt' />
+    <forward nombre='alta_usuarioryt_error' url='doAction?action=alta_usuarioryt_init' />
+    <forward nombre='modificar_usuarioryt_success' url='doAction?action=listar_usuariosryt' />
+    <forward nombre='modificar_usuarioryt_error' url='doAction?action=modificar_usuarioryt_init' />
+    <forward nombre='eliminar_usuario_error' url='doAction?action=listar_usuariosryt' />
+    <forward nombre='eliminar_usuario_success' url='doAction?action=listar_usuariosryt' />
+	
+    <accion_default entidad='perfil' plural='perfiles' menuGroups='' menuOptions='' menuGroupActivo='1'/>
+    <accion nombre='pdf_perfiles' clase='PDFPerfilesAction' />
+    <accion nombre='excel_perfiles' clase='ExcelPerfilesAction' />
+	
+    <accion nombre='cambiar_clave_init' clase='CambiarClaveInitAction'  menuGroupActivo='1'/>
+    <accion nombre='cambiar_clave' clase='CambiarClaveAction'  menuGroupActivo='1'/>
+    <forward nombre='cambiar_clave_success' url='panel_control.html' />
+    <forward nombre='cambiar_clave_error' url='cambiar_clave_init' />
+
+	<!-- pagina no encontrada -->
+    <accion nombre='page_not_found' clase='PageNotFoundAction' />
+		
+	<!-- acceso denegado -->
+    <accion nombre='acceso_denegado' clase='AccesoDenegadoAction' />
+		
+	<!-- pagina de error -->
+    <accion nombre='error' clase='ErrorAction' />
+	
+
+	<!-- forwards -->
+    <forward nombre='page_not_found' url='page_not_fount.html' />
+    <forward nombre='acceso_denegado' url='acceso_denegado.html' />
+    <forward nombre='error' url='error.html' />
+	
+	<!-- panel de control -->
+    <accion nombre='panel_control' clase='DesktopPanelAction' menuGroupActivo=''/>
+
+	<!-- accionFunciones -->
+    <accion nombre='listar_accionfunciones' clase='ListarAccionFuncionesAction' menuGroupActivo='1'/>
+    <accion nombre='alta_accionfuncion' clase='AltaAccionFuncionAction' />
+    <accion nombre='alta_accionfuncion_init' clase='AltaAccionFuncionInitAction' />
+    <accion nombre='modificar_accionfuncion' clase='ModificarAccionFuncionAction' />
+    <accion nombre='modificar_accionfuncion_init' clase='ModificarAccionFuncionInitAction' />
+    <accion nombre='ver_accionfuncion' clase='VerAccionFuncionAction' />
+    <accion nombre='eliminar_accionfuncion' clase='EliminarAccionFuncionAction' />
+    <accion nombre='pdf_accionfunciones' clase='PDFAccionFuncionesAction' />
+    <accion nombre='excel_accionfunciones' clase='ExcelAccionFuncionesAction' />
+    
+    <forward nombre='alta_accionfuncion_success' url='doAction?action=listar_accionfunciones' />
+    <forward nombre='alta_accionfuncion_error' url='doAction?action=alta_accionfuncion_init' />
+    <forward nombre='modificar_accionfuncion_success' url='doAction?action=listar_accionfunciones' />
+    <forward nombre='modificar_accionfuncion_error' url='doAction?action=alta_accionfuncion_init' />
+    <forward nombre='eliminar_accionfuncion_error' url='doAction?action=listar_accionfunciones' />
+    <forward nombre='eliminar_accionfuncion_success' url='doAction?action=listar_accionfunciones' />
+    <forward nombre='listar_accionfuncion_error' url='doAction?action=listar_accionfunciones' />
+	
+    <!-- funciones -->
+    <accion nombre='listar_funciones' clase='ListarFuncionesAction' menuGroupActivo='1'/>
+    <accion nombre='alta_funcion' clase='AltaFuncionAction' />
+    <accion nombre='alta_funcion_init' clase='AltaFuncionInitAction' />
+    <accion nombre='modificar_funcion' clase='ModificarFuncionAction' />
+    <accion nombre='modificar_funcion_init' clase='ModificarFuncionInitAction' />
+    <accion nombre='ver_funcion' clase='VerFuncionAction' />
+    <accion nombre='eliminar_funcion' clase='EliminarFuncionAction' />
+    <accion nombre='pdf_funciones' clase='PDFFuncionesAction' />
+    <accion nombre='excel_funciones' clase='ExcelFuncionesAction' />
+    
+    <forward nombre='alta_funcion_success' url='doAction?action=listar_funciones' />
+    <forward nombre='alta_funcion_error' url='doAction?action=alta_funcion_init' />
+    <forward nombre='modificar_funcion_success' url='doAction?action=listar_funciones' />
+    <forward nombre='modificar_funcion_error' url='doAction?action=alta_funcion_init' />
+    <forward nombre='eliminar_funcion_success' url='doAction?action=listar_funciones' />
+    <forward nombre='eliminar_funcion_error' url='doAction?action=listar_funciones' />
+    <forward nombre='listar_funcion_error' url='doAction?action=listar_funciones' />
+	
+    <!-- menugroups -->
+    <accion nombre='listar_menugroups' clase='ListarMenugroupsAction' menuGroupActivo='1'/>
+    <accion nombre='alta_menugroup' clase='AltaMenuGroupAction' />
+    <accion nombre='alta_menugroup_init' clase='AltaMenuGroupInitAction' />
+    <accion nombre='modificar_menugroup' clase='ModificarMenuGroupAction' />
+    <accion nombre='modificar_menugroup_init' clase='ModificarMenuGroupInitAction' />
+    <accion nombre='ver_menugroup' clase='VerMenuGroupAction' />
+    <accion nombre='eliminar_menugroup' clase='EliminarMenuGroupAction' />
+    <accion nombre='pdf_menugroups' clase='PDFMenugroupsAction' />
+    <accion nombre='excel_menugroups' clase='ExcelMenugroupsAction' />
+    
+    <forward nombre='alta_menugroup_success' url='doAction?action=listar_menugroups' />
+    <forward nombre='alta_menugroup_error' url='doAction?action=alta_menugroup_init' />
+    <forward nombre='modificar_menugroup_success' url='doAction?action=listar_menugroups' />
+    <forward nombre='modificar_menugroup_error' url='doAction?action=alta_menugroup_init' />
+    <forward nombre='eliminar_menugroup_error' url='doAction?action=listar_menugroups' />
+    <forward nombre='eliminar_menugroup_success' url='doAction?action=listar_menugroups' />
+    <forward nombre='listar_menugroup_error' url='doAction?action=listar_menugroups' />
+	
+    <!-- menuoptions -->
+    <accion nombre='listar_menuoptions' clase='ListarMenuoptionsAction' menuGroupActivo='1'/>
+    <accion nombre='alta_menuoption' clase='AltaMenuOptionAction' />
+    <accion nombre='alta_menuoption_init' clase='AltaMenuOptionInitAction' />
+    <accion nombre='modificar_menuoption' clase='ModificarMenuOptionAction' />
+    <accion nombre='modificar_menuoption_init' clase='ModificarMenuOptionInitAction' />
+    <accion nombre='ver_menuoption' clase='VerMenuOptionAction' />
+    <accion nombre='eliminar_menuoption' clase='EliminarMenuOptionAction' />
+    <accion nombre='pdf_menuoptions' clase='PDFMenuoptionsAction' />
+    <accion nombre='excel_menuoptions' clase='ExcelMenuoptionsAction' />
+	
+    <forward nombre='alta_menuoption_success' url='doAction?action=listar_menuoptions' />
+    <forward nombre='alta_menuoption_error' url='doAction?action=alta_menuoption_init' />
+    <forward nombre='modificar_menuoption_success' url='doAction?action=listar_menuoptions' />
+    <forward nombre='modificar_menuoption_error' url='doAction?action=alta_menuoption_init' />
+    <forward nombre='eliminar_menuoption_error' url='doAction?action=listar_menuoptions' />
+    <forward nombre='eliminar_menuoption_success' url='doAction?action=listar_menuoptions' />
+    <forward nombre='listar_menuoption_error' url='doAction?action=listar_menuoptions' />
+	
+    
+	<!-- acceso denegado -->
+    <accion nombre='acceso_denegado' clase='AccesoDenegadoAction' />
+    <forward nombre='acceso_denegado' url='doAction?action=acceso_denegado' />
+
+
+
+	
+    <!-- empleados -->
+    <accion nombre='listar_empleados' clase='ListarEmpleadosAction' menuGroupActivo='6'/>
+    <accion nombre='alta_empleado' clase='AltaEmpleadoAction' menuGroupActivo='6'/>
+    <accion nombre='alta_empleado_init' clase='AltaEmpleadoInitAction' menuGroupActivo='6'/>
+    <accion nombre='modificar_empleado' clase='ModificarEmpleadoAction' menuGroupActivo='6'/>
+    <accion nombre='modificar_empleado_init' clase='ModificarEmpleadoInitAction' menuGroupActivo='6'/>
+    <accion nombre='ver_empleado' clase='VerEmpleadoAction' menuGroupActivo='6'/>
+    <accion nombre='eliminar_empleado' clase='EliminarEmpleadoAction' menuGroupActivo='6'/>
+    <accion nombre='pdf_empleados' clase='PDFEmpleadosAction' />
+    <accion nombre='excel_empleados' clase='ExcelEmpleadosAction' />
+    <accion nombre='buscar_personales' clase='BuscarEmpleadosAction' />
+    
+    <forward nombre='alta_empleado_success' url='doAction?action=listar_empleados' />
+    <forward nombre='alta_empleado_error' url='doAction?action=alta_empleado_init' />
+    <forward nombre='modificar_empleado_success' url='doAction?action=listar_empleados' />
+    <forward nombre='modificar_empleado_error' url='doAction?action=alta_empleado_init' />
+    <forward nombre='eliminar_empleado_success' url='doAction?action=listar_empleados' />
+    <forward nombre='eliminar_empleado_error' url='doAction?action=listar_empleados' />
+    <forward nombre='listar_empleado_error' url='doAction?action=listar_empleados' />
+	
+    <!-- profesionales -->
+    <accion nombre='listar_profesionales' clase='ListarProfesionalesAction' menuGroupActivo='6'/>
+    <accion nombre='alta_profesional' clase='AltaProfesionalAction' />
+    <accion nombre='alta_profesional_init' clase='AltaProfesionalInitAction' menuGroupActivo='6'/>
+    <accion nombre='alta_profesional_ajax_init' clase='AltaProfesionalAjaxInitAction' />
+    <accion nombre='alta_profesional_ajax' clase='AltaProfesionalAjaxAction' />
+    <accion nombre='modificar_profesional' clase='ModificarProfesionalAction'/>
+    <accion nombre='buscar_profesionales' clase='BuscarProfesionalesAction' />
+    <accion nombre='modificar_profesional_init' clase='ModificarProfesionalInitAction' menuGroupActivo='6'/>
+    <accion nombre='ver_profesional' clase='VerProfesionalAction' menuGroupActivo='6'/>
+    <accion nombre='eliminar_profesional' clase='EliminarProfesionalAction' />
+    <accion nombre='pdf_profesionales' clase='PDFProfesionalesAction' />
+    <accion nombre='excel_profesionales' clase='ExcelProfesionalesAction' />
+    
+    <forward nombre='alta_profesional_success' url='doAction?action=listar_profesionales' />
+    <forward nombre='alta_profesional_error' url='doAction?action=alta_profesional_init' />
+    <forward nombre='modificar_profesional_success' url='doAction?action=listar_profesionales' />
+    <forward nombre='modificar_profesional_error' url='doAction?action=alta_profesional_init' />
+    <forward nombre='eliminar_profesional_success' url='doAction?action=listar_profesionales' />
+    <forward nombre='eliminar_profesional_error' url='doAction?action=listar_profesionales' />
+    <forward nombre='listar_profesional_error' url='doAction?action=listar_profesionales' />
+	
+    <!-- tipoDocumentos -->
+    <accion nombre='listar_tipodocumentos' clase='ListarTipoDocumentosAction' menuGroupActivo='6'/>
+    <accion nombre='alta_tipodocumento' clase='AltaTipoDocumentoAction' />
+    <accion nombre='alta_tipodocumento_init' clase='AltaTipoDocumentoInitAction' menuGroupActivo='6'/>
+    <accion nombre='modificar_tipodocumento' clase='ModificarTipoDocumentoAction' />
+    <accion nombre='modificar_tipodocumento_init' clase='ModificarTipoDocumentoInitAction' menuGroupActivo='6'/>
+    <accion nombre='ver_tipodocumento' clase='VerTipoDocumentoAction' menuGroupActivo='6'/>
+    <accion nombre='eliminar_tipodocumento' clase='EliminarTipoDocumentoAction' />
+    <accion nombre='pdf_tipodocumentos' clase='PDFTipoDocumentosAction' />
+    <accion nombre='excel_tipodocumentos' clase='ExcelTipoDocumentosAction' />
+    
+    <forward nombre='alta_tipodocumento_success' url='doAction?action=listar_tipodocumentos' />
+    <forward nombre='alta_tipodocumento_error' url='doAction?action=alta_tipodocumento_init' />
+    <forward nombre='modificar_tipodocumento_success' url='doAction?action=listar_tipodocumentos' />
+    <forward nombre='modificar_tipodocumento_error' url='doAction?action=alta_tipodocumento_init' />
+    <forward nombre='eliminar_tipodocumento_success' url='doAction?action=listar_tipodocumentos' />
+    <forward nombre='eliminar_tipodocumento_error' url='doAction?action=listar_tipodocumentos' />
+    <forward nombre='listar_tipodocumento_error' url='doAction?action=listar_tipodocumentos' />
+	
+    <!-- tipoPersonales -->
+    <accion nombre='listar_tipopersonales' clase='ListarTipoPersonalesAction' menuGroupActivo='6'/>
+    <accion nombre='alta_tipopersonal' clase='AltaTipoPersonalAction' />
+    <accion nombre='alta_tipopersonal_init' clase='AltaTipoPersonalInitAction' menuGroupActivo='6'/>
+    <accion nombre='modificar_tipopersonal' clase='ModificarTipoPersonalAction'/>
+    <accion nombre='modificar_tipopersonal_init' clase='ModificarTipoPersonalInitAction' menuGroupActivo='6'/>
+    <accion nombre='ver_tipopersonal' clase='VerTipoPersonalAction' menuGroupActivo='6'/>
+    <accion nombre='eliminar_tipopersonal' clase='EliminarTipoPersonalAction'/>
+    <accion nombre='pdf_tipopersonales' clase='PDFTipoPersonalesAction' />
+    <accion nombre='excel_tipopersonales' clase='ExcelTipoPersonalesAction' />
+    
+    <forward nombre='alta_tipopersonal_success' url='doAction?action=listar_tipopersonales' />
+    <forward nombre='alta_tipopersonal_error' url='doAction?action=alta_tipopersonal_init' />
+    <forward nombre='modificar_tipopersonal_success' url='doAction?action=listar_tipopersonales' />
+    <forward nombre='modificar_tipopersonal_error' url='doAction?action=alta_tipopersonal_init' />
+    <forward nombre='eliminar_tipopersonal_success' url='doAction?action=listar_tipopersonales' />
+    <forward nombre='eliminar_tipopersonal_error' url='doAction?action=listar_tipopersonales' />
+    <forward nombre='listar_tipopersonal_error' url='doAction?action=listar_tipopersonales' />
+	
+	   <!-- obrasociales -->
+    <accion nombre='listar_obrasociales' clase='ListarObrasocialesAction' menuGroupActivo='7'/>
+    <accion nombre='alta_obrasocial' clase='AltaObrasocialAction' />
+    <accion nombre='alta_obrasocial_init' clase='AltaObrasocialInitAction'  menuGroupActivo='7'/>
+    <accion nombre='modificar_obrasocial' clase='ModificarObrasocialAction' />
+    <accion nombre='modificar_obrasocial_init' clase='ModificarObrasocialInitAction'  menuGroupActivo='7' />
+    <accion nombre='ver_obrasocial' clase='VerObrasocialAction'  menuGroupActivo='7'/>
+    <accion nombre='seleccionar_obrasocial_a_asociar' clase='SeleccionarObrasocialAAsociarAction'/>
+    <accion nombre='seleccionar_obrasociales' clase='SeleccionarObrasocialesAction'/>
+    <accion nombre='actualizar_obrassociales_seleccionadas' clase='ActualizarObrassocialesSeleccionadasAction'/>
+    <accion nombre='buscar_obrassociales' clase='BuscarObrassocialesAction'/>
+    <accion nombre='eliminar_obrasocial' clase='EliminarObrasocialAction' />
+    <accion nombre='pdf_obrasociales' clase='PDFObrasocialesAction' />
+    <accion nombre='excel_obrasociales' clase='ExcelObrasocialesAction' />
+
+    <forward nombre='alta_obrasocial_success' url='doAction?action=listar_obrasociales' />
+    <forward nombre='alta_obrasocial_error' url='doAction?action=alta_obrasocial_init' />
+    <forward nombre='modificar_obrasocial_success' url='doAction?action=listar_obrasociales' />
+    <forward nombre='modificar_obrasocial_error' url='doAction?action=alta_obrasocial_init' />
+    <forward nombre='eliminar_obrasocial_success' url='doAction?action=listar_obrasociales' />
+    <forward nombre='eliminar_obrasocial_error' url='doAction?action=listar_obrasociales' />
+    <forward nombre='listar_obrasocial_error' url='doAction?action=listar_obrasociales' />
+
+    <!-- OrdenPractica-->
+    <accion nombre='buscar_ordenpracticas' clase='BuscarOrdenpracticasAction' />
+
+
+      <!-- practicas -->
+    <accion nombre='listar_practicas' clase='ListarPracticasAction' menuGroupActivo='7'/>
+    <accion nombre='alta_practica' clase='AltaPracticaAction' />
+    <accion nombre='buscar_practicasobrassociales' clase='BuscarPracticasObrasSocialesAction' />
+    <accion nombre='alta_practica_init' clase='AltaPracticaInitAction'  menuGroupActivo='7'/>
+    <accion nombre='modificar_practica' clase='ModificarPracticaAction' />
+    <accion nombre='modificar_practica_init' clase='ModificarPracticaInitAction'  menuGroupActivo='7'/>
+    <accion nombre='ver_practica' clase='VerPracticaAction'  menuGroupActivo='7'/>
+    <accion nombre='eliminar_practica' clase='EliminarPracticaAction' />
+    <accion nombre='pdf_practicas' clase='PDFPracticasAction' />
+    <accion nombre='excel_practicas' clase='ExcelPracticasAction' />
+
+    <forward nombre='alta_practica_success' url='doAction?action=listar_practicas' />
+    <forward nombre='alta_practica_error' url='doAction?action=alta_practica_init' />
+    <forward nombre='modificar_practica_success' url='doAction?action=listar_practicas' />
+    <forward nombre='modificar_practica_error' url='doAction?action=alta_practica_init' />
+    <forward nombre='eliminar_practica_success' url='doAction?action=listar_practicas' />
+    <forward nombre='eliminar_practica_error' url='doAction?action=listar_practicas' />
+    <forward nombre='listar_practica_error' url='doAction?action=listar_practicas' />
+
+    <!-- vigenciasyprecios -->
+    <accion nombre='listar_vigenciasyprecios' clase='ListarVigenciasypreciosAction' menuGroupActivo='6'/>
+    <accion nombre='alta_vigenciasyprecios' clase='AltaVigenciasypreciosAction' />
+    <accion nombre='alta_vigenciasyprecios_init' clase='AltaVigenciasypreciosInitAction' menuGroupActivo='6'/>
+    <accion nombre='modificar_vigenciasyprecios' clase='ModificarVigenciasypreciosAction' />
+    <accion nombre='modificar_vigenciasyprecios_init' clase='ModificarVigenciasypreciosInitAction' menuGroupActivo='6'/>
+    <accion nombre='ver_vigenciasyprecios' clase='VerVigenciasypreciosAction'  menuGroupActivo='6' />
+    <accion nombre='eliminar_vigenciasyprecios' clase='EliminarVigenciasypreciosAction' />
+    
+
+    <forward nombre='alta_vigenciasyprecios_success' url='doAction?action=listar_vigenciasyprecios' />
+    <forward nombre='alta_vigenciasyprecios_error' url='doAction?action=alta_vigenciasyprecios_init' />
+    <forward nombre='modificar_vigenciasyprecios_success' url='doAction?action=listar_vigenciasyprecios' />
+    <forward nombre='modificar_vigenciasyprecios_error' url='doAction?action=alta_vigenciasyprecios_init' />
+    <forward nombre='eliminar_vigenciasyprecios_success' url='doAction?action=listar_vigenciasyprecios' />
+    <forward nombre='eliminar_vigenciasyprecios_error' url='doAction?action=listar_vigenciasyprecios' />
+    <forward nombre='listar_vigenciasyprecios_error' url='doAction?action=listar_vigenciasyprecios' />
+
+
+
+    <!-- practicaobrasociales -->
+    <accion nombre='listar_practicaobrasociales' clase='ListarPracticaobrasocialesAction' menuGroupActivo='7'/>
+    <accion nombre='alta_practicaobrasocial' clase='AltaPracticaobrasocialAction' />
+    <accion nombre='alta_practicaobrasocial_init' clase='AltaPracticaobrasocialInitAction' menuGroupActivo='7'/>
+    <accion nombre='modificar_practicaobrasocial' clase='ModificarPracticaobrasocialAction' />
+    <accion nombre='modificar_practicaobrasocial_init' clase='ModificarPracticaobrasocialInitAction' menuGroupActivo='7'/>
+    <accion nombre='ver_practicaobrasocial' clase='VerPracticaobrasocialAction'  menuGroupActivo='7' />
+    <accion nombre='eliminar_practicaobrasocial' clase='EliminarPracticaobrasocialAction' />
+    <accion nombre='pdf_practicaobrasociales' clase='PDFPracticaobrasocialesAction' />
+    <accion nombre='excel_practicaobrasociales' clase='ExcelPracticaobrasocialesAction' />
+
+    <forward nombre='alta_practicaobrasocial_success' url='doAction?action=listar_practicaobrasociales' />
+    <forward nombre='alta_practicaobrasocial_error' url='doAction?action=alta_practicaobrasocial_init' />
+    <forward nombre='modificar_practicaobrasocial_success' url='doAction?action=listar_practicaobrasociales' />
+    <forward nombre='modificar_practicaobrasocial_error' url='doAction?action=modificar_practicaobrasocial_init' />
+    <forward nombre='eliminar_practicaobrasocial_success' url='doAction?action=listar_practicaobrasociales' />
+    <forward nombre='eliminar_practicaobrasocial_error' url='doAction?action=listar_practicaobrasociales' />
+    <forward nombre='listar_practicaobrasocial_error' url='doAction?action=listar_practicaobrasociales' />
+
+
+    <!-- conceptos -->
+    <accion nombre='listar_conceptos' clase='ListarConceptosAction' menuGroupActivo='7'/>
+    <accion nombre='alta_concepto' clase='AltaConceptoAction' />
+    <accion nombre='crear_combo_concepto' clase='CrearComboConceptoAction' />
+    <accion nombre='alta_concepto_init' clase='AltaConceptoInitAction' menuGroupActivo='7' />
+    <accion nombre='modificar_concepto' clase='ModificarConceptoAction' />
+    <accion nombre='modificar_concepto_init' clase='ModificarConceptoInitAction' menuGroupActivo='7'/>
+    <accion nombre='ver_concepto' clase='VerConceptoAction' menuGroupActivo='7'/>
+    <accion nombre='eliminar_concepto' clase='EliminarConceptoAction' menuGroupActivo='7'/>
+    <accion nombre='pdf_conceptos' clase='PDFConceptosAction' />
+    <accion nombre='excel_conceptos' clase='ExcelConceptosAction' />
+
+    <forward nombre='alta_concepto_success' url='doAction?action=listar_conceptos' />
+    <forward nombre='alta_concepto_error' url='doAction?action=alta_concepto_init' />
+    <forward nombre='modificar_concepto_success' url='doAction?action=listar_conceptos' />
+    <forward nombre='modificar_concepto_error' url='doAction?action=alta_concepto_init' />
+    <forward nombre='eliminar_concepto_success' url='doAction?action=listar_conceptos' />
+    <forward nombre='eliminar_concepto_error' url='doAction?action=listar_conceptos' />
+    <forward nombre='listar_concepto_error' url='doAction?action=listar_conceptos' />
+
+     <!-- tipoconceptos -->
+    <accion nombre='listar_tipoconceptos' clase='ListarTipoconceptosAction' menuGroupActivo='7'/>
+    <accion nombre='alta_tipoconcepto' clase='AltaTipoconceptoAction' />
+    <accion nombre='alta_tipoconcepto_init' clase='AltaTipoconceptoInitAction' menuGroupActivo='7'/>
+    <accion nombre='modificar_tipoconcepto' clase='ModificarTipoconceptoAction' />
+    <accion nombre='modificar_tipoconcepto_init' clase='ModificarTipoconceptoInitAction' menuGroupActivo='7'/>
+    <accion nombre='ver_tipoconcepto' clase='VerTipoconceptoAction' menuGroupActivo='7'/>
+    <accion nombre='eliminar_tipoconcepto' clase='EliminarTipoconceptoAction' />
+    <accion nombre='pdf_tipoconceptos' clase='PDFTipoconceptosAction' />
+    <accion nombre='excel_tipoconceptos' clase='ExcelTipoconceptosAction' />
+
+    <forward nombre='alta_tipoconcepto_success' url='doAction?action=listar_tipoconceptos' />
+    <forward nombre='alta_tipoconcepto_error' url='doAction?action=alta_tipoconcepto_init' />
+    <forward nombre='modificar_tipoconcepto_success' url='doAction?action=listar_tipoconceptos' />
+    <forward nombre='modificar_tipoconcepto_error' url='doAction?action=alta_tipoconcepto_init' />
+    <forward nombre='eliminar_tipoconcepto_success' url='doAction?action=listar_tipoconceptos' />
+    <forward nombre='eliminar_tipoconcepto_error' url='doAction?action=listar_tipoconceptos' />
+    <forward nombre='listar_tipoconcepto_error' url='doAction?action=listar_tipoconceptos' />
+
+ <!-- pacientes -->
+    <accion nombre='listar_pacientes' clase='ListarPacientesAction' menuGroupActivo='7'/>
+    <accion nombre='alta_paciente' clase='AltaPacienteAction' />
+    <accion nombre='alta_paciente_ajax_init' clase='AltaPacienteAjaxInitAction' />
+    <accion nombre='alta_paciente_ajax' clase='AltaPacienteAjaxAction' />
+    <accion nombre='alta_paciente_init' clase='AltaPacienteInitAction' menuGroupActivo='7' />
+    <accion nombre='modificar_paciente' clase='ModificarPacienteAction' />
+    <accion nombre='modificar_paciente_init' clase='ModificarPacienteInitAction' menuGroupActivo='7' />
+    <accion nombre='ver_paciente' clase='VerPacienteAction' menuGroupActivo='7' />
+    <accion nombre='eliminar_paciente' clase='EliminarPacienteAction' />
+    <accion nombre='pdf_pacientes' clase='PDFPacientesAction' />
+    <accion nombre='excel_pacientes' clase='ExcelPacientesAction' />
+    <accion nombre='ajax_validar_dni_paciente' clase='ValidarDniPacientesAction' />
+
+
+    <forward nombre='alta_paciente_success' url='doAction?action=listar_pacientes' />
+    <forward nombre='alta_paciente_error' url='doAction?action=alta_paciente_init' />
+    <forward nombre='alta_paciente_ajax_success' url='doAction?action=alta_paciente_ajax_init' />
+    <forward nombre='alta_paciente_ajax_error' url='doAction?action=alta_paciente_ajax_init' />
+    <forward nombre='modificar_paciente_success' url='doAction?action=listar_pacientes' />
+    <forward nombre='modificar_paciente_error' url='doAction?action=alta_paciente_init' />
+    <forward nombre='eliminar_paciente_success' url='doAction?action=listar_pacientes' />
+    <forward nombre='eliminar_paciente_error' url='doAction?action=listar_pacientes' />
+    <forward nombre='listar_paciente_error' url='doAction?action=listar_pacientes' />
+
+    
+
+      <!-- tipooperaciones -->
+    <accion nombre='listar_tipooperaciones' clase='ListarTipooperacionesAction' menuGroupActivo='7'/>
+    <accion nombre='alta_tipooperacion' clase='AltaTipooperacionAction' />
+    <accion nombre='alta_tipooperacion_init' clase='AltaTipooperacionInitAction' menuGroupActivo='7'/>
+    <accion nombre='modificar_tipooperacion' clase='ModificarTipooperacionAction' />
+    <accion nombre='modificar_tipooperacion_init' clase='ModificarTipooperacionInitAction' menuGroupActivo='7'/>
+    <accion nombre='ver_tipooperacion' clase='VerTipooperacionAction' menuGroupActivo='7'/>
+    <accion nombre='eliminar_tipooperacion' clase='EliminarTipooperacionAction' />
+    <accion nombre='pdf_tipooperaciones' clase='PDFTipooperacionesAction' />
+    <accion nombre='excel_tipooperaciones' clase='ExcelTipooperacionesAction' />
+
+    <forward nombre='alta_tipooperacion_success' url='doAction?action=listar_tipooperaciones'/>
+    <forward nombre='alta_tipooperacion_error' url='doAction?action=alta_tipooperacion_init'/>
+    <forward nombre='modificar_tipooperacion_success' url='doAction?action=listar_tipooperaciones' />
+    <forward nombre='modificar_tipooperacion_error' url='doAction?action=alta_tipooperacion_init' />
+    <forward nombre='eliminar_tipooperacion_success' url='doAction?action=listar_tipooperaciones' />
+    <forward nombre='eliminar_tipooperacion_error' url='doAction?action=listar_tipooperaciones' />
+    <forward nombre='listar_tipooperacion_error' url='doAction?action=listar_tipooperaciones' />
+
+ <!-- movcajas -->
+    <accion nombre='listar_movcajas' clase='ListarMovcajasAction' menuGroupActivo='6'/>
+    <accion nombre='listar_reporte_placas' clase='ListarReportePlacasAction' menuGroupActivo='6'/>
+    <accion nombre='alta_movcaja' clase='AltaMovcajaAction' menuGroupActivo='6'/>
+    <accion nombre='buscar_pacientes' clase='BuscarPacientesAction' />
+    <accion nombre='alta_movcaja_init' clase='AltaMovcajaInitAction' menuGroupActivo='6'/>
+    <accion nombre='modificar_movcaja' clase='ModificarMovcajaAction' />
+    <accion nombre='modificar_movcaja_init' clase='ModificarMovcajaInitAction' menuGroupActivo='6'/>
+    <accion nombre='ver_movcaja' clase='VerMovcajaAction' menuGroupActivo='6'/>
+    <accion nombre='eliminar_movcaja' clase='EliminarMovcajaAction' />
+    <accion nombre='pdf_movcajas' clase='PDFMovcajasAction' />
+    <accion nombre='excel_movcajas' clase='ExcelMovcajasAction' />
+    <accion nombre='excel_reporte_placas' clase='ExcelReportePlacasAction' menuGroupActivo='6'/>
+    <accion nombre='pdf_etiqueta_movcaja' clase='PDFEtiquetaMovCajaAction' />
+    <accion nombre='pdf_etiqueta_doble_movcaja' clase='PDFEtiquetaDobleMovCajaAction' />
+    <accion nombre='validar_repeticiones' clase='ValidarRepeticionesAction' />
+    <accion nombre='pdf_factura_movcaja' clase='PDFFacturaMovCajaAction' />
+	<accion nombre='listar_practicas_paciente' clase='ListarPracticasPacienteAction' />
+
+
+    <forward nombre='pdf_etiqueta_movcaja_error' url='doAction?action=listar_movcajas' />
+    <forward nombre='pdf_etiqueta_doble_movcaja_error' url='doAction?action=listar_movcajas' />
+
+    <accion nombre='eliminarmovcajaconcepto' clase='EliminarMovConceptoCajaAjaxAction' />
+
+    
+    <!-- Campos segun el tipo de concepto-->
+    <accion nombre='cargar_campos_tipo_concepto_bono' clase='CargarCamposTipoConceptoBonoAction' />
+    <accion nombre='cargar_campos_tipo_concepto_practica' clase='CargarCamposTipoConceptoPracticaAction' />
+    <accion nombre='cargar_campos_tipo_concepto_reintegro' clase='CargarCamposTipoConceptoReintegroAction' />
+    <accion nombre='cargar_campos_tipo_concepto_otro' clase='CargarCamposTipoConceptoOtroAction' />
+
+
+
+    <forward nombre='alta_movcaja_success' url='doAction?action=listar_movcajas' />
+    <forward nombre='alta_movcaja_error' url='doAction?action=alta_movcaja_init' />
+    <forward nombre='modificar_movcaja_success' url='doAction?action=listar_movcajas' />
+    <forward nombre='modificar_movcaja_error' url='doAction?action=modificar_movcaja_init' />
+    <forward nombre='eliminar_movcaja_success' url='doAction?action=listar_movcajas' />
+    <forward nombre='eliminar_movcaja_error' url='doAction?action=listar_movcajas' />
+    <forward nombre='listar_movcaja_error' url='doAction?action=listar_movcajas' />
+
+    <accion nombre='buscar_orden_practica' clase='BuscarOrdenespracticasAction' />
+
+    <accion nombre='alta_anulacion' clase='AltaAnulacionAction' />
+    <forward nombre='alta_anulacion_success' url='doAction?action=listar_movcajas' />
+    <forward nombre='alta_anulacion_error' url='doAction?action=listar_movcajas' />
+
+    <accion nombre='listar_gastos' clase='ListarGastosAction' menuGroupActivo='6'/>
+
+    <accion nombre='abrir_caja_init' clase='AbrirCajaInitAction' menuGroupActivo='8'/>
+    <accion nombre='abrir_caja' clase='AbrirCajaAction' />
+    <accion nombre='cerrar_caja_init' clase='CerrarCajaInitAction' menuGroupActivo='8'/>
+    <accion nombre='cerrar_caja' clase='CerrarCajaAction' />
+    <accion nombre='arquear_caja' clase='ArqueoCajaAction' menuGroupActivo='8'/>
+    <accion nombre='excel_arqueo_caja' clase='ExcelArqueoCajaAction' menuGroupActivo='8'/>
+
+
+    <forward nombre='abrir_caja_success' url='doAction?action=listar_movcajas' />
+    <forward nombre='abrir_caja_error' url='doAction?action=listar_movcajas' />
+
+    <forward nombre='cerrar_caja_success' url='doAction?action=listar_movcajas' />
+    <forward nombre='cerrar_caja_error' url='doAction?action=listar_movcajas' />
+
+    
+    <!-- practicaordenpracticas -->
+    <accion nombre='listar_practicaordenpracticas' clase='ListarPracticaordenpracticasAction' menuGroupActivo='6'/>
+    <accion nombre='alta_practicaordenpractica' clase='AltaPracticaordenpracticaAction' />
+    <accion nombre='alta_practicaordenpractica_init' clase='AltaPracticaordenpracticaInitAction' />
+    <accion nombre='modificar_practicaordenpractica' clase='ModificarPracticaordenpracticaAction' />
+    <accion nombre='modificar_practicaordenpractica_init' clase='ModificarPracticaordenpracticaInitAction' />
+    <accion nombre='ver_practicaordenpractica' clase='VerPracticaordenpracticaAction' />
+    <accion nombre='eliminar_practicaordenpractica' clase='EliminarPracticaordenpracticaAction' />
+    <accion nombre='pdf_practicaordenpracticas' clase='PDFPracticaordenpracticasAction' />
+    <accion nombre='excel_practicaordenpracticas' clase='ExcelPracticaordenpracticasAction' />
+    <accion nombre='pdf_informe_practicaordenpractica' clase='PDFInformePracticaordenpracticaAction' />
+
+
+    <forward nombre='modificar_practicaordenpractica_success' url='doAction?action=listar_practicaordenpracticas' />
+    <forward nombre='modificar_practicaordenpractica_error' url='doAction?action=modificar_practicaordenpractica_init' />
+
+
+    <accion nombre='liquidar' clase='LiquidarAction' menuGroupActivo='6'/>
+    <accion nombre='excel_liquidacion' clase='ExcelLiquidacionAction' />
+
+    <accion nombre='liquidar_profesional' clase='LiquidarProfesionalesAction' menuGroupActivo='6'/>
+
+    <!-- liquidacionprofesionales -->
+    <accion nombre='listar_liquidacionprofesionales' clase='ListarLiquidacionprofesionalesAction' menuGroupActivo='6'/>
+    <accion nombre='alta_liquidacionprofesional' clase='AltaLiquidacionprofesionalAction' />
+    <accion nombre='excel_liquidacion_profesionales' clase='ExcelLiquidacionProfesionalesAction' />
+
+    <filter nombre='seguridad' clase='SecureFilter' urlPattern="/"/>
+	
+	<accion nombre='listar_resumen_placas' clase='ListarResumenPlacasAction' menuGroupActivo='6'/>
+	<accion nombre='excel_resumen_placas' clase='ExcelResumenPlacasAction' menuGroupActivo='6'/>
+	
+	 <!-- contactos -->
+    <accion nombre='listar_contactos' clase='ListarContactosAction' menuGroupActivo='7'/>
+    <accion nombre='alta_contacto' clase='AltaContactoAction' />
+  
+    <accion nombre='alta_contacto_init' clase='AltaContactoInitAction' menuGroupActivo='7' />
+    <accion nombre='modificar_contacto' clase='ModificarContactoAction' />
+    <accion nombre='modificar_contacto_init' clase='ModificarContactoInitAction' menuGroupActivo='7' />
+    <accion nombre='ver_contacto' clase='VerContactoAction' menuGroupActivo='7' />
+    <accion nombre='eliminar_contacto' clase='EliminarContactoAction' />
+    <accion nombre='pdf_contactos' clase='PDFContactosAction' />
+    <accion nombre='excel_contactos' clase='ExcelContactosAction' />
+    
+	<accion nombre='listar_cumples' clase='ListarCumplesAction' menuGroupActivo='7'/>
+	<accion nombre='listar_emails' clase='ListarEmailsAction' menuGroupActivo='7'/>
+	<accion nombre='ver_email' clase='VerEmailAction' menuGroupActivo='7' />
+	<accion nombre='ver_cuerpo' clase='VerCuerpoAction' menuGroupActivo='7' />
+
+    <forward nombre='alta_contacto_success' url='doAction?action=listar_contactos' />
+    <forward nombre='alta_contacto_error' url='doAction?action=alta_contacto_init' />
+  
+    <forward nombre='modificar_contacto_success' url='doAction?action=listar_contactos' />
+    <forward nombre='modificar_contacto_error' url='doAction?action=alta_contacto_init' />
+    <forward nombre='eliminar_contacto_success' url='doAction?action=listar_contactos' />
+    <forward nombre='eliminar_contacto_error' url='doAction?action=listar_contactos' />
+    <forward nombre='listar_contactos_error' url='doAction?action=listar_contactos' />
+    
+    <forward nombre='listar_cumples_error' url='doAction?action=listar_cumples' />
+    <forward nombre='listar_emails_error' url='doAction?action=listar_emails' />
+</navegacion>

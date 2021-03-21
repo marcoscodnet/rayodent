@@ -1,0 +1,102 @@
+<!-- BEGIN:main -->
+<div id="editar">
+	<div align="justify"><p class="titulo">{titulo}</p></div>
+
+	<!-- BEGIN:msj -->
+	<div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;"> 
+		<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+		</p>
+	</div>
+	<br />
+	<!-- END:msj -->
+
+	<form name='editarordenpractica' id='editarordenpractica' action='doAction?action={submit}' method='post' onsubmit="return validate('editarordenpractica');">
+		
+		<table>
+			<tr>
+				<td align="right">{cd_ordenpractica_label}:</td>
+				<td align="left">
+					{cd_ordenpractica}
+					<input type="hidden" readonly name="cd_ordenpractica" id="cd_ordenpractica" value="{cd_ordenpractica}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{dt_carga_label} *</td>
+				<td align="left">
+					<input type='text' name='dt_carga' id='dt_carga' size='40' value="{dt_carga}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{cd_turno_label} *</td>
+				<td align="left">
+					<input type='text' name='cd_turno' id='cd_turno' size='40' value="{cd_turno}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{cd_paciente_label} *</td>
+				<td align="left">
+					<input type='text' name='cd_paciente' id='cd_paciente' size='40' value="{cd_paciente}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{cd_profesional_label} *</td>
+				<td align="left">
+					<input type='text' name='cd_profesional' id='cd_profesional' size='40' value="{cd_profesional}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{cd_empleado_label} *</td>
+				<td align="left">
+					<input type='text' name='cd_empleado' id='cd_empleado' size='40' value="{cd_empleado}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{cd_obrasocialbono_label} *</td>
+				<td align="left">
+					<input type='text' name='cd_obrasocialbono' id='cd_obrasocialbono' size='40' value="{cd_obrasocialbono}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+				</td>
+			</tr>
+			
+						
+			<tr>
+				<td align="right">{bl_bono_label}</td>
+				<td align="left">
+					<input type='text' name='bl_bono' id='bl_bono' size='40' value="{bl_bono}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{nu_importebono_label}</td>
+				<td align="left">
+					<input type='text' name='nu_importebono' id='nu_importebono' size='40' value="{nu_importebono}"/>
+				</td>
+			</tr>
+						
+			<tr>
+				<td align="right">{nu_reciboreintegro_label}</td>
+				<td align="left">
+					<input type='text' name='nu_reciboreintegro' id='nu_reciboreintegro' size='40' value="{nu_reciboreintegro}"/>
+				</td>
+			</tr>
+			
+			
+			
+		</table>
+		
+		<p style="text-align:center">
+			<input type='submit' name='submit' value='Aceptar'/>
+			<input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_ordenpracticas';"/>
+		</p>
+		
+		
+	</form>		
+	<div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

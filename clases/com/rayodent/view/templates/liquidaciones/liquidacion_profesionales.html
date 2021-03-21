@@ -1,0 +1,106 @@
+<!-- BEGIN: main -->
+<link media="all" rel="stylesheet" href="{WEB_PATH}/css/sexyalertbox.css" type="text/css" />
+<script language="javascript" src="{WEB_PATH}/js/mootools_12.js"></script>
+<script language="javascript" src="{WEB_PATH}/js/sexyalertbox.v1.js"></script>
+<script type="text/javascript">
+    function verificar(url){
+        if(document.getElementById('valor').value !="" && document.getElementById('cd_profesional').value !=""){
+            submit_self(url,'buscarEsp');
+            return true;
+        }else{
+            if(document.getElementById('valor').value ==""){
+                alert("El campo Importe es obligatorio");
+                return false;
+            }
+            if(document.getElementById('cd_profesional').value ==""){
+                alert("Debe seleccionar un profesional para realizar la liquidación");
+                return false;
+            }
+
+        }
+    }
+</script>
+<div class="paginas" id="paginador">
+    <div style="float:left">
+        <!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+    </div>
+    <!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+</div>
+
+
+<div class="opciones">
+    <!-- BEGIN: opcion -->
+    <input type="button" name="{nombre}"  id="{nombre}" value="{label}" onclick="javascript:location.href='doAction?action={accion}';">
+    <!-- END: opcion -->
+</div>
+
+<div class="tablaCentro">
+    <div class="titulo_listar" >{titulo}</div>
+    <!-- BEGIN: botones_tabla -->
+
+    <div class="botonesTabla" style="margin-bottom: 10px;">
+        <form name="buscarEsp" id="buscarEsp" action="doAction?action=" method="GET">
+            <input type="hidden" name="accion" id="accion" value="{accion_listar}" />
+            <input type="hidden" name="campoOrden" id="campoOrden" value="{campoOrden}" />
+            <input type="hidden" name="orden" id="orden" value="{orden}" />
+            <input type="hidden" name="validar" id="validar" value="false" />
+            <!-- BEGIN: combo_filtros -->
+            <select name="campoFiltro" id="campoFiltro">
+                <!-- BEGIN: opcion_filtro -->
+                <option value={value_filtro}>{ds_filtro}</option>
+                <!-- END: opcion_filtro -->
+            </select>
+            <input type="text" name="filtro" id="filtro" value="{txt_filtro}" />
+            <!-- END: combo_filtros -->
+            <!-- BEGIN: filtrosEspeciales --> {filtrosEspeciales} <!-- END: filtrosEspeciales -->
+            <input type="button" name="submitBuscar"  id="submitBuscar" onclick="javascript: return verificar('{accion_listar}');" value="Buscar">
+        </form>
+    </div>
+
+    <!-- END: botones_tabla -->
+
+    <br />
+    <div class="{classMsj}"><!-- BEGIN: msj --> {msj} <!-- END: msj -->
+    </div>
+
+    <!-- BEGIN: header -->
+    <div class='tablaSummaryHeader'>{header}</div>
+    <!-- END: header -->
+
+    <div id="tablaListado">
+
+        <table class="tablaListado" border="1">
+            <tr>
+                <!-- BEGIN: TH -->
+                <th>{encabezado} &nbsp; </th>
+                <!-- END: TH -->
+
+            </tr>
+            <!-- BEGIN: row -->
+            <tr>
+                <!-- BEGIN: column -->
+                <td>{value}</td>
+                <!-- END: column -->
+
+            </tr>
+            <!-- END: row -->
+            <tr>
+                <td colspan="4"><b>TOTAL</b></td>
+                <td><b>$ {total}</b></td>
+            </tr>
+        </table>
+
+    </div>
+    <p style="text-align:center;">
+        <input type="button" id="liquidar" name="liquidar" onClick="ajax_alta_liquidacionprofesional('{url_alta_liquidacionprofesional}');" value="Liquidar"/>
+        <input type="button" name="imprimir"  id="imprimir" value="Obtener Listado" onclick="javascript:window.location.href = 'doAction?action={accion_excel}{query_excel}';" >
+    </p>
+    <!-- BEGIN: footer -->
+
+    <div class='tablaSummaryFooter'>{footer}</div>
+    <!-- END: footer -->
+</div>
+<div style="display: none;" id="ui-liqconfirmation">
+    <p><b>Liquidación realizada!</b></p>
+</div>
+<!-- END: main -->

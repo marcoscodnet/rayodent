@@ -1,0 +1,116 @@
+<!-- BEGIN:main -->
+<script type="text/javascript">
+    $(function() {
+        $("#dt_nacimiento").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+</script>
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarpaciente' id='editarpaciente' action='doAction?action={submit}' method='post' onsubmit="return validate('editarpaciente');">
+        <div id="msg-valid" ></div>
+        <table>
+            <tr>
+                <td align="right">{cd_paciente_label}:</td>
+                <td align="left">
+					{cd_paciente}
+                    <input type="hidden" readonly name="cd_paciente" id="cd_paciente" value="{cd_paciente}"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td align="right">{ds_apynom_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_apynom' id='ds_apynom' size='40' value="{ds_apynom}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{cd_tipodoc_label} *</td>
+                <td align="left">
+                    <select name='cd_tipodoc' id='cd_tipodoc' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" >
+                        <option value="">-- Seleccione --</option>
+                        <!-- BEGIN: tipodocumentos_option -->
+                        <option value={cd_tipoDocumento}>{ds_tipoDocumento}</option>
+                        <!-- END: tipodocumentos_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{nu_doc_label} *</td>
+                <td align="left">
+                    <input type='text' name='nu_doc' id='nu_doc' size='40' value="{nu_doc}" jVal="{valid:function (val) { return requeridoynocero(val,'Ingrese un valor diferente de 0'); }}"   />
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{ds_direccion_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_direccion' id='ds_direccion' size='40' value="{ds_direccion}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{ds_telefono_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_telefono' id='ds_telefono' size='40' value="{ds_telefono}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{ds_email_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_email' id='ds_email' size='40' value="{ds_email}"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{dt_nacimiento_label}</td>
+                <td align="left">
+                    <input type='text' name='dt_nacimiento' id='dt_nacimiento' size='10' value="{dt_nacimiento}"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="listado_pacientesobrassociales">
+                        <div class="block">
+                            <table>
+                                <tr>
+                                    <th>Obra Social</th>
+                                </tr>
+                                <!-- BEGIN:pacientesobrassociales-->
+                                <tr>
+                                    <td>{ds_obrasocial}</td>
+                                </tr>
+                                <!-- END:pacientesobrassociales-->
+
+                            </table>
+                        </div>
+                    </div>
+                    <p class="agregar_obrasocial"><a href="#" onclick="return agregarObraSocial('doAction?action=seleccionar_obrasociales');">Gestionar Obras Sociales</a></p>
+
+
+                </td>
+            </tr>
+        </table>
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Aceptar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_pacientes';"/>
+        </p>
+
+
+    </form>
+    <div style="display: none;" id="ui-dialog"></div>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+
+</div>
+<!-- END:main -->

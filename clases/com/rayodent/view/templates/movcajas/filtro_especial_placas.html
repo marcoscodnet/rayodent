@@ -1,0 +1,59 @@
+<!-- BEGIN:main -->
+
+<script type="text/javascript">
+    $(function() {
+        $("#dt_inicio_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+    $(function() {
+        $("#dt_fin_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+    $(function() {
+        // Use default settings
+        $("#hs_inicio_filtro, #hs_fin_filtro").timePicker({
+            startTime: "00:15", // Using string. Can take string or Date object.
+            endTime: "23:45", // Using Date object here.
+            show24Hours: true,
+            separator: ':',
+            step: 30});
+    });
+</script>
+<br/>
+<!-- BEGIN:menu_no_admin -->
+<p style="color: black;">
+    <span>Nro. Caja:
+        <input type="text" name="nu_caja" id="nu_caja" size="10" value="{nu_caja}"></span>
+</p>
+<!-- END:menu_no_admin -->
+<!-- BEGIN:menu_admin -->
+<p style="color: black;">
+    <span>Nro. Caja: <select name="nu_caja" id="nu_caja">
+            <option value="">-- Seleccione --</option>
+            <!-- BEGIN:nu_caja_option -->
+            <option value={nu_caja_value}>{nu_caja}</option>
+            <!-- END:nu_caja_option -->
+
+        </select>
+    </span>
+</p>
+<!-- END:menu_admin -->
+
+<p style="color: black;">
+    <span>Fecha desde: <input type="text" name="dt_inicio_filtro" id="dt_inicio_filtro" size="10" value="{dt_inicio_filtro}"></span>
+    <span>Fecha hasta: <input type="text" name="dt_fin_filtro" id="dt_fin_filtro" size="10" value="{dt_fin_filtro}"></span>
+</p>
+<p style="color: black;">
+    <span>Hora desde: <input type="text" name="hs_inicio_filtro" id="hs_inicio_filtro" size="10" value="{hs_inicio_filtro}"></span>
+    <span>Hora hasta: <input type="text" name="hs_fin_filtro" id="hs_fin_filtro" size="10" value="{hs_fin_filtro}"></span>
+</p>
+<p style="color: black;">
+    <span>Pr&aacute;ctica: <select name="cd_practica" id="cd_practica">
+            <option value="">-- Seleccione --</option>
+            <!-- BEGIN:ds_practica_option -->
+            <option value={cd_practica}>{ds_practica}</option>
+            <!-- END:ds_practica_option -->
+
+        </select>
+    </span>
+</p>
+<!-- END:main -->

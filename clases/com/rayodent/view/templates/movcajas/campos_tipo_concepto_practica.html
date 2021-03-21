@@ -1,0 +1,55 @@
+<!-- BEGIN: main -->
+<div id="msg-valid"></div>
+<table style="border-top: none;">
+    <tr>
+        <td align="right" style="width:208px;">{ds_obrasocial_label}:</td>
+        <td align="left">
+            <input type='hidden' name='cd_obrasocial' id='cd_obrasocial' size='40' value="{cd_obrasocial}" readonly/>
+            <input type='text' name='ds_obrasocial' id='ds_obrasocial' size='40' value="{ds_obrasocial}" readonly />
+            <a id="busqOS" href="#" onClick="abrir_busquedaObrasocial();"><img src="css/desktop/images/search.gif" alt="Buscar Obra Social"></a>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{ds_practica_label} *:</td>
+        <td align="left">
+            <input type='hidden' name='cd_practicaobrasocial' id='cd_practicaobrasocial' size='40' value="{cd_practicaobrasocial}"  readonly />
+            <input type='text' name='nu_practicaos' id='nu_practicaos' size='40' value="{nu_practicaos}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" readonly/>
+            <a href="#" onClick="abrir_busquedaPractica();"><img src="css/desktop/images/search.gif" alt="Buscar Paciente"></a>
+        </td>
+    </tr>
+
+    <tr>
+        <td align="right">{ds_aporte_label} *:</td>
+        <td align="left">
+            <input type='hidden' name='cd_aporteobrasocial' id='cd_aporteobrasocial' size='40' value="{cd_aporteobrasocial}"  readonly/>
+            <input type='radio' name='cd_aporteos' id='voluntario' value="0" {checked_v}/>Voluntario
+                   <input type='radio' name='cd_aporteos' id='obligatorio' value="1" {checked_o}/>Obligatorio
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{nu_importe_label} *:</td>
+        <td align="left">
+            $&nbsp;<input type='text' name='nu_importe' id='nu_importe' size='15' value="{nu_importe}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" />
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{bl_tarjeta_label}:</td>
+        <td align="left">
+            &nbsp;<input type='checkbox' name='bl_tarjeta' id='bl_tarjeta' size='15' {checked_bl_tarjeta} value="1" />
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{nu_placas_label}:</td>
+        <td align="left">
+            <input type='text' name='nu_placas' id='nu_placas' size='40' value="{nu_placas}" />
+        </td>
+    </tr>
+    <tr>
+        <td align="right">{ds_pieza_label}:</td>
+        <td align="left">
+            <input type='text' name='ds_pieza' id='ds_pieza' size='40' value="{ds_pieza}" />
+        </td>
+    </tr>
+
+</table>
+<!-- END: main -->

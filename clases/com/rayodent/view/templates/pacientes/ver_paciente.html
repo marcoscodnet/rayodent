@@ -1,0 +1,62 @@
+<!-- BEGIN:main -->
+<div class="divver">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+    <table class="tablaVer">
+
+        <tr>
+            <td style="width:85px;"><p><strong>{cd_paciente_label} :</strong></p></td>
+            <td><p>{cd_paciente}</p></td>
+        </tr>
+
+        <tr>
+            <td style="width:85px;"><p><strong>{ds_apynom_label} :</strong></p></td>
+            <td><p>{ds_apynom}</p></td>
+        </tr>
+
+        <tr>
+            <td style="width:85px;"><p><strong>{cd_tipodoc_label} :</strong></p></td>
+            <td><p>{ds_tipodoc}</p></td>
+        </tr>
+
+        <tr>
+            <td style="width:85px;"><p><strong>{nu_doc_label} :</strong></p></td>
+            <td><p>{nu_doc}</p></td>
+        </tr>
+
+        <tr>
+            <td style="width:85px;"><p><strong>{ds_direccion_label} :</strong></p></td>
+            <td><p>{ds_direccion}</p></td>
+        </tr>
+
+        <tr>
+            <td style="width:85px;"><p><strong>{ds_telefono_label} :</strong></p></td>
+            <td><p>{ds_telefono}</p></td>
+        </tr>
+
+        <tr>
+            <td style="width:85px;"><p><strong>{ds_email_label} :</strong></p></td>
+            <td><p>{ds_email}</p></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="block">
+                    <table>
+                        <tr>
+                            <th>Obras Sociales</th>
+                        </tr>
+                        <!-- BEGIN:pacientesobrassociales-->
+                        <tr>
+                            <td>{ds_obrasocial}</td>
+                        </tr>
+                        <!-- END:pacientesobrassociales-->
+
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <p><input type='button' name='volver' value='Volver' onclick="javascript:history.back(-1);"/></p>
+</div>
+<!-- END:main -->

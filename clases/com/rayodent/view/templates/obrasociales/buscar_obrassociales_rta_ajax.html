@@ -1,0 +1,39 @@
+<!-- BEGIN:main -->
+<div class="paginas" id="paginador">
+    <div style="float:left">
+        <!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+    </div>
+    <!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+</div>
+<br />
+<div class="{classMsj}"><!-- BEGIN: msj --> {msj} <!-- END: msj -->
+</div>
+<!-- BEGIN: header -->
+<div class='tablaSummaryHeader'>{header}</div>
+<!-- END: header -->
+<div id="tablaListado">
+    <table class="tablaListado" border="1">
+        <tr>
+            <!-- BEGIN: TH -->
+            <th>{encabezado}</th>
+            <!-- END: TH -->
+            <th>Acciones</th>
+        </tr>
+        <!-- BEGIN: row -->
+        <tr>
+            <!-- BEGIN: column -->
+            <td>{value}</td>
+            <!-- END: column -->
+            <td class="acciones">
+                <!-- BEGIN: accion -->
+                <a href="#" onClick="SeleccionarObrasocial('{cd_obrasocial}','{ds_obrasocial}');">Seleccionar</a>
+                <!-- END: accion -->
+            </td>
+        </tr>
+        <!-- END: row -->
+    </table>
+</div>
+<!-- BEGIN: footer -->
+<div class='tablaSummaryFooter'>{footer}</div>
+<!-- END: footer -->
+<!-- END: main -->

@@ -1,0 +1,59 @@
+<!-- BEGIN:main -->
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarconcepto' id='editarconcepto' action='doAction?action={submit}' method='post' onsubmit="return validate('editarconcepto');">
+        <input type="hidden" readonly name="cd_concepto" id="cd_concepto" value="{cd_concepto}"/>
+        <input type="hidden" readonly name="cd_tipoconcepto" id="cd_tipoconcepto" value="{cd_tipoconcepto_ok}"/>
+        <input type="hidden" readonly name="cd_tipooperacion" id="cd_tipooperacion" value="{cd_tipooperacion_ok}"/>
+        <table>
+            <tr>
+                <td align="right">{cd_tipoconcepto_label} *</td>
+                <td align="left">
+                    <select name='cd_tipoconcepto_old' id='cd_tipoconcepto_old' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" disabled='disabled'>
+                        <option value="">-- Seleccione --</option>
+                        <!-- BEGIN: tipoconceptos_option -->
+                        <option value={cd_tipoconcepto}>{ds_tipoconcepto}</option>
+                        <!-- END: tipoconceptos_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{cd_tipooperacion_label} *</td>
+                <td align="left">
+                    <select name='cd_tipooperacion_old' id='cd_tipooperacion_old' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" disabled='disabled'>
+                        <option value="">-- Seleccione --</option>
+                        <!-- BEGIN: tipooperaciones_option -->
+                        <option value={cd_tipooperacion}>{ds_tipooperacion}</option>
+                        <!-- END: tipooperaciones_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{ds_concepto_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_concepto' id='ds_concepto' size='40' value="{ds_concepto}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+
+        </table>
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Aceptar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_conceptos';"/>
+        </p>
+
+
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

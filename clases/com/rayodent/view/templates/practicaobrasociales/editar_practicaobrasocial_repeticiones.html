@@ -1,0 +1,85 @@
+<!-- BEGIN:main -->
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarpracticaobrasocial' id='editarpracticaobrasocial' action='doAction?action={submit}' method='post' onsubmit="return validate('editarpracticaobrasocial');">
+        <input type="hidden"  name="cd_practicaobrasocial" id="cd_practicaobrasocial" value="{cd_practicaobrasocial}"/>
+        <input type="hidden"  name="cd_practica" id="cd_practica" value="{cd_practica}"/>
+        <input type="hidden"  name="cd_obrasocial" id="cd_obrasocial" value="{cd_obrasocial}"/>
+        <input type="hidden"  name="nu_practicaos" id="nu_practicaos" value="{nu_practicaos}"/>
+        <input type="hidden"  name="nu_importe" id="nu_importe" value="{nu_importe}"/>
+        <input type="hidden"  name="dt_vigencia" id="dt_vigencia" value="{dt_vigencia}"/>
+        <table>
+            <tr>
+                <td align="right">{cd_practica_label} *</td>
+                <td align="left">
+                    <select name='cd_practica_old' id='cd_practica_old' disabled="disabled">
+                        <option value="">--Seleccione --</option>
+                        <!-- BEGIN: practicas_option -->
+                        <option value={cd_practica}>{ds_practica}</option>
+                        <!-- END: practicas_option -->
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{cd_obrasocial_label} *</td>
+                <td align="left">
+                    <select name='cd_obrasocial' id='cd_obrasocial' disabled="disabled">
+                        <option value="">--Seleccione --</option>
+                        <!-- BEGIN: obrasociales_option -->
+                        <option value={cd_obrasocial}>{ds_obrasocial}</option>
+                        <!-- END: obrasociales_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{nu_practicaos_label} *</td>
+                <td align="left">
+                    <input type='text' name='nu_practicaos' id='cd_practicaos' size='40' value="{nu_practicaos}" disabled="disabled"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{nu_limiterepeticiones_label} </td>
+                <td align="left">
+                    <input type='text' name='nu_limiterepeticiones' id='nu_limiterepeticiones' size='20' value="{nu_limiterepeticiones}" />
+                    <br/>
+                    <span class="comentario">(Si no se carga valor significa infinitas repeticiones.) </span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{nu_importe_label} *</td>
+                <td align="left">
+                    $&nbsp;<input type='text' name='nu_importe' id='nu_importe' size='10' value="{nu_importe}" disabled="disabled"/>
+                    <span class="comentario">(Ej.: 39.90) </span>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{dt_vigencia_label} *</td>
+                <td align="left">
+                    <input type='text' name='dt_vigencia' id='dt_vigencia' size='10' value="{dt_vigencia}" disabled="disabled"/>
+                </td>
+            </tr>
+
+        </table>
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Aceptar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_practicaobrasociales';"/>
+        </p>
+
+
+    </form>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+</div>
+<!-- END:main -->

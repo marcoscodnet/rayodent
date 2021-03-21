@@ -1,0 +1,28 @@
+<!-- BEGIN:main -->
+
+<script type="text/javascript">
+    $(function() {
+        $("#dt_inicio_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+    $(function() {
+        $("#dt_fin_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+
+   
+</script>
+<br/>
+
+
+
+<p style="color: black;">
+    <span>Fecha desde: <input type="text" name="dt_inicio_filtro" id="dt_inicio_filtro" size="10" value="{dt_inicio_filtro}"></span>
+    <span>Fecha hasta: <input type="text" name="dt_fin_filtro" id="dt_fin_filtro" size="10" value="{dt_fin_filtro}"></span>
+</p>
+<p style="color: black;">
+    <span>Obra Social: </span>
+    <input type='hidden' name='cd_obrasocial' id='cd_obrasocial' size='40' value="{cd_obrasocial}" readonly/>
+    <input type='text' name='ds_obrasocial' id='ds_obrasocial' size='40' value="{ds_obrasocial}"  readonly/>
+    <a href="#" onClick="abrir_busquedaObrasocial();"><img src="css/desktop/images/search.gif" alt="Buscar Obra Social"></a>
+</p>
+<div style="display: none;" id="ui-dialog"></div>
+<!-- END:main -->

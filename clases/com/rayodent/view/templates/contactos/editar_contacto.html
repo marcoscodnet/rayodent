@@ -1,0 +1,99 @@
+<!-- BEGIN:main -->
+
+<div id="editar">
+    <div align="justify"><p class="titulo">{titulo}</p></div>
+
+    <!-- BEGIN:msj -->
+    <div class="ui-state-error ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+        <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			{msj}
+        </p>
+    </div>
+    <br />
+    <!-- END:msj -->
+
+    <form name='editarcontacto' id='editarcontacto' action='doAction?action={submit}' method='post' onsubmit="return validate('editarcontacto');">
+        <div id="msg-valid" ></div>
+        <table>
+            <tr>
+                <td align="right">{cd_contacto_label}:</td>
+                <td align="left">
+					{cd_contacto}
+                    <input type="hidden" readonly name="cd_contacto" id="cd_contacto" value="{cd_contacto}"/>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td align="right">{ds_apynom_label} *</td>
+                <td align="left">
+                    <input type='text' name='ds_apynom' id='ds_apynom' size='40' value="{ds_apynom}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td align="right">{nu_documento_label}</td>
+                <td align="left">
+                    <input type='text' name='nu_documento' id='nu_documento' size='40' value="{nu_documento}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td align="right">{nu_cuit_label}</td>
+                <td align="left">
+                    <input type='text' name='nu_cuit' id='nu_cuit' size='40' value="{nu_cuit}"/>
+                </td>
+            </tr>
+           
+
+            <tr>
+                <td align="right">{ds_direccion_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_direccion' id='ds_direccion' size='40' value="{ds_direccion}"/>
+                </td>
+            </tr>
+
+			<tr>
+                <td align="right">{ds_telefono_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_telefono' id='ds_telefono' size='40' value="{ds_telefono}"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td align="right">{ds_movil_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_movil' id='ds_movil' size='40' value="{ds_movil}"/>
+                </td>
+            </tr>
+            
+            <tr>
+                <td align="right">{ds_telefonotrabajo_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_telefonotrabajo' id='ds_telefonotrabajo' size='40' value="{ds_telefonotrabajo}"/>
+                </td>
+            </tr>
+            
+            
+
+            <tr>
+                <td align="right">{ds_email_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_email' id='ds_email' size='40' value="{ds_email}"/>
+                </td>
+            </tr>
+            
+        </table>
+
+        <p style="text-align:center">
+            <input type='submit' name='submit' value='Aceptar'/>
+            <input type='reset' name='cancelar' value='Cancelar' onclick="javascript:window.location.href= 'doAction?action=listar_contactos';"/>
+        </p>
+
+
+    </form>
+    <div style="display: none;" id="ui-dialog"></div>
+    <div class="camposRequeridos">(*) Campos requeridos</div>
+
+</div>
+<!-- END:main -->

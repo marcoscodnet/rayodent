@@ -1,0 +1,100 @@
+<!-- BEGIN: main -->
+<div class="titulo_listar">{titulo}</div>
+<ul class="lista_opciones">
+    <li class="excel"><a  title="Exportar xls" href="#" onclick="javascript:submit_self('excel_resumen_placas','buscarF');"><span>Exportar xls</span></a></li>
+</ul>
+<div class="botonesTabla">
+    <form name="buscarF" id="buscarF" action="doAction" method="GET">
+        <input type="hidden" name="accion" id="accion" value="listar_resumen_placas" />
+        <input type="hidden" name="campoOrden" id="campoOrden" value="{campoOrden}" />
+        <input type="hidden" name="orden" id="orden" value="{orden}" />
+        <input type="hidden" name="validar" id="validar" value="false" />
+        <!-- BEGIN: botones_tabla -->
+        <!-- BEGIN: combo_filtros -->
+        <select name="campoFiltro" id="campoFiltro">
+            <!-- BEGIN: opcion_filtro -->
+            <option value={value_filtro}>{ds_filtro}</option>
+            <!-- END: opcion_filtro -->
+        </select>
+        <input type="text" name="filtro" id="filtro" value="{txt_filtro}" />
+        <!-- END: combo_filtros -->
+        <!-- BEGIN: filtrosEspeciales --> {filtrosEspeciales} <!-- END: filtrosEspeciales -->
+        <input type="button" name="buscarB"  id="buscarB" value="Buscar" onclick="javascript:submit_self('listar_resumen_placas','buscarF');">
+        <input type="button" name="listar"  id="listar" onclick="javascript:listar_todos_resumen_placas('listar_resumen_placas');" value="Listar Todos">
+        <!-- END: botones_tabla -->
+    </form>
+
+</div>
+
+
+
+<!-- BEGIN: msj -->
+<div class="{classMsj}"> {msj}
+</div>
+<!-- END: msj -->
+
+<div class="paginas" id="paginador">
+    <div style="float:left">
+        <!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+    </div>
+    <!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+</div>
+
+<div style="float: left; width: 100%">
+
+    <!-- BEGIN: header -->
+    <div class='tablaSummaryHeader'>{header}</div>
+    <!-- END: header -->
+    <div class="block">
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        <a>
+			{dt_movcaja_label}
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+			{ds_practica_label}
+                        </a>
+                    </th>
+                    <th>
+                        <a>
+			{nu_cantplacas_label}
+                        </a>
+                    </th>
+             <th>
+                        <a>
+			{nu_montoplacas_label}
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+
+
+            <!-- BEGIN: row -->
+            <tbody class="{row_class}">
+                <!-- BEGIN: rowtotal -->
+                <!-- <tr>
+                    <td colspan="3">Cant. pacientes: {nu_cantpacientes}</td>
+                </tr>  -->
+                <!-- END: rowtotal -->
+                <tr>
+                    <td>{dt_movcaja}</td>
+                    <td>{ds_practica}</td>
+                    <td>{nu_cantplacas}</td>
+                    <td>{nu_montoplacas}</td>
+                </tr>
+            </tbody>
+            <!-- END: row -->
+        </table>
+
+
+        <!-- BEGIN: footer -->
+        <div class='tablaSummaryFooter'>{footer}</div>
+        <!-- END: footer -->
+    </div>
+</div>
+<!-- END: main -->

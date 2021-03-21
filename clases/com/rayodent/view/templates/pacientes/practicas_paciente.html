@@ -1,0 +1,43 @@
+<!-- BEGIN:main -->
+<div class="divver">
+   
+    <table class="tablaVer">
+
+        
+
+        <tr>
+            
+            <td><p>{ds_apynom} ({ds_tipodoc} {nu_doc})</p></td>
+        </tr>
+
+    
+
+       
+            
+    </table>
+    <div id="movcajaconceptos">
+            <table>
+                <tr>
+                    <th>Fecha/Hora</th>
+                    <th>Detalle</th>
+                    
+                    <th>Importe</th>
+                    
+                </tr>
+                <!-- BEGIN: movscajas_conceptos -->
+                <tr>
+                    <td>{dt_movcaja}</td>
+                    <td>{ds_detalle}</td>
+                    <td>{nu_importe}</td>
+                   
+                    
+                </tr>
+                <!-- END: movscajas_conceptos -->
+                <tr>
+			        <td colspan="2" style="text-align:right;"><b>TOTAL</b></td>
+			        <td>$ {nu_total}</td>
+			    </tr>
+            </table>
+        </div>
+</div>
+<!-- END:main -->

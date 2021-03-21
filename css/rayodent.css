@@ -1,0 +1,37 @@
+
+ul.tabs li.builder a {
+	background-image: url(images/tab-builder.png);
+}
+
+/* {empleados} */
+ul.panel li.empleados a {
+	background-image: url(images/empleados_48.png);
+}
+ul.panellateral li.empleados a {
+	background-image: url(images/empleados_32.png);
+}
+
+/* {profesionales} */
+ul.panel li.profesionales a {
+	background-image: url(images/profesionales_48.png);
+}
+ul.panellateral li.profesionales a {
+	background-image: url(images/profesionales_32.png);
+}
+
+/* {tipodocumentos} */
+ul.panel li.tipodocumentos a {
+	background-image: url(images/tipodocumentos_48.png);
+}
+ul.panellateral li.tipodocumentos a {
+	background-image: url(images/tipodocumentos_32.png);
+}
+
+/* {tipopersonales} */
+ul.panel li.tipopersonales a {
+	background-image: url(images/tipopersonales_48.png);
+}
+ul.panellateral li.tipopersonales a {
+	background-image: url(images/tipopersonales_32.png);
+}
+

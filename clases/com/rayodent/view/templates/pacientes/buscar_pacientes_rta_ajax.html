@@ -1,0 +1,42 @@
+<!-- BEGIN:main -->
+<div class="paginas" id="paginador">
+    <div style="float:left">
+        <!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+    </div>
+    <!-- BEGIN: resultado --> {resultado} <!-- END: resultado -->
+</div>
+<br />
+<div class="{classMsj}"><!-- BEGIN: msj --> {msj} <!-- END: msj -->
+</div>
+<!-- BEGIN: header -->
+<div class='tablaSummaryHeader'>{header}</div>
+<!-- END: header -->
+<div id="tablaListado">
+    <table class="tablaListado" border="1">
+        <tr>
+            <!-- BEGIN: TH -->
+            <th>{encabezado}</th>
+            <!-- END: TH -->
+            <th>Acciones</th>
+        </tr>
+        <!-- BEGIN: row -->
+        <tr>
+            <!-- BEGIN: column -->
+            <td>{value}</td>
+            <!-- END: column -->
+            <td class="acciones">
+                <!-- BEGIN: accion -->
+                <a href="#" onClick="SeleccionarPaciente('{cd_paciente}','{ds_apynom}');"><b>Seleccionar</b></a>
+                <!-- END: accion -->
+            </td>
+        </tr>
+        <!-- END: row -->
+    </table>
+    <p style="text-align:center;">
+        <a href="#" style="font-weight:bold; text-decoration: underline;" onClick="javascript:abrir_alta_paciente('{action_add}'); return false;">Agregar Paciente</a>
+    </p>
+</div>
+<!-- BEGIN: footer -->
+<div class='tablaSummaryFooter'>{footer}</div>
+<!-- END: footer -->
+<!-- END: main -->
