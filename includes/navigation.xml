@@ -1,16 +1,16 @@
 <?xml version='1.0' standalone='yes'?>
 <navegacion>
-	<!-- Acciones por default. 
+	<!-- Acciones por default.
 		 Permite definir para una entidad, las acciones por default:
 		 	- agregar, modificar, eliminar, listar, ver.
 		 Se debe indicar el nombre de la entidad y su plural.
 		 Las acciones quedaran definidas de la siguiente manera, tomando
 		 como ejemplo 'usuario'.
-		    - alta_usuario_init		
-		    - alta_usuario		
-		    - modificar_usuario_init		
-		    - modifiar_usuario		
-		    - eliminar_usuario		
+		    - alta_usuario_init
+		    - alta_usuario
+		    - modificar_usuario_init
+		    - modifiar_usuario
+		    - eliminar_usuario
 		    - listar_usuarios
 		 Ademas se le agregan los forwards por default.
 	-->
@@ -38,18 +38,18 @@
     <accion nombre='pdf_usuarios' clase='PDFUsuariosAction' />
     <accion nombre='excel_usuarios' clase='ExcelUsuariosAction' />
 
-    
+
     <forward nombre='alta_usuarioryt_success' url='doAction?action=listar_usuariosryt' />
     <forward nombre='alta_usuarioryt_error' url='doAction?action=alta_usuarioryt_init' />
     <forward nombre='modificar_usuarioryt_success' url='doAction?action=listar_usuariosryt' />
     <forward nombre='modificar_usuarioryt_error' url='doAction?action=modificar_usuarioryt_init' />
     <forward nombre='eliminar_usuario_error' url='doAction?action=listar_usuariosryt' />
     <forward nombre='eliminar_usuario_success' url='doAction?action=listar_usuariosryt' />
-	
+
     <accion_default entidad='perfil' plural='perfiles' menuGroups='' menuOptions='' menuGroupActivo='1'/>
     <accion nombre='pdf_perfiles' clase='PDFPerfilesAction' />
     <accion nombre='excel_perfiles' clase='ExcelPerfilesAction' />
-	
+
     <accion nombre='cambiar_clave_init' clase='CambiarClaveInitAction'  menuGroupActivo='1'/>
     <accion nombre='cambiar_clave' clase='CambiarClaveAction'  menuGroupActivo='1'/>
     <forward nombre='cambiar_clave_success' url='panel_control.html' />
@@ -57,19 +57,19 @@
 
 	<!-- pagina no encontrada -->
     <accion nombre='page_not_found' clase='PageNotFoundAction' />
-		
+
 	<!-- acceso denegado -->
     <accion nombre='acceso_denegado' clase='AccesoDenegadoAction' />
-		
+
 	<!-- pagina de error -->
     <accion nombre='error' clase='ErrorAction' />
-	
+
 
 	<!-- forwards -->
     <forward nombre='page_not_found' url='page_not_fount.html' />
     <forward nombre='acceso_denegado' url='acceso_denegado.html' />
     <forward nombre='error' url='error.html' />
-	
+
 	<!-- panel de control -->
     <accion nombre='panel_control' clase='DesktopPanelAction' menuGroupActivo=''/>
 
@@ -83,7 +83,7 @@
     <accion nombre='eliminar_accionfuncion' clase='EliminarAccionFuncionAction' />
     <accion nombre='pdf_accionfunciones' clase='PDFAccionFuncionesAction' />
     <accion nombre='excel_accionfunciones' clase='ExcelAccionFuncionesAction' />
-    
+
     <forward nombre='alta_accionfuncion_success' url='doAction?action=listar_accionfunciones' />
     <forward nombre='alta_accionfuncion_error' url='doAction?action=alta_accionfuncion_init' />
     <forward nombre='modificar_accionfuncion_success' url='doAction?action=listar_accionfunciones' />
@@ -91,7 +91,7 @@
     <forward nombre='eliminar_accionfuncion_error' url='doAction?action=listar_accionfunciones' />
     <forward nombre='eliminar_accionfuncion_success' url='doAction?action=listar_accionfunciones' />
     <forward nombre='listar_accionfuncion_error' url='doAction?action=listar_accionfunciones' />
-	
+
     <!-- funciones -->
     <accion nombre='listar_funciones' clase='ListarFuncionesAction' menuGroupActivo='1'/>
     <accion nombre='alta_funcion' clase='AltaFuncionAction' />
@@ -102,7 +102,7 @@
     <accion nombre='eliminar_funcion' clase='EliminarFuncionAction' />
     <accion nombre='pdf_funciones' clase='PDFFuncionesAction' />
     <accion nombre='excel_funciones' clase='ExcelFuncionesAction' />
-    
+
     <forward nombre='alta_funcion_success' url='doAction?action=listar_funciones' />
     <forward nombre='alta_funcion_error' url='doAction?action=alta_funcion_init' />
     <forward nombre='modificar_funcion_success' url='doAction?action=listar_funciones' />
@@ -110,7 +110,7 @@
     <forward nombre='eliminar_funcion_success' url='doAction?action=listar_funciones' />
     <forward nombre='eliminar_funcion_error' url='doAction?action=listar_funciones' />
     <forward nombre='listar_funcion_error' url='doAction?action=listar_funciones' />
-	
+
     <!-- menugroups -->
     <accion nombre='listar_menugroups' clase='ListarMenugroupsAction' menuGroupActivo='1'/>
     <accion nombre='alta_menugroup' clase='AltaMenuGroupAction' />
@@ -121,7 +121,7 @@
     <accion nombre='eliminar_menugroup' clase='EliminarMenuGroupAction' />
     <accion nombre='pdf_menugroups' clase='PDFMenugroupsAction' />
     <accion nombre='excel_menugroups' clase='ExcelMenugroupsAction' />
-    
+
     <forward nombre='alta_menugroup_success' url='doAction?action=listar_menugroups' />
     <forward nombre='alta_menugroup_error' url='doAction?action=alta_menugroup_init' />
     <forward nombre='modificar_menugroup_success' url='doAction?action=listar_menugroups' />
@@ -129,7 +129,7 @@
     <forward nombre='eliminar_menugroup_error' url='doAction?action=listar_menugroups' />
     <forward nombre='eliminar_menugroup_success' url='doAction?action=listar_menugroups' />
     <forward nombre='listar_menugroup_error' url='doAction?action=listar_menugroups' />
-	
+
     <!-- menuoptions -->
     <accion nombre='listar_menuoptions' clase='ListarMenuoptionsAction' menuGroupActivo='1'/>
     <accion nombre='alta_menuoption' clase='AltaMenuOptionAction' />
@@ -140,7 +140,7 @@
     <accion nombre='eliminar_menuoption' clase='EliminarMenuOptionAction' />
     <accion nombre='pdf_menuoptions' clase='PDFMenuoptionsAction' />
     <accion nombre='excel_menuoptions' clase='ExcelMenuoptionsAction' />
-	
+
     <forward nombre='alta_menuoption_success' url='doAction?action=listar_menuoptions' />
     <forward nombre='alta_menuoption_error' url='doAction?action=alta_menuoption_init' />
     <forward nombre='modificar_menuoption_success' url='doAction?action=listar_menuoptions' />
@@ -148,15 +148,15 @@
     <forward nombre='eliminar_menuoption_error' url='doAction?action=listar_menuoptions' />
     <forward nombre='eliminar_menuoption_success' url='doAction?action=listar_menuoptions' />
     <forward nombre='listar_menuoption_error' url='doAction?action=listar_menuoptions' />
-	
-    
+
+
 	<!-- acceso denegado -->
     <accion nombre='acceso_denegado' clase='AccesoDenegadoAction' />
     <forward nombre='acceso_denegado' url='doAction?action=acceso_denegado' />
 
 
 
-	
+
     <!-- empleados -->
     <accion nombre='listar_empleados' clase='ListarEmpleadosAction' menuGroupActivo='6'/>
     <accion nombre='alta_empleado' clase='AltaEmpleadoAction' menuGroupActivo='6'/>
@@ -168,7 +168,7 @@
     <accion nombre='pdf_empleados' clase='PDFEmpleadosAction' />
     <accion nombre='excel_empleados' clase='ExcelEmpleadosAction' />
     <accion nombre='buscar_personales' clase='BuscarEmpleadosAction' />
-    
+
     <forward nombre='alta_empleado_success' url='doAction?action=listar_empleados' />
     <forward nombre='alta_empleado_error' url='doAction?action=alta_empleado_init' />
     <forward nombre='modificar_empleado_success' url='doAction?action=listar_empleados' />
@@ -176,7 +176,7 @@
     <forward nombre='eliminar_empleado_success' url='doAction?action=listar_empleados' />
     <forward nombre='eliminar_empleado_error' url='doAction?action=listar_empleados' />
     <forward nombre='listar_empleado_error' url='doAction?action=listar_empleados' />
-	
+
     <!-- profesionales -->
     <accion nombre='listar_profesionales' clase='ListarProfesionalesAction' menuGroupActivo='6'/>
     <accion nombre='alta_profesional' clase='AltaProfesionalAction' />
@@ -190,7 +190,7 @@
     <accion nombre='eliminar_profesional' clase='EliminarProfesionalAction' />
     <accion nombre='pdf_profesionales' clase='PDFProfesionalesAction' />
     <accion nombre='excel_profesionales' clase='ExcelProfesionalesAction' />
-    
+
     <forward nombre='alta_profesional_success' url='doAction?action=listar_profesionales' />
     <forward nombre='alta_profesional_error' url='doAction?action=alta_profesional_init' />
     <forward nombre='modificar_profesional_success' url='doAction?action=listar_profesionales' />
@@ -198,7 +198,7 @@
     <forward nombre='eliminar_profesional_success' url='doAction?action=listar_profesionales' />
     <forward nombre='eliminar_profesional_error' url='doAction?action=listar_profesionales' />
     <forward nombre='listar_profesional_error' url='doAction?action=listar_profesionales' />
-	
+
     <!-- tipoDocumentos -->
     <accion nombre='listar_tipodocumentos' clase='ListarTipoDocumentosAction' menuGroupActivo='6'/>
     <accion nombre='alta_tipodocumento' clase='AltaTipoDocumentoAction' />
@@ -209,7 +209,7 @@
     <accion nombre='eliminar_tipodocumento' clase='EliminarTipoDocumentoAction' />
     <accion nombre='pdf_tipodocumentos' clase='PDFTipoDocumentosAction' />
     <accion nombre='excel_tipodocumentos' clase='ExcelTipoDocumentosAction' />
-    
+
     <forward nombre='alta_tipodocumento_success' url='doAction?action=listar_tipodocumentos' />
     <forward nombre='alta_tipodocumento_error' url='doAction?action=alta_tipodocumento_init' />
     <forward nombre='modificar_tipodocumento_success' url='doAction?action=listar_tipodocumentos' />
@@ -217,7 +217,26 @@
     <forward nombre='eliminar_tipodocumento_success' url='doAction?action=listar_tipodocumentos' />
     <forward nombre='eliminar_tipodocumento_error' url='doAction?action=listar_tipodocumentos' />
     <forward nombre='listar_tipodocumento_error' url='doAction?action=listar_tipodocumentos' />
-	
+
+    <!-- medios -->
+    <accion nombre='listar_medios' clase='ListarMediosAction' menuGroupActivo='7'/>
+    <accion nombre='alta_medio' clase='AltaMedioAction' />
+    <accion nombre='alta_medio_init' clase='AltaMedioInitAction' menuGroupActivo='7'/>
+    <accion nombre='modificar_medio' clase='ModificarMedioAction' />
+    <accion nombre='modificar_medio_init' clase='ModificarMedioInitAction' menuGroupActivo='7'/>
+    <accion nombre='ver_medio' clase='VerMedioAction' menuGroupActivo='7'/>
+    <accion nombre='eliminar_medio' clase='EliminarMedioAction' />
+    <accion nombre='pdf_medios' clase='PDFMediosAction' />
+    <accion nombre='excel_medios' clase='ExcelMediosAction' />
+
+    <forward nombre='alta_medio_success' url='doAction?action=listar_medios' />
+    <forward nombre='alta_medio_error' url='doAction?action=alta_medio_init' />
+    <forward nombre='modificar_medio_success' url='doAction?action=listar_medios' />
+    <forward nombre='modificar_medio_error' url='doAction?action=alta_medio_init' />
+    <forward nombre='eliminar_medio_success' url='doAction?action=listar_medios' />
+    <forward nombre='eliminar_medio_error' url='doAction?action=listar_medios' />
+    <forward nombre='listar_medio_error' url='doAction?action=listar_medios' />
+
     <!-- tipoPersonales -->
     <accion nombre='listar_tipopersonales' clase='ListarTipoPersonalesAction' menuGroupActivo='6'/>
     <accion nombre='alta_tipopersonal' clase='AltaTipoPersonalAction' />
@@ -228,7 +247,7 @@
     <accion nombre='eliminar_tipopersonal' clase='EliminarTipoPersonalAction'/>
     <accion nombre='pdf_tipopersonales' clase='PDFTipoPersonalesAction' />
     <accion nombre='excel_tipopersonales' clase='ExcelTipoPersonalesAction' />
-    
+
     <forward nombre='alta_tipopersonal_success' url='doAction?action=listar_tipopersonales' />
     <forward nombre='alta_tipopersonal_error' url='doAction?action=alta_tipopersonal_init' />
     <forward nombre='modificar_tipopersonal_success' url='doAction?action=listar_tipopersonales' />
@@ -236,7 +255,7 @@
     <forward nombre='eliminar_tipopersonal_success' url='doAction?action=listar_tipopersonales' />
     <forward nombre='eliminar_tipopersonal_error' url='doAction?action=listar_tipopersonales' />
     <forward nombre='listar_tipopersonal_error' url='doAction?action=listar_tipopersonales' />
-	
+
 	   <!-- obrasociales -->
     <accion nombre='listar_obrasociales' clase='ListarObrasocialesAction' menuGroupActivo='7'/>
     <accion nombre='alta_obrasocial' clase='AltaObrasocialAction' />
@@ -292,7 +311,7 @@
     <accion nombre='modificar_vigenciasyprecios_init' clase='ModificarVigenciasypreciosInitAction' menuGroupActivo='6'/>
     <accion nombre='ver_vigenciasyprecios' clase='VerVigenciasypreciosAction'  menuGroupActivo='6' />
     <accion nombre='eliminar_vigenciasyprecios' clase='EliminarVigenciasypreciosAction' />
-    
+
 
     <forward nombre='alta_vigenciasyprecios_success' url='doAction?action=listar_vigenciasyprecios' />
     <forward nombre='alta_vigenciasyprecios_error' url='doAction?action=alta_vigenciasyprecios_init' />
@@ -388,7 +407,7 @@
     <forward nombre='eliminar_paciente_error' url='doAction?action=listar_pacientes' />
     <forward nombre='listar_paciente_error' url='doAction?action=listar_pacientes' />
 
-    
+
 
       <!-- tipooperaciones -->
     <accion nombre='listar_tipooperaciones' clase='ListarTipooperacionesAction' menuGroupActivo='7'/>
@@ -434,7 +453,7 @@
 
     <accion nombre='eliminarmovcajaconcepto' clase='EliminarMovConceptoCajaAjaxAction' />
 
-    
+
     <!-- Campos segun el tipo de concepto-->
     <accion nombre='cargar_campos_tipo_concepto_bono' clase='CargarCamposTipoConceptoBonoAction' />
     <accion nombre='cargar_campos_tipo_concepto_practica' clase='CargarCamposTipoConceptoPracticaAction' />
@@ -473,7 +492,7 @@
     <forward nombre='cerrar_caja_success' url='doAction?action=listar_movcajas' />
     <forward nombre='cerrar_caja_error' url='doAction?action=listar_movcajas' />
 
-    
+
     <!-- practicaordenpracticas -->
     <accion nombre='listar_practicaordenpracticas' clase='ListarPracticaordenpracticasAction' menuGroupActivo='6'/>
     <accion nombre='alta_practicaordenpractica' clase='AltaPracticaordenpracticaAction' />
@@ -502,14 +521,14 @@
     <accion nombre='excel_liquidacion_profesionales' clase='ExcelLiquidacionProfesionalesAction' />
 
     <filter nombre='seguridad' clase='SecureFilter' urlPattern="/"/>
-	
+
 	<accion nombre='listar_resumen_placas' clase='ListarResumenPlacasAction' menuGroupActivo='6'/>
 	<accion nombre='excel_resumen_placas' clase='ExcelResumenPlacasAction' menuGroupActivo='6'/>
-	
+
 	 <!-- contactos -->
     <accion nombre='listar_contactos' clase='ListarContactosAction' menuGroupActivo='7'/>
     <accion nombre='alta_contacto' clase='AltaContactoAction' />
-  
+
     <accion nombre='alta_contacto_init' clase='AltaContactoInitAction' menuGroupActivo='7' />
     <accion nombre='modificar_contacto' clase='ModificarContactoAction' />
     <accion nombre='modificar_contacto_init' clase='ModificarContactoInitAction' menuGroupActivo='7' />
@@ -517,7 +536,7 @@
     <accion nombre='eliminar_contacto' clase='EliminarContactoAction' />
     <accion nombre='pdf_contactos' clase='PDFContactosAction' />
     <accion nombre='excel_contactos' clase='ExcelContactosAction' />
-    
+
 	<accion nombre='listar_cumples' clase='ListarCumplesAction' menuGroupActivo='7'/>
 	<accion nombre='listar_emails' clase='ListarEmailsAction' menuGroupActivo='7'/>
 	<accion nombre='ver_email' clase='VerEmailAction' menuGroupActivo='7' />
@@ -525,13 +544,13 @@
 
     <forward nombre='alta_contacto_success' url='doAction?action=listar_contactos' />
     <forward nombre='alta_contacto_error' url='doAction?action=alta_contacto_init' />
-  
+
     <forward nombre='modificar_contacto_success' url='doAction?action=listar_contactos' />
     <forward nombre='modificar_contacto_error' url='doAction?action=alta_contacto_init' />
     <forward nombre='eliminar_contacto_success' url='doAction?action=listar_contactos' />
     <forward nombre='eliminar_contacto_error' url='doAction?action=listar_contactos' />
     <forward nombre='listar_contactos_error' url='doAction?action=listar_contactos' />
-    
+
     <forward nombre='listar_cumples_error' url='doAction?action=listar_cumples' />
     <forward nombre='listar_emails_error' url='doAction?action=listar_emails' />
 </navegacion>

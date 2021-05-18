@@ -8,7 +8,7 @@ INSERT INTO funcion (ds_funcion) VALUES ( 'Eliminar Profesional');
 INSERT INTO funcion (ds_funcion) VALUES ( 'Ver Profesional');
 INSERT INTO funcion (ds_funcion) VALUES ( 'Modificar Profesional');
 INSERT INTO funcion (ds_funcion) VALUES ( 'Listar Profesional');
-INSERT INTO funcion (ds_funcion) VALUES ( 'Alta TipoDocumento');
+INSERT INTO funcion (ds_funcion) VALUES ( 'Alta Medio');
 INSERT INTO funcion (ds_funcion) VALUES ( 'Eliminar TipoDocumento');
 INSERT INTO funcion (ds_funcion) VALUES ( 'Ver TipoDocumento');
 INSERT INTO funcion (ds_funcion) VALUES ( 'Modificar TipoDocumento');
@@ -157,6 +157,33 @@ DELETE FROM profesional WHERE cd_profesional =1926;
 UPDATE ordenpractica SET ordenpractica.cd_profesional = 802 WHERE ordenpractica.cd_profesional = 1271;
 
 DELETE FROM profesional WHERE cd_profesional =1271;
+
+######################################18/05/2021##########################################
+
+CREATE TABLE `medio` (
+	`cd_medio` INT(11) NOT NULL AUTO_INCREMENT,
+	`ds_medio` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`cd_medio`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB;
+
+
+
+INSERT INTO funcion (ds_funcion) VALUES ( 'Alta Medio');
+INSERT INTO funcion (ds_funcion) VALUES ( 'Eliminar Medio');
+INSERT INTO funcion (ds_funcion) VALUES ( 'Ver Medio');
+INSERT INTO funcion (ds_funcion) VALUES ( 'Modificar Medio');
+INSERT INTO funcion (ds_funcion) VALUES ( 'Listar Medio');
+
+INSERT INTO menuoption (nombre, href, cd_funcion, orden, cd_menugroup, cssclass) VALUES ('Medios', 'doAction?action=listar_medios', , 11, 7, 'tipodocumentos');
+
+ALTER TABLE `paciente`
+	ADD COLUMN `cd_medio` INT NULL AFTER `dt_nacimiento`,
+	ADD COLUMN `ds_otroMedio` VARCHAR(255) NULL DEFAULT NULL AFTER `cd_medio`;
+
+
+
 
 
 

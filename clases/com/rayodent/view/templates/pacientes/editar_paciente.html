@@ -79,6 +79,23 @@
                 </td>
             </tr>
             <tr>
+                <td align="right">{cd_medio_label} *</td>
+                <td align="left">
+                    <select name='cd_medio' id='cd_medio' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" >
+                        <option value="">-- Seleccione --</option>
+                        <!-- BEGIN: medios_option -->
+                        <option value={cd_medio}>{ds_medio}</option>
+                        <!-- END: medios_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{ds_otroMedio_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_otroMedio' id='ds_otroMedio' disabled size='40' value="{ds_otroMedio}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
                     <div id="listado_pacientesobrassociales">
                         <div class="block">
@@ -113,4 +130,20 @@
     <div class="camposRequeridos">(*) Campos requeridos</div>
 
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $( "#cd_medio" ).change(function() {
+            if ($( "#cd_medio" ).val()=='{CD_MEDIO_OTRO}'){
+                //$("#ds_otroMedio").val('');
+                $("#ds_otroMedio").removeAttr('disabled');
+
+            }else{
+                $("#ds_otroMedio").attr('disabled','disabled');
+
+            }
+
+        });
+        $( "#cd_medio" ).change();
+    })
+</script>
 <!-- END:main -->

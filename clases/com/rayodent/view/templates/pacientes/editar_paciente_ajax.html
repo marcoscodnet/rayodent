@@ -4,6 +4,22 @@ $(function() {
     $("#dt_nacimiento").datepicker({ dateFormat: 'dd/mm/yy' });
 });
     $(document).ready(function(){
+
+
+                $( "#cd_medio" ).change(function() {
+                    if ($( "#cd_medio" ).val()=='{CD_MEDIO_OTRO}'){
+                        //$("#ds_otroMedio").val('');
+                        $("#ds_otroMedio").removeAttr('disabled');
+
+                    }else{
+                        $("#ds_otroMedio").attr('disabled','disabled');
+
+                    }
+
+                });
+                $( "#cd_medio" ).change();
+
+
         // definimos las opciones del plugin AJAX FORM
         var opciones= {
             success: function (responseText){
@@ -19,14 +35,14 @@ $(function() {
                 }
             },
             beforeSubmit: function() {
-                return validate('editarpaciente');              
+                return validate('editarpaciente');
             }
-             
+
         };
         //asignamos el plugin ajaxForm al formulario myForm y le pasamos las opciones
         $('#editarpaciente').ajaxForm(opciones);
     });
-    
+
 </script>
 <div id="editar">
     <div align="justify"><p class="titulo">{titulo}</p></div>
@@ -102,7 +118,25 @@ $(function() {
                     <input type='text' name='dt_nacimiento' id='dt_nacimiento' size='10' value="{dt_nacimiento}"/>
                 </td>
             </tr>
-            
+
+            <tr>
+                <td align="right">{cd_medio_label} *</td>
+                <td align="left">
+                    <select name='cd_medio' id='cd_medio' jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}" >
+                        <option value="">-- Seleccione --</option>
+                        <!-- BEGIN: medios_option -->
+                        <option value={cd_medio}>{ds_medio}</option>
+                        <!-- END: medios_option -->
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">{ds_otroMedio_label}</td>
+                <td align="left">
+                    <input type='text' name='ds_otroMedio' id='ds_otroMedio' disabled size='40' value="{ds_otroMedio}" jVal="{valid:function (val) { return requerido(val,'Ingrese un valor'); }}"/>
+                </td>
+            </tr>
+
         </table>
 
         <p style="text-align:center">

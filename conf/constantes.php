@@ -34,6 +34,8 @@ define("CD_CONCEPTO_INGRESO_CAJA_CENTRAL", 12);
 define("CD_CONCEPTO_EGRESO_CIERRE", 13);
 define("CD_CONCEPTO_EGRESO_LIQUIDACION_PROFESIONAL", 15);
 
+define("CD_MEDIO_OTRO", 6);
+
 
 
 define("CDT_DEBUG_LOG", true);
@@ -43,5 +45,6 @@ define("CDT_ERROR_HANDLER", true);
 
 
 ini_set('display_errors', 1);
-ini_set('default_charset', 'iso-8859-1');
+ini_set('default_charset', 'UTF-8');
+ini_set('max_execution_time', 0);
 ?>

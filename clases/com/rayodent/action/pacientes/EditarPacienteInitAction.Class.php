@@ -3,10 +3,10 @@
 /**
  * Acci�n para inicializar el contexto para editar
  * un paciente.
- * 
+ *
  * @author modelBuilder
  * @since 12-12-2011
- * 
+ *
  */
 abstract class EditarPacienteInitAction extends EditarInitAction {
 
@@ -37,8 +37,12 @@ abstract class EditarPacienteInitAction extends EditarInitAction {
         $oPaciente->setDs_telefono(FormatUtils::getParamPOST('ds_telefono'));
 
         $oPaciente->setDs_email(FormatUtils::getParamPOST('ds_email'));
-        
+
         $oPaciente->setDt_nacimiento(FormatUtils::getParamPOST('dt_nacimiento'));
+
+        $oPaciente->setCd_medio(FormatUtils::getParamPOST('cd_medio'));
+
+        $oPaciente->setDs_otroMedio(FormatUtils::getParamPOST('ds_otroMedio'));
 
 
         return $oPaciente;
@@ -69,8 +73,8 @@ abstract class EditarPacienteInitAction extends EditarInitAction {
 
         $xtpl->assign('ds_email', stripslashes($oPaciente->getDs_email()));
         $xtpl->assign('ds_email_label', RYT_PACIENTE_DS_EMAIL);
-        
-       
+
+
     	if ($oPaciente->getDt_nacimiento() == "") {
             $xtpl->assign('dt_nacimiento', "");
         } else {
@@ -82,6 +86,17 @@ abstract class EditarPacienteInitAction extends EditarInitAction {
         $xtpl->assign('cd_tipodoc_label', RYT_PACIENTE_CD_TIPODOC);
         $selected = $oPaciente->getCd_tipodoc();
         $this->parseTipoDocumento($selected, $xtpl);
+
+        //Medio
+        $xtpl->assign('cd_medio_label', RYT_PACIENTE_CD_MEDIO);
+        $selected = $oPaciente->getCd_medio();
+        $this->parseMedio($selected, $xtpl);
+
+        $xtpl->assign('ds_otroMedio', stripslashes($oPaciente->getDs_otroMedio()));
+        $xtpl->assign('ds_otroMedio_label', RYT_PACIENTE_DS_OTRO_MEDIO);
+
+        $xtpl->assign('CD_MEDIO_OTRO', CD_MEDIO_OTRO);
+
         $cd_paciente = $oPaciente->getCd_paciente();
         $this->parseObrassociales($cd_paciente, $xtpl);
     }
@@ -98,6 +113,21 @@ abstract class EditarPacienteInitAction extends EditarInitAction {
             $xtpl->assign('cd_tipoDocumento', FormatUtils::selected($oTipoDocumento->getCd_tipodocumento(), $selected));
 
             $xtpl->parse('main.tipodocumentos_option');
+        }
+    }
+
+    protected function parseMedio($selected, XTemplate $xtpl) {
+
+        $manager = new MedioManager();
+        $criterio = new CriterioBusqueda();
+        $medios = $manager->getMedios($criterio);
+
+        foreach ($medios as $key => $oMedio) {
+
+            $xtpl->assign('ds_medio', $oMedio->getDs_medio());
+            $xtpl->assign('cd_medio', FormatUtils::selected($oMedio->getCd_medio(), $selected));
+
+            $xtpl->parse('main.medios_option');
         }
     }
 

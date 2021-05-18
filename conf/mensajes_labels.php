@@ -3,9 +3,9 @@
 /**
  * se definen los labels para las columnas
  * de las tablas.
- * 
+ *
  * @author modelBuilder
- * 
+ *
  */
 define('RYT_YES', 'SI');
 define('RYT_NO', 'NO');
@@ -33,6 +33,10 @@ define('RYT_PROFESIONAL_DS_EMAIL', 'Email');
 //labels para tipodocumento
 define('RYT_TIPODOCUMENTO_CD_TIPODOCUMENTO', 'C&oacute;digo');
 define('RYT_TIPODOCUMENTO_DS_TIPODOCUMENTO', 'Descripci&oacute;n');
+
+//labels para medio
+define('RYT_MEDIO_CD_MEDIO', 'C&oacute;digo');
+define('RYT_MEDIO_DS_MEDIO', 'Descripci&oacute;n');
 
 //labels para tipopersonal
 define('RYT_TIPOPERSONAL_CD_TIPOPERSONAL', 'C&oacute;digo');
@@ -81,6 +85,8 @@ define('RYT_PACIENTE_DS_DIRECCION', 'Direcci&oacute;n');
 define('RYT_PACIENTE_DS_TELEFONO', 'Tel&eacute;fono');
 define('RYT_PACIENTE_DS_EMAIL', 'Mail');
 define('RYT_PACIENTE_DT_PACIENTE', 'F. Nacimiento');
+define('RYT_PACIENTE_CD_MEDIO', 'Medio de contacto');
+define('RYT_PACIENTE_DS_OTRO_MEDIO', 'Otro medio');
 
 //labels para pacienteobrasocial
 define('RYT_PACIENTEOBRASOCIAL_CD_PACIENTEOBRASOCIAL', 'c&oacute;digo');

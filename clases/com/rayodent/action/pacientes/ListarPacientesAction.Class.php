@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Acción listar pacientes.
- * 
+ * Acciï¿½n listar pacientes.
+ *
  * @author modelBuilder
  * @since 12-12-2011
- * 
+ *
  */
 class ListarPacientesAction extends ListarAction {
 
@@ -25,6 +25,7 @@ class ListarPacientesAction extends ListarAction {
         $filtros[] = $this->buildFiltro('nu_doc', RYT_PACIENTE_NU_DOC);
         $filtros[] = $this->buildFiltro('ds_direccion', RYT_PACIENTE_DS_DIRECCION);
         $filtros[] = $this->buildFiltro('ds_email', RYT_PACIENTE_DS_EMAIL);
+        $filtros[] = $this->buildFiltro('ds_medio', RYT_PACIENTE_CD_MEDIO);
 
         return $filtros;
     }
@@ -65,5 +66,10 @@ class ListarPacientesAction extends ListarAction {
         $text = addslashes($xtpl->text('main'));
         return FormatUtils::quitarEnters($text);
     }
+
+    protected function getUrlAccionExportarExcel() {
+        return 'excel_pacientes';
+    }
+
 
 }

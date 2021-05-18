@@ -18,6 +18,7 @@
 	$hash["ActionMapHelper.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/ActionMapHelper.Class.php";
 	$hash["LoadNavigation.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/LoadNavigation.Class.php";
 	$hash["DbManager.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/DbManager.Class.php";
+	$hash["DbManager.Class.php.bak"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/DbManager.Class.php.bak";
 	$hash["IDatabase.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/IDatabase.Class.php";
 	$hash["MsAccess.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/MsAccess.Class.php";
 	$hash["MsSQLServer.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/MsSQLServer.Class.php";
@@ -61,6 +62,7 @@
 	$hash["FuncionesComunes.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/FuncionesComunes.Class.php";
 	$hash["ImageUtils.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/ImageUtils.Class.php";
 	$hash["InputFilter.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/InputFilter.Class.php";
+	$hash["InputFilter.Class.php.bak"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/InputFilter.Class.php.bak";
 	$hash["ItemCollection.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/ItemCollection.Class.php";
 	$hash["Paginador.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/Paginador.Class.php";
 	$hash["QueryUtils.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/QueryUtils.Class.php";
@@ -342,6 +344,17 @@
 	$hash["LiquidarProfesionalesAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/liquidacion/LiquidarProfesionalesAction.Class.php";
 	$hash["AltaLiquidacionprofesionalAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/liquidacionprofesionales/AltaLiquidacionprofesionalAction.Class.php";
 	$hash["EditarLiquidacionprofesionalAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/liquidacionprofesionales/EditarLiquidacionprofesionalAction.Class.php";
+	$hash["AltaMedioAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/AltaMedioAction.Class.php";
+	$hash["AltaMedioInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/AltaMedioInitAction.Class.php";
+	$hash["EditarMedioAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/EditarMedioAction.Class.php";
+	$hash["EditarMedioInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/EditarMedioInitAction.Class.php";
+	$hash["EliminarMedioAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/EliminarMedioAction.Class.php";
+	$hash["ExcelMediosAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/ExcelMediosAction.Class.php";
+	$hash["ListarMediosAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/ListarMediosAction.Class.php";
+	$hash["ModificarMedioAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/ModificarMedioAction.Class.php";
+	$hash["ModificarMedioInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/ModificarMedioInitAction.Class.php";
+	$hash["PDFMediosAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/PDFMediosAction.Class.php";
+	$hash["VerMedioAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/medios/VerMedioAction.Class.php";
 	$hash["AltaMovcajaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/movcajas/AltaMovcajaAction.Class.php";
 	$hash["AltaMovcajaInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/movcajas/AltaMovcajaInitAction.Class.php";
 	$hash["CargarCamposTipoConceptoBonoAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/movcajas/CargarCamposTipoConceptoBonoAction.Class.php";
@@ -545,6 +558,7 @@
 	$hash["EstadocajaFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/EstadocajaFactory.Class.php";
 	$hash["InformeFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/InformeFactory.Class.php";
 	$hash["LiquidacionprofesionalFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/LiquidacionprofesionalFactory.Class.php";
+	$hash["MedioFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/MedioFactory.Class.php";
 	$hash["MovcajaconceptoFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/MovcajaconceptoFactory.Class.php";
 	$hash["MovcajaconceptoNoConflictFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/MovcajaconceptoNoConflictFactory.Class.php";
 	$hash["MovcajacontrolpracticaFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/MovcajacontrolpracticaFactory.Class.php";
@@ -566,6 +580,7 @@
 	$hash["UsuarioRYTFactory.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/factory/UsuarioRYTFactory.Class.php";
 	$hash["InformeDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/InformeDAO.Class.php";
 	$hash["LiquidacionprofesionalDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/LiquidacionprofesionalDAO.Class.php";
+	$hash["MedioDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/MedioDAO.Class.php";
 	$hash["MovcajaconceptoDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/MovcajaconceptoDAO.Class.php";
 	$hash["MovcajacontrolpracticaDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/MovcajacontrolpracticaDAO.Class.php";
 	$hash["MovcajaDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/MovcajaDAO.Class.php";
@@ -577,6 +592,7 @@
 	$hash["PracticaobrasocialDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/PracticaobrasocialDAO.Class.php";
 	$hash["PracticaordenpracticaDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/PracticaordenpracticaDAO.Class.php";
 	$hash["ProcesocajaDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/ProcesocajaDAO.Class.php";
+	$hash["ProcesocajaDAO.Class.php.bak"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/ProcesocajaDAO.Class.php.bak";
 	$hash["ProfesionalDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/ProfesionalDAO.Class.php";
 	$hash["TipoconceptoDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/TipoconceptoDAO.Class.php";
 	$hash["TipoDocumentoDAO.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//dao/TipoDocumentoDAO.Class.php";
@@ -593,6 +609,7 @@
 	$hash["GastosManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/GastosManager.Class.php";
 	$hash["InformeManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/InformeManager.Class.php";
 	$hash["LiquidacionprofesionalManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/LiquidacionprofesionalManager.Class.php";
+	$hash["MedioManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/MedioManager.Class.php";
 	$hash["MovcajaconceptoManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/MovcajaconceptoManager.Class.php";
 	$hash["MovcajacontrolpracticaManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/MovcajacontrolpracticaManager.Class.php";
 	$hash["MovcajaManager.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//manager/MovcajaManager.Class.php";
@@ -619,6 +636,7 @@
 	$hash["Estadocaja.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Estadocaja.Class.php";
 	$hash["Informe.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Informe.Class.php";
 	$hash["Liquidacionprofesional.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Liquidacionprofesional.Class.php";
+	$hash["Medio.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Medio.Class.php";
 	$hash["Movcaja.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Movcaja.Class.php";
 	$hash["Movcajaconcepto.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Movcajaconcepto.Class.php";
 	$hash["Movcajacontrolpractica.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//model/Movcajacontrolpractica.Class.php";
@@ -652,6 +670,7 @@
 	$hash["LiquidacionTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/LiquidacionTableModel.Class.php";
 	$hash["LiquidarProfesionalExcelTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/LiquidarProfesionalExcelTableModel.Class.php";
 	$hash["LiquidarProfesionalTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/LiquidarProfesionalTableModel.Class.php";
+	$hash["MedioTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/MedioTableModel.Class.php";
 	$hash["MovcajaTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/MovcajaTableModel.Class.php";
 	$hash["ObrasocialTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/ObrasocialTableModel.Class.php";
 	$hash["OrdenpracticaTableModel.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//view/tableModel/OrdenpracticaTableModel.Class.php";

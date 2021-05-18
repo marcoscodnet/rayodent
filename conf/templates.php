@@ -3,9 +3,9 @@
 /**
  * se definen los nombres de los templates
  * del sistema RYT.
- * 
+ *
  * @author modelBuilder
- * 
+ *
  */
 define('RYT_LAYOUT_DESKTOP_TEMPLATE_DEFAULT', RYT_PATH . 'view/templates/desktop_template.html');
 define('RYT_LAYOUT_DESKTOP_TEMPLATE_MENU', RYT_PATH . 'view/templates/desktop_menu_template.html');
@@ -30,6 +30,10 @@ define('RYT_BUSCAR_PROFESIONALES_RTA_AJAX', RYT_PATH . 'view/templates/profesion
 define('RYT_TEMPLATE_EDITAR_TIPODOCUMENTO', RYT_PATH . 'view/templates/tipodocumentos/editar_tipodocumento.html');
 define('RYT_TEMPLATE_VER_TIPODOCUMENTO', RYT_PATH . 'view/templates/tipodocumentos/ver_tipodocumento.html');
 define('RYT_TEMPLATE_BAJA_TIPODOCUMENTO', RYT_PATH . 'view/templates/tipodocumentos/eliminar_tipodocumento.html');
+
+define('RYT_TEMPLATE_EDITAR_MEDIO', RYT_PATH . 'view/templates/medios/editar_medio.html');
+define('RYT_TEMPLATE_VER_MEDIO', RYT_PATH . 'view/templates/medios/ver_medio.html');
+define('RYT_TEMPLATE_BAJA_MEDIO', RYT_PATH . 'view/templates/medios/eliminar_medio.html');
 
 define('RYT_TEMPLATE_EDITAR_TIPOPERSONAL', RYT_PATH . 'view/templates/tipopersonales/editar_tipopersonal.html');
 define('RYT_TEMPLATE_VER_TIPOPERSONAL', RYT_PATH . 'view/templates/tipopersonales/ver_tipopersonal.html');

@@ -2,10 +2,10 @@
 
 /**
  * Acci�n para dar de alta un paciente.
- * 
+ *
  * @author modelBuilder
  * @since 12-12-2011
- * 
+ *
  */
 class AltaPacienteAjaxAction extends EditarPacienteAction {
 
@@ -66,6 +66,8 @@ class AltaPacienteAjaxAction extends EditarPacienteAction {
         $oPaciente->setDs_telefono(utf8_decode(FormatUtils::getParamPOST('ds_telefono')));
         $oPaciente->setDs_email(utf8_decode(FormatUtils::getParamPOST('ds_email')));
         $oPaciente->setDt_nacimiento(FuncionesComunes::fechaPHPaMysql(FormatUtils::getParamPOST('dt_nacimiento')));
+        $oPaciente->setCd_medio(utf8_decode(FormatUtils::getParamPOST('cd_medio')));
+        $oPaciente->setDs_otroMedio(utf8_decode(FormatUtils::getParamPOST('ds_otroMedio')));
         return $oPaciente;
     }
 
