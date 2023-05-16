@@ -485,6 +485,7 @@
     <accion nombre='arquear_caja' clase='ArqueoCajaAction' menuGroupActivo='8'/>
     <accion nombre='arquear_caja_anterior' clase='ArqueoCajaAnteriorAction' menuGroupActivo='8'/>
     <accion nombre='excel_arqueo_caja' clase='ExcelArqueoCajaAction' menuGroupActivo='8'/>
+    <accion nombre='excel_arqueo_caja_anterior' clase='ExcelArqueoAnteriorCajaAction' menuGroupActivo='8'/>
 
 
     <forward nombre='abrir_caja_success' url='doAction?action=listar_movcajas' />

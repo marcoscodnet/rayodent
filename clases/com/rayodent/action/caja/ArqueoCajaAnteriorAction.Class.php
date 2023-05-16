@@ -65,6 +65,31 @@ class ArqueoCajaAnteriorAction extends ListarAction {
         if ($cd_concepto == CD_CONCEPTO_INGRESO && $nu_caja_abierta == $oUsuario->getNu_caja()) {*/
             //Tomo todos movimientos posteriores a ese nigreso
             $criterio = new CriterioBusqueda();
+
+        $dt_inicio_filtro = "";
+        $hs_inicio_filtro = "00:01";
+        $hs_fin_filtro = "23:59";
+
+        $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+        $dt_fin_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+
+
+
+        //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
+        $hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
+        $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
+        $dt_inicio_filtro .=$hs_inicio_filtro;
+        $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");
+        /*}
+        if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
+        $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
+        $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
+        $dt_fin_filtro .=$hs_fin_filtro;
+
+        $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
+        // }
+
+
             //$criterio->addFiltro("CA.cd_movcaja", $cd_movcaja, ">=");
             $criterio->addFiltro("CA.nu_caja", NU_CAJA_CAJA_CENTRAL, "<>");
             $criterio->addFiltro("CA.nu_caja", $oUsuario->getNu_caja(), "=");
@@ -73,10 +98,50 @@ class ArqueoCajaAnteriorAction extends ListarAction {
             $montoPosnet = $movcajaManager->getMontoTotalPosnet($criterio);
             //$efectivo = abs($monto-$montoPosnet);
             $efectivo = ($monto-$montoPosnet);
-
+        $xtpl->assign( 'accion_listar', 'arquear_caja_anterior' );
         $xtpl->assign('total', $monto.' (Efectivo: $'.$efectivo.' PosNet: $'.$montoPosnet.')' );
         return parent::parseContenido($xtpl, $filtro, $oPaginador, $query_string, $entidades, $criterio);
     }
+
+
+
+    protected function parseFiltros($xtpl) {
+        $content = $this->getFiltrosEspeciales();
+        $xtpl->assign('filtrosEspeciales', $content);
+        $xtpl->parse('main.botones_tabla.filtrosEspeciales');
+        $xtpl->parse('main.botones_tabla');
+    }
+
+    //Filtros especiales
+    protected function getFiltrosEspeciales() {
+        $xtpl = new XTemplate(RYT_FILTRO_ARQUEO_CAJA_ANTERIOR);
+
+        $dt_fecha_filtro = FormatUtils::getParam('dt_fecha_filtro', date("d/m/Y"));
+
+
+        $xtpl->assign('dt_fecha_filtro', $dt_fecha_filtro);
+
+
+
+
+
+        $xtpl->parse('main');
+        return $xtpl->text('main');
+    }
+
+    /**
+     * se obtienen los<filtros especiales para pasar por get (url)
+     * @param $xtpl
+     */
+    protected function getFiltrosEspecialesQueryString() {
+        $filtros = "";
+        $dt_fecha_filtro = FormatUtils::getParam('dt_fecha_filtro');
+
+
+        $filtros .= "&dt_fecha_filtro=$dt_fecha_filtro";
+        return $filtros;
+    }
+
 
     protected function getCriterioBusqueda() {
         //recuperamos los par�metros.
@@ -90,25 +155,49 @@ class ArqueoCajaAnteriorAction extends ListarAction {
         //obtenemos las entidades a mostrar.
         $criterio = new CriterioBusqueda();
 
+
         $cd_usuario = $_SESSION['cd_usuarioSession'];
         $usuarioManager = new UsuarioRYTManager();
         $oUsuario = $usuarioManager->getUsuarioPorId($cd_usuario);
         $nu_caja = $oUsuario->getNu_caja();
-        if ($nu_caja != "" && $nu_caja != null) {
+
+        $dt_inicio_filtro = "";
+        $hs_inicio_filtro = "00:01";
+        $hs_fin_filtro = "23:59";
+
+        $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+        $dt_fin_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+
+
+
+        //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
+            $hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
+            $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
+            $dt_inicio_filtro .=$hs_inicio_filtro;
+            $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");
+        /*}
+        if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
+            $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
+            $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
+            $dt_fin_filtro .=$hs_fin_filtro;
+
+            $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
+       // }
+
+
+        //if ($nu_caja != "" && $nu_caja != null) {
             $movcajaManager = new MovcajaManager();
-            $rta = $movcajaManager->hayCajaAbierta($nu_caja);
+            /*$rta = $movcajaManager->hayCajaAbierta($nu_caja);
             $cd_concepto = $rta['cd_concepto'];
             $cd_movcaja = $rta['cd_movcaja'];
-            if ($cd_concepto == CD_CONCEPTO_INGRESO) {
+            if ($cd_concepto == CD_CONCEPTO_INGRESO) {*/
                 //Tomo todos movimientos posteriores a ese nigreso
-                $criterio = new CriterioBusqueda();
-                $criterio->addFiltro("MC.cd_movcaja", $cd_movcaja, ">=");
-                //$criterio->addFiltro("MC.nu_caja", $nu_caja, "=");
+                /*$criterio = new CriterioBusqueda();
+                $criterio->addFiltro("MC.cd_movcaja", $cd_movcaja, ">=");*/
+                $criterio->addFiltro("MC.nu_caja", $nu_caja, "=");
                 $criterio->addFiltro("MC.nu_caja", NU_CAJA_CAJA_CENTRAL, "<>");
-            } else {
-                $criterio->addFiltro("1", "2", "=");
-            }
-        }
+
+        //}
         $this->addSelectedFiltro($criterio, $campoFiltro, $filtro);
 
         $criterio->addOrden($campoOrden, $orden);
@@ -116,6 +205,7 @@ class ArqueoCajaAnteriorAction extends ListarAction {
         // $criterio->setRowPerPage(ROW_PER_PAGE);
         return $criterio;
     }
+
 
     protected function getEntidadManager() {
         return new MovcajaManager();
@@ -126,7 +216,7 @@ class ArqueoCajaAnteriorAction extends ListarAction {
     }
 
     protected function getTitulo() {
-        return 'Arqueo Anteriores';
+        return 'Arqueo de cajas Anteriores';
     }
 
     protected function getUrlAccionListar() {
@@ -146,7 +236,7 @@ class ArqueoCajaAnteriorAction extends ListarAction {
     }
 
     protected function getUrlAccionExportarExcel() {
-        return 'excel_arqueo_caja';
+        return 'excel_arqueo_caja_anterior';
     }
 }
 
