@@ -483,6 +483,7 @@
     <accion nombre='cerrar_caja_init' clase='CerrarCajaInitAction' menuGroupActivo='8'/>
     <accion nombre='cerrar_caja' clase='CerrarCajaAction' />
     <accion nombre='arquear_caja' clase='ArqueoCajaAction' menuGroupActivo='8'/>
+    <accion nombre='arquear_caja_anterior' clase='ArqueoCajaAnteriorAction' menuGroupActivo='8'/>
     <accion nombre='excel_arqueo_caja' clase='ExcelArqueoCajaAction' menuGroupActivo='8'/>
 
 

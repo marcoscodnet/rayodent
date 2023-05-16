@@ -1,9 +1,10 @@
 <?php
 
 
+
 //$output = "mysqldump --user=root --password=root01 --add-drop-table mdc | gzip > db.sql.gz";
 $name = "/home/rayodent/www/rayodent/backup/" . date("YmdHis") . "_rayodent.sql.gz";
-$cmd = "mysqldump --user=root --password=rayoroot0149 --add-drop-table rayodent | gzip > $name";
+$cmd = "mysqldump --user=pmauser --password=rayoroot0149 --add-drop-table rayodent | gzip > $name";
 shell_exec($cmd);
 
 		
@@ -19,22 +20,34 @@ shell_exec($cmd);
 		
         
         $mail = new PHPMailer();
-	/*$mail->SMTPOptions = array(
-				'ssl' => array(
-				    'verify_peer' => false,
-				    'verify_peer_name' => false,
-				    'allow_self_signed' => true
-				)*/
+
+
+		$mail->SMTPOptions = array(
+
+			'ssl' => array(
+
+				'verify_peer' => false,
+
+				'verify_peer_name' => false,
+
+				'allow_self_signed' => true
+
+			)
+
+		);
+
+	
 		$mail->SMTPDebug=0;
 		$mail->IsSMTP();
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = "ssl";
-		$mail->Host = "smtp.googlemail.com";
+		$mail->Host = "mail.marcospinero.com";
 		$mail->Port = "465";
-		$mail->Username = "rayodentlp@gmail.com";
-		$mail->Password = "rayodent0149";
-        
-        $mail->From = "rayodent@yahoo.com";
+		$mail->Username = "admin@marcospinero.com";
+		$mail->Password = "]TUQhTYCtf?*";
+
+		        
+        $mail->From = "admin@marcospinero.com";
 		$mail->FromName = "Rayodent";
 		$mail->Subject = "Backup Rayodent";
 		$mail->AltBody = "Backup Rayodent\n.";
@@ -44,7 +57,7 @@ shell_exec($cmd);
 			$mail->AddAttachment("../logs/".$nombreFile);
 		}
 		
-		$mail->AddAddress("marcosp@codnet.com.ar", "Destinatario");
+		$mail->AddAddress("crones.codnet@gmail.com", "Destinatario");
 		$mail->IsHTML(true);
 		
 		if(!$mail->Send()) {
@@ -59,5 +72,6 @@ shell_exec($cmd);
 	unlink($name);	
         //para que no de la salida del mailer.
         //ob_end_clean();
+
 
 ?>

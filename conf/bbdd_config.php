@@ -1,9 +1,9 @@
 <?php
 
 define('DB_CLASS', 'MySQL');
-define('DB_HOST', '163.10.35.37');
+define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'secyt');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'rayodent_desarrollo');
 
 
