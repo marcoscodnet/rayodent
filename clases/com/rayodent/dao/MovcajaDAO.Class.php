@@ -394,8 +394,8 @@ class MovcajaDAO {
     public static function getDameProcesoscaja($criterio) {
         $db = DbManager::getConnection();
 
-        $sql = "SELECT CA.*";
-        $sql .= " FROM procesocaja PC, movcaja CA, movcajaconcepto MCC, concepto C, tipooperacion T ";
+        $sql = "SELECT MC.*";
+        $sql .= " FROM procesocaja PC, movcaja MC, movcajaconcepto MCC, concepto C, tipooperacion T ";
         if ($criterio->buildWHERE() != "") {
             $sql .= $criterio->buildWHERE();
             $sql .= " AND ";
@@ -404,8 +404,8 @@ class MovcajaDAO {
         }
         $sql .= " C.cd_concepto =MCC.cd_concepto";
         $sql .= " AND T.cd_tipooperacion =C.cd_tipooperacion";
-        $sql .= " AND CA.cd_movcaja = MCC.cd_movcaja";
-        $sql .= " AND PC.cd_movcaja = CA.cd_movcaja";
+        $sql .= " AND MC.cd_movcaja = MCC.cd_movcaja";
+        $sql .= " AND PC.cd_movcaja = MC.cd_movcaja";
         $sql .= $criterio->buildORDERBY();
         $result = $db->sql_query($sql);
 

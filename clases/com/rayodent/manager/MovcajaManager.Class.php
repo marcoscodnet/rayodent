@@ -94,7 +94,7 @@ class MovcajaManager implements IListar {
         return $respuesta;
     }
 
-    public function dameProceso($nu_caja,$fecha,$tipo) {
+    public function dameProceso($nu_caja,$fecha,$tipo,$cd_movcaja=null) {
 
         $criterio = new CriterioBusqueda();
 
@@ -113,11 +113,18 @@ class MovcajaManager implements IListar {
         $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");
         /*}
         if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
-        $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
-        $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
-        $dt_fin_filtro .=$hs_fin_filtro;
+        if ($cd_movcaja){
+            $criterio->addFiltro('MC.cd_movcaja', $cd_movcaja, ">=");
+        }
+        else{
+            $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
+            $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
+            $dt_fin_filtro .=$hs_fin_filtro;
 
-        $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
+            $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
+        }
+
+
         $criterio->addFiltro("C.cd_concepto ", $tipo, "=");
         $criterio->addFiltro("PC.nu_caja", $nu_caja, "=");
         $criterio->addOrden("dt_procesocaja", "DESC");

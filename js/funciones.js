@@ -949,12 +949,12 @@ function verificarFiltro() {
     return true;
 }
 
-function cargarApertura(campoId, divId){
+function cargarApertura(){
     nu_caja = document.getElementById('nu_caja').value;
     dt_fecha_filtro = document.getElementById('dt_fecha_filtro').value;
-
+    cd_movcaja = document.getElementById('cd_movcaja').value;
         jQuery.ajax({
-            url:'doAction?action=crear_combo_apertura&nu_caja='+nu_caja+'&dt_fecha_filtro='+dt_fecha_filtro,
+            url:'doAction?action=crear_combo_apertura&nu_caja='+nu_caja+'&dt_fecha_filtro='+dt_fecha_filtro+'&cd_movcaja='+cd_movcaja,
             success: function(datos){
 
                     document.getElementById('campos_apertura').innerHTML = datos;

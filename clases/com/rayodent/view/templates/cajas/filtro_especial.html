@@ -3,6 +3,7 @@
 <script type="text/javascript">
     $(function() {
         $("#dt_fecha_filtro").datepicker({ dateFormat: 'dd/mm/yy' });
+        cargarApertura();
     });
 
 </script>
@@ -11,6 +12,7 @@
 <p style="color: black;">
     <span>Nro. Caja:
         <input type="text" name="nu_caja" id="nu_caja" size="10" value="{nu_caja}"></span>
+
 </p>
 <!-- END:menu_no_admin -->
 <!-- BEGIN:menu_admin -->
@@ -27,6 +29,7 @@
 <!-- END:menu_admin -->
 
 <p style="color: black;">
+    <input type="hidden" name="cd_movcaja" id="cd_movcaja" size="10" value="{cd_movcaja}"></span>
     <span>Fecha: <input type="text" name="dt_fecha_filtro" id="dt_fecha_filtro" size="10" value="{dt_fecha_filtro}" onChange="cargarApertura()"></span>
     <span id="campos_apertura">Aperturas: <select name="apertura" id="apertura">
 <option value="">-- Seleccione --</option>

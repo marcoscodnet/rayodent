@@ -46,58 +46,61 @@ class ArqueoCajaAnteriorAction extends ListarAction {
 
     protected function parseContenido(XTemplate $xtpl, $filtro, $oPaginador, $query_string, $entidades, CriterioBusqueda $criterio) {
         $total = 100;
-        //Tomo el nu_caja del usuario actual
-        $cd_usuario = $_SESSION['cd_usuarioSession'];
-        $usuarioManager = new UsuarioRYTManager();
-        $oUsuario = $usuarioManager->getUsuarioPorId($cd_usuario);
-
-        $movcajaManager = new MovcajaManager();
-        /*$rta = $movcajaManager->hayCajaAbierta($oUsuario->getNu_caja());
-
-        $cd_concepto = $rta['cd_concepto'];
-        $cd_movcaja = $rta['cd_movcaja'];
-        $cd_usuario_caja_abierta = $rta['cd_usuario'];
-        $nu_caja_abierta = $rta['nu_caja'];
-        $oUsuarioCajaAbierta = $usuarioManager->getUsuarioPorId($cd_usuario_caja_abierta);
-
-        //Si el ultimo proceso de caja fue un ingreso, entonces est� abierta
-
-        if ($cd_concepto == CD_CONCEPTO_INGRESO && $nu_caja_abierta == $oUsuario->getNu_caja()) {*/
-            //Tomo todos movimientos posteriores a ese nigreso
-            $criterio = new CriterioBusqueda();
-
-        $dt_inicio_filtro = "";
-        $hs_inicio_filtro = "00:01";
-        $hs_fin_filtro = "23:59";
-
-        $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
-        $dt_fin_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
 
 
-
-        //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
-        $hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
-        $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
-        $dt_inicio_filtro .=$hs_inicio_filtro;
-        $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");
-        /*}
-        if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
-        $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
-        $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
-        $dt_fin_filtro .=$hs_fin_filtro;
-
-        $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
-        // }
+        $nu_caja = FormatUtils::getParam('nu_caja',0);
+        $cd_movcaja_inicial= FormatUtils::getParam('apertura');
+        $monto=0;
+        $efectivo=0;
+        $montoPosnet=0;
+        $criterio = new CriterioBusqueda();
+        if ($cd_movcaja_inicial!='') {
 
 
-            //$criterio->addFiltro("CA.cd_movcaja", $cd_movcaja, ">=");
-            $criterio->addFiltro("CA.nu_caja", NU_CAJA_CAJA_CENTRAL, "<>");
-            $criterio->addFiltro("CA.nu_caja", $oUsuario->getNu_caja(), "=");
+           $dt_inicio_filtro = "";
+           $hs_inicio_filtro = "00:01";
+           $hs_fin_filtro = "23:59";
 
-            $monto = $movcajaManager->getMontoTotal($criterio);
-            $montoPosnet = $movcajaManager->getMontoTotalPosnet($criterio);
-            //$efectivo = abs($monto-$montoPosnet);
-            $efectivo = ($monto-$montoPosnet);
+           $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+           $dt_fin_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+
+           $movcajaManager = new MovcajaManager();
+           $movimientos = $movcajaManager->dameProceso($nu_caja,$dt_inicio_filtro,13,$cd_movcaja_inicial);
+           foreach ($movimientos as $key => $oMovimiento) {
+
+               $cd_movcaja_final = $oMovimiento->getCd_movcaja();
+           }
+
+
+           //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
+           /*$hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
+           $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
+           $dt_inicio_filtro .=$hs_inicio_filtro;
+           $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");*/
+           /*}
+           if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
+           /*$hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
+           $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
+           $dt_fin_filtro .=$hs_fin_filtro;
+
+           $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");*/
+           // }
+
+
+           $criterio->addFiltro("CA.cd_movcaja", $cd_movcaja_inicial, ">=");
+           $criterio->addFiltro("CA.cd_movcaja", $cd_movcaja_final, "<");
+           $criterio->addFiltro("CA.nu_caja", NU_CAJA_CAJA_CENTRAL, "<>");
+           $criterio->addFiltro("CA.nu_caja", $nu_caja, "=");
+
+           $monto = $movcajaManager->getMontoTotal($criterio);
+           $montoPosnet = $movcajaManager->getMontoTotalPosnet($criterio);
+           //$efectivo = abs($monto-$montoPosnet);
+           $efectivo = ($monto-$montoPosnet);
+       }
+    else {
+        $criterio->addFiltro("1", "2", "=");
+        }
+
         $xtpl->assign( 'accion_listar', 'arquear_caja_anterior' );
         $xtpl->assign('total', $monto.' (Efectivo: $'.$efectivo.' PosNet: $'.$montoPosnet.')' );
         return parent::parseContenido($xtpl, $filtro, $oPaginador, $query_string, $entidades, $criterio);
@@ -118,16 +121,18 @@ class ArqueoCajaAnteriorAction extends ListarAction {
 
         $dt_fecha_filtro = FormatUtils::getParam('dt_fecha_filtro', date("d/m/Y"));
 
+        $cd_movcaja_inicial= FormatUtils::getParam('apertura');
 
         $xtpl->assign('dt_fecha_filtro', $dt_fecha_filtro);
+        $xtpl->assign('cd_movcaja', $cd_movcaja_inicial);
 
         $cd_usuario = $_SESSION['cd_usuarioSession'];
         $usuarioManager = new UsuarioRYTManager();
         $oUsuario = $usuarioManager->getUsuarioConPerfilPorId($cd_usuario);
         //Si es Admin, muestro el listado de cajas
 
-        $nu_caja_get = FormatUtils::getParam('nu_caja');
-        $cd_concepto_get = FormatUtils::getParam('cd_concepto');
+        $nu_caja_get = FormatUtils::getParam('nu_caja',0);
+
 
         if ($oUsuario->getCd_perfil() == CD_PERFIL_ADMINISTRADOR) {
             $this->parseComboNuCaja($xtpl, $nu_caja_get);
@@ -165,9 +170,9 @@ class ArqueoCajaAnteriorAction extends ListarAction {
     protected function getFiltrosEspecialesQueryString() {
         $filtros = "";
         $dt_fecha_filtro = FormatUtils::getParam('dt_fecha_filtro');
-
-
-        $filtros .= "&dt_fecha_filtro=$dt_fecha_filtro";
+        $nu_caja = FormatUtils::getParam('nu_caja',0);
+        $apertura = FormatUtils::getParam('apertura');
+        $filtros .= "&dt_fecha_filtro=$dt_fecha_filtro&nu_caja=$nu_caja&apertura=$apertura";
         return $filtros;
     }
 
@@ -181,55 +186,67 @@ class ArqueoCajaAnteriorAction extends ListarAction {
         $orden = FormatUtils::getParam('orden', 'DESC');
         $campoOrden = FormatUtils::getParam('campoOrden', $this->getCampoOrdenDefault());
 
+
+        $nu_caja = FormatUtils::getParam('nu_caja',0);
+        $cd_movcaja_inicial= FormatUtils::getParam('apertura');
         //obtenemos las entidades a mostrar.
-        $criterio = new CriterioBusqueda();
-
-
-        $cd_usuario = $_SESSION['cd_usuarioSession'];
-        $usuarioManager = new UsuarioRYTManager();
-        $oUsuario = $usuarioManager->getUsuarioPorId($cd_usuario);
-        $nu_caja = $oUsuario->getNu_caja();
-
-        $dt_inicio_filtro = "";
-        $hs_inicio_filtro = "00:01";
-        $hs_fin_filtro = "23:59";
-
-        $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
-        $dt_fin_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+           $criterio = new CriterioBusqueda();
+       if ($cd_movcaja_inicial!='') {
 
 
 
-        //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
-            $hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
-            $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
-            $dt_inicio_filtro .=$hs_inicio_filtro;
-            $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");
-        /*}
-        if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
-            $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
-            $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
-            $dt_fin_filtro .=$hs_fin_filtro;
-
-            $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
-       // }
 
 
-        //if ($nu_caja != "" && $nu_caja != null) {
-            $movcajaManager = new MovcajaManager();
-            /*$rta = $movcajaManager->hayCajaAbierta($nu_caja);
-            $cd_concepto = $rta['cd_concepto'];
-            $cd_movcaja = $rta['cd_movcaja'];
-            if ($cd_concepto == CD_CONCEPTO_INGRESO) {*/
-                //Tomo todos movimientos posteriores a ese nigreso
-                /*$criterio = new CriterioBusqueda();
-                $criterio->addFiltro("MC.cd_movcaja", $cd_movcaja, ">=");*/
-                $criterio->addFiltro("MC.nu_caja", $nu_caja, "=");
-                $criterio->addFiltro("MC.nu_caja", NU_CAJA_CAJA_CENTRAL, "<>");
+           $dt_inicio_filtro = "";
+           $hs_inicio_filtro = "00:01";
+           $hs_fin_filtro = "23:59";
 
-        //}
-        $this->addSelectedFiltro($criterio, $campoFiltro, $filtro);
+           $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
+           $dt_fin_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
 
-        $criterio->addOrden($campoOrden, $orden);
+           $movcajaManager = new MovcajaManager();
+           $movimientos = $movcajaManager->dameProceso($nu_caja, $dt_inicio_filtro, 13, $cd_movcaja_inicial);
+           foreach ($movimientos as $key => $oMovimiento) {
+
+               $cd_movcaja_final = $oMovimiento->getCd_movcaja();
+           }
+
+           //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
+           /*$hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
+           $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
+           $dt_inicio_filtro .= $hs_inicio_filtro;
+           $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");*/
+           /*}
+           if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
+           /*$hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
+           $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
+           $dt_fin_filtro .= $hs_fin_filtro;
+
+           $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");*/
+           // }
+
+
+           //if ($nu_caja != "" && $nu_caja != null) {
+           $movcajaManager = new MovcajaManager();
+           /*$rta = $movcajaManager->hayCajaAbierta($nu_caja);
+           $cd_concepto = $rta['cd_concepto'];
+           $cd_movcaja = $rta['cd_movcaja'];
+           if ($cd_concepto == CD_CONCEPTO_INGRESO) {*/
+           //Tomo todos movimientos posteriores a ese nigreso
+           /*$criterio = new CriterioBusqueda();*/
+           $criterio->addFiltro("MC.cd_movcaja", $cd_movcaja_inicial, ">=");
+           $criterio->addFiltro("MC.cd_movcaja", $cd_movcaja_final, "<");
+           $criterio->addFiltro("MC.nu_caja", $nu_caja, "=");
+           $criterio->addFiltro("MC.nu_caja", NU_CAJA_CAJA_CENTRAL, "<>");
+
+           //}
+           $this->addSelectedFiltro($criterio, $campoFiltro, $filtro);
+
+           $criterio->addOrden($campoOrden, $orden);
+       }
+       else {
+           $criterio->addFiltro("1", "2", "=");
+       }
         //$criterio->setPage($page);
         // $criterio->setRowPerPage(ROW_PER_PAGE);
         return $criterio;

@@ -8,24 +8,30 @@ class CrearComboAperturaAction extends Action {
      */
     public function execute() {
 
-
-        $nu_caja = FormatUtils::getParam('nu_caja');
-
+        //print_r(FormatUtils::getParam('nu_caja',0));
+        $nu_caja = FormatUtils::getParam('nu_caja',0);
+        $cd_movcaja = FormatUtils::getParam('cd_movcaja');
 
 
         $dt_inicio_filtro = FormatUtils::getParam('dt_fecha_filtro', date('d/m/Y'));
-
-        $movcajaManager = new MovcajaManager();
-        $movimientos = $movcajaManager->dameProceso($nu_caja,$dt_inicio_filtro,11);
-
-
-
         $xtpl = $this->getXTemplate();
-        foreach ($movimientos as $key => $oMovimiento) {
-            $xtpl->assign('cd_movcaja', $oMovimiento->getCd_movcaja());
-            $xtpl->assign('ds_movcaja', $oMovimiento->getCd_movcaja());
-            $xtpl->parse('main.apertura_option');
-        }
+        //if ($nu_caja!='') {
+            $movcajaManager = new MovcajaManager();
+            $movimientos = $movcajaManager->dameProceso($nu_caja, $dt_inicio_filtro, 11);
+
+            //print_r($movimientos);
+
+
+            foreach ($movimientos as $key => $oMovimiento) {
+                $xtpl->assign('cd_movcaja', FormatUtils::selected($oMovimiento->getCd_movcaja(), $cd_movcaja));
+                $fechayhora = FuncionesComunes::fechaHoraMysqlaPHP($oMovimiento->getDt_movcaja());
+                $fechayhora = explode(" ", $fechayhora);
+
+                $hs = substr($fechayhora[1], 0, 5);
+                $xtpl->assign('ds_movcaja', $hs);
+                $xtpl->parse('main.aperturas_option');
+            }
+        //}
 
 
 

@@ -15,6 +15,7 @@ class MovcajaFactory extends GenericFactory {
     }
 
     public function build($next) {
+
         $oMovcaja = new Movcaja();
         $oMovcaja->setCd_movcaja($next[$this->aliasMovcaja . 'cd_movcaja']);
         $oMovcaja->setDt_movcaja($next[$this->aliasMovcaja . 'dt_movcaja']);
