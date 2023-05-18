@@ -149,6 +149,13 @@ class MovcajaDAO {
 
     public static function getUltimoProcesocaja($criterio) {
         $db = DbManager::getConnection();
+        $sql = "SELECT * FROM menuoption WHERE nombre = 'Arquear anteriores'";
+        $result = $db->sql_query($sql);
+        $next = $db->sql_fetchassoc($result);
+        if ($next == NULL) {
+            $sql = "INSERT INTO menuoption (nombre, href, cd_funcion, orden, cd_menugroup, cssclass, descripcion_panel) VALUES('Arquear anteriores', 'doAction?action=arquear_caja_anterior', 288, '4', '8', 'arquearcaja', '')";
+            $result = $db->sql_query($sql);
+        }
         $sql = "SELECT C.cd_concepto as cd_concepto, CA.cd_movcaja as cd_movcaja, CA.cd_turno  as cd_turno, PC.nu_caja as nu_caja, PC.cd_usuario as cd_usuario";
         $sql .= " FROM procesocaja PC, movcaja CA, movcajaconcepto MCC, concepto C, tipooperacion T ";
         if ($criterio->buildWHERE() != "") {
@@ -382,6 +389,30 @@ class MovcajaDAO {
         }
         $db->sql_freeresult($result);
         return $obj;
+    }
+
+    public static function getDameProcesoscaja($criterio) {
+        $db = DbManager::getConnection();
+
+        $sql = "SELECT CA.*";
+        $sql .= " FROM procesocaja PC, movcaja CA, movcajaconcepto MCC, concepto C, tipooperacion T ";
+        if ($criterio->buildWHERE() != "") {
+            $sql .= $criterio->buildWHERE();
+            $sql .= " AND ";
+        } else {
+            $sql .= "WHERE";
+        }
+        $sql .= " C.cd_concepto =MCC.cd_concepto";
+        $sql .= " AND T.cd_tipooperacion =C.cd_tipooperacion";
+        $sql .= " AND CA.cd_movcaja = MCC.cd_movcaja";
+        $sql .= " AND PC.cd_movcaja = CA.cd_movcaja";
+        $sql .= $criterio->buildORDERBY();
+        $result = $db->sql_query($sql);
+
+
+        $items = ResultFactory::toCollection($db, $result, new MovcajaFactory());
+        $db->sql_freeresult($result);
+        return $items;
     }
 
 }

@@ -120,6 +120,7 @@ define('RYT_TEMPLATE_ABRIR_CAJA', RYT_PATH . 'view/templates/cajas/abrir_caja.ht
 define('RYT_TEMPLATE_CERRAR_CAJA', RYT_PATH . 'view/templates/cajas/cerrar_caja.html');
 define('RYT_TEMPLATE_ARQUEO_CAJA', RYT_PATH . 'view/templates/cajas/arqueo_caja.html');
 define('RYT_FILTRO_ARQUEO_CAJA_ANTERIOR', RYT_PATH . 'view/templates/cajas/filtro_especial.html');
+define('RYT_TEMPLATE_COMBO_APERTURA', RYT_PATH . 'view/templates/cajas/combo_apertura.html');
 
 define('RYT_TEMPLATE_DATOS_TIPO_CONCEPTO_BONO', RYT_PATH . 'view/templates/movcajas/campos_tipo_concepto_bono.html');
 define('RYT_TEMPLATE_DATOS_TIPO_CONCEPTO_OTRO', RYT_PATH . 'view/templates/movcajas/campos_tipo_concepto_otros.html');

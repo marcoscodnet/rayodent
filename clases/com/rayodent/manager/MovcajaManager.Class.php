@@ -94,6 +94,45 @@ class MovcajaManager implements IListar {
         return $respuesta;
     }
 
+    public function dameProceso($nu_caja,$fecha,$tipo) {
+
+        $criterio = new CriterioBusqueda();
+
+        $hs_inicio_filtro = "00:01";
+        $hs_fin_filtro = "23:59";
+
+        $dt_inicio_filtro = $fecha;
+        $dt_fin_filtro = $fecha;
+
+
+
+        //if ($dt_inicio_filtro != '' && $hs_inicio_filtro != "") {
+        $hs_inicio_filtro = implode(explode(":", $hs_inicio_filtro)) . "01";
+        $dt_inicio_filtro = FuncionesComunes::fechaPHPaMysql($dt_inicio_filtro);
+        $dt_inicio_filtro .=$hs_inicio_filtro;
+        $criterio->addFiltro('dt_movcaja', $dt_inicio_filtro, ">=");
+        /*}
+        if ($dt_fin_filtro != '' && $hs_fin_filtro != "") {*/
+        $hs_fin_filtro = implode(explode(":", $hs_fin_filtro)) . "59";
+        $dt_fin_filtro = FuncionesComunes::fechaPHPaMysql($dt_fin_filtro);
+        $dt_fin_filtro .=$hs_fin_filtro;
+
+        $criterio->addFiltro('dt_movcaja', $dt_fin_filtro, "<=");
+        $criterio->addFiltro("C.cd_concepto ", $tipo, "=");
+        $criterio->addFiltro("PC.nu_caja", $nu_caja, "=");
+        $criterio->addOrden("dt_procesocaja", "DESC");
+        $respuesta = MovcajaDAO::getDameProcesoscaja($criterio);
+        if ($respuesta == NULL) {
+            $respuesta['cd_concepto'] = 0;
+            $respuesta['cd_movcaja'] = 0;
+            $respuesta['cd_turno'] = 0;
+            $respuesta['nu_caja'] = 0;
+            $respuesta['cd_usuario'] = 0;
+        }
+        //retorna el cd_movcaja y el concepto
+        return $respuesta;
+    }
+
     public function modificarMovcaja(Movcaja $oMovcaja, $anulacion=0) {
 //TODO validaciones;
 //persistir en la bbdd.

@@ -7,11 +7,35 @@
 
 </script>
 <br/>
+<!-- BEGIN:menu_no_admin -->
+<p style="color: black;">
+    <span>Nro. Caja:
+        <input type="text" name="nu_caja" id="nu_caja" size="10" value="{nu_caja}"></span>
+</p>
+<!-- END:menu_no_admin -->
+<!-- BEGIN:menu_admin -->
+<p style="color: black;">
+    <span>Nro. Caja: <select name="nu_caja" id="nu_caja" onChange="cargarApertura()">
+            <option value="">-- Seleccione --</option>
+        <!-- BEGIN:nu_caja_option -->
+            <option value={nu_caja_value}>{nu_caja}</option>
+        <!-- END:nu_caja_option -->
 
+        </select>
+    </span>
+</p>
+<!-- END:menu_admin -->
 
 <p style="color: black;">
-    <span>Fecha: <input type="text" name="dt_fecha_filtro" id="dt_fecha_filtro" size="10" value="{dt_fecha_filtro}"></span>
+    <span>Fecha: <input type="text" name="dt_fecha_filtro" id="dt_fecha_filtro" size="10" value="{dt_fecha_filtro}" onChange="cargarApertura()"></span>
+    <span id="campos_apertura">Aperturas: <select name="apertura" id="apertura">
+<option value="">-- Seleccione --</option>
+        <!-- BEGIN:nu_caja_option -->
+            <option value={cd_movcaja}>{ds_movcaja}</option>
+        <!-- END:nu_caja_option -->
 
+        </select>
+    </span>
 </p>
 
 <div style="display: none;" id="ui-dialog"></div>

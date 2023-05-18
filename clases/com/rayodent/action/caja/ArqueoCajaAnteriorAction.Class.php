@@ -121,12 +121,41 @@ class ArqueoCajaAnteriorAction extends ListarAction {
 
         $xtpl->assign('dt_fecha_filtro', $dt_fecha_filtro);
 
+        $cd_usuario = $_SESSION['cd_usuarioSession'];
+        $usuarioManager = new UsuarioRYTManager();
+        $oUsuario = $usuarioManager->getUsuarioConPerfilPorId($cd_usuario);
+        //Si es Admin, muestro el listado de cajas
+
+        $nu_caja_get = FormatUtils::getParam('nu_caja');
+        $cd_concepto_get = FormatUtils::getParam('cd_concepto');
+
+        if ($oUsuario->getCd_perfil() == CD_PERFIL_ADMINISTRADOR) {
+            $this->parseComboNuCaja($xtpl, $nu_caja_get);
+            //$this->parseComboApertura($xtpl, $cd_concepto_get);
+        } else {
+            //sino, muestro la caja del usuario
+            $xtpl->assign('nu_caja', $oUsuario->getNu_caja());
+            $xtpl->parse('main.menu_no_admin');
+        }
 
 
 
 
         $xtpl->parse('main');
         return $xtpl->text('main');
+    }
+
+    protected function parseComboNuCaja($xtpl, $selected) {
+        $usuarioManager = new UsuarioRYTManager();
+        $criterio = new CriterioBusqueda();
+        $nu_cajas = $usuarioManager->getNuCajas();
+        foreach ($nu_cajas as $key => $nu_caja) {
+            $xtpl->assign('nu_caja_value', FormatUtils::selected($nu_caja, $selected));
+            $xtpl->assign('nu_caja', $nu_caja);
+            $xtpl->parse('main.menu_admin.nu_caja_option');
+        }
+
+        $xtpl->parse('main.menu_admin');
     }
 
     /**
