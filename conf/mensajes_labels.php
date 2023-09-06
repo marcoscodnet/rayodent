@@ -117,6 +117,7 @@ define('RYT_MOVCAJA_DS_PRACTICA', 'Pr&aacute;ctica');
 define('RYT_MOVCAJA_DS_APORTE', 'Aporte');
 define('RYT_MOVCAJA_NU_IMPORTE', 'Importe');
 define('RYT_MOVCAJA_BL_TARJETA', 'PosNet?');
+define('RYT_MOVCAJA_BL_DIGITAL', 'Impresión digital?');
 define('RYT_MOVCAJA_NU_RECIBOREINTEGRO', 'Nro. Recibo Reintegro');
 define('RYT_MOVCAJA_NU_PLACAS', 'Nro. Placas');
 define('RYT_MOVCAJA_ORDEN_PRACTICAS', 'Orden Pr&aacute;ctica');

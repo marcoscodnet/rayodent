@@ -21,6 +21,8 @@ class MovcajaManager implements IListar {
                 $oMovcajaconcepto->setNu_importe($item->getObjectByIndex('nu_importe'));
                 $bl_tarjeta = ($item->getObjectByIndex('bl_tarjeta'))?1:0;
                 $oMovcajaconcepto->setBl_tarjeta($bl_tarjeta);
+                $bl_digital = ($item->getObjectByIndex('bl_digital'))?1:0;
+                $oMovcajaconcepto->setBl_digital($bl_digital);
                 $oMovcajaconcepto->setCd_ordenpractica($item->getObjectByIndex('cd_ordenpractica'));
                 $oMovcajaconceptoManager->agregarMovcajaconcepto($oMovcajaconcepto);
 
@@ -164,12 +166,14 @@ class MovcajaManager implements IListar {
 	            foreach ($_SESSION['movcajaconceptos_session'] as $item) {
 	                //Guardo el Mov Caja concepto
 	                $bl_tarjeta = (FormatUtils::getParamPOST('bl_tarjeta'))?FormatUtils::getParamPOST('bl_tarjeta'):$item->getObjectByIndex('bl_tarjeta');
+                    $bl_digital = (FormatUtils::getParamPOST('bl_digital'))?FormatUtils::getParamPOST('bl_digital'):$item->getObjectByIndex('bl_digital');
 	                $oMovcajaconcepto = new Movcajaconcepto();
 	                $oMovcajaconcepto->setCd_movcaja($oMovcaja->getCd_movcaja());
 	                $oMovcajaconcepto->setCd_concepto($item->getObjectByIndex('cd_concepto'));
 	                $oMovcajaconcepto->setNu_importe($item->getObjectByIndex('nu_importe'));
 	                $oMovcajaconcepto->setCd_ordenpractica($item->getObjectByIndex('cd_ordenpractica'));
 	                $oMovcajaconcepto->setBl_tarjeta($bl_tarjeta);
+                    $oMovcajaconcepto->setBl_digital($bl_digital);
 	                $oMovcajaconceptoManager->agregarMovcajaconcepto($oMovcajaconcepto);
 
 	                //Ahora, si es pr�ctica
@@ -335,6 +339,7 @@ class MovcajaManager implements IListar {
                 $coeficiente = $this->getCoeficiente($cd_tipooperacion);
                 $valor = $oMovCajaConceptos->getNu_importe() * $coeficiente;
                 $bl_tarjeta = ($oMovCajaConceptos->getBl_tarjeta())?'SI':'NO';
+                $bl_digital = ($oMovCajaConceptos->getBl_digital())?'SI':'NO';
                 $detalle .= "$" . $valor . " PosNet: ".$bl_tarjeta."</li>";
 
                 if (($oMovCajaConceptos->getConcepto()->getCd_tipoconcepto() == CD_TIPO_CONCEPTO_PRACTICA && $oMovCajaConceptos->getPracticaordenpractica()->getPracticaobrasocial()->getCd_obrasocial() != CD_OBRASOCIAL_PARTICULAR)) {

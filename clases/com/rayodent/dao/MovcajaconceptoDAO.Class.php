@@ -15,8 +15,9 @@ class MovcajaconceptoDAO {
         $cd_concepto = $oMovcajaconcepto->getCd_concepto();
         $nu_importe = $oMovcajaconcepto->getNu_importe();
         $bl_tarjeta = ($oMovcajaconcepto->getBl_tarjeta())?$oMovcajaconcepto->getBl_tarjeta():0;
+        $bl_digital = ($oMovcajaconcepto->getBl_digital())?$oMovcajaconcepto->getBl_digital():0;
         $cd_ordenpractica = ($oMovcajaconcepto->getCd_ordenpractica()==null || trim($oMovcajaconcepto->getCd_ordenpractica())=='' || $oMovcajaconcepto->getCd_ordenpractica()==0)?0:$oMovcajaconcepto->getCd_ordenpractica();
-        $sql = "INSERT INTO movcajaconcepto (cd_movcaja, cd_concepto, nu_importe, cd_ordenpractica, bl_tarjeta) VALUES('$cd_movcaja', '$cd_concepto', '$nu_importe', '$cd_ordenpractica', '$bl_tarjeta')";
+        $sql = "INSERT INTO movcajaconcepto (cd_movcaja, cd_concepto, nu_importe, cd_ordenpractica, bl_tarjeta, bl_digital) VALUES('$cd_movcaja', '$cd_concepto', '$nu_importe', '$cd_ordenpractica', '$bl_tarjeta', '$bl_digital')";
         $result = $db->sql_query($sql);
         if (!$result)//hubo un error en la bbdd.
             throw new DBException($db->sql_error());
@@ -39,9 +40,10 @@ class MovcajaconceptoDAO {
         $nu_importe = $oMovcajaconcepto->getNu_importe();
         
         $bl_tarjeta = ($oMovcajaconcepto->getBl_tarjeta())?$oMovcajaconcepto->getBl_tarjeta():0;
+        $bl_digital = ($oMovcajaconcepto->getBl_digital())?$oMovcajaconcepto->getBl_digital():0;
 
 		$cd_ordenpractica = ($oMovcajaconcepto->getCd_ordenpractica()==null || trim($oMovcajaconcepto->getCd_ordenpractica())=='' || $oMovcajaconcepto->getCd_ordenpractica()==0)?0:$oMovcajaconcepto->getCd_ordenpractica();
-        $sql = "UPDATE movcajaconcepto SET cd_movcaja = '$cd_movcaja', cd_concepto = '$cd_concepto', nu_importe = '$nu_importe', bl_tarjeta = '$bl_tarjeta', cd_ordenpractica = '$cd_ordenpractica' WHERE cd_movcajaconcepto = $cd_movcajaconcepto ";
+        $sql = "UPDATE movcajaconcepto SET cd_movcaja = '$cd_movcaja', cd_concepto = '$cd_concepto', nu_importe = '$nu_importe', bl_tarjeta = '$bl_tarjeta', bl_digital = '$bl_digital', cd_ordenpractica = '$cd_ordenpractica' WHERE cd_movcajaconcepto = $cd_movcajaconcepto ";
 
         $result = $db->sql_query($sql);
         if (!$result)//hubo un error en la bbdd.
@@ -66,7 +68,7 @@ class MovcajaconceptoDAO {
 
     public static function getMovcajaconceptos(CriterioBusqueda $criterio) {
         $db = DbManager::getConnection();
-        $sql = "SELECT MCC.cd_concepto as mcc_cd_concepto, MCC.cd_movcaja as mcc_cd_movcaja, MCC.cd_movcajaconcepto as mcc_cd_movcajaconcepto, MCC.nu_importe as mcc_nu_importe, MCC.bl_tarjeta as mcc_bl_tarjeta, MCC.cd_ordenpractica as mcc_cd_ordenpractica, POP.*, TC.*, C.*, T_O.*, OP.*, POS.*, P.*, OS.*  FROM movcajaconcepto MCC";
+        $sql = "SELECT MCC.cd_concepto as mcc_cd_concepto, MCC.cd_movcaja as mcc_cd_movcaja, MCC.cd_movcajaconcepto as mcc_cd_movcajaconcepto, MCC.nu_importe as mcc_nu_importe, MCC.bl_tarjeta as mcc_bl_tarjeta, MCC.bl_digital as mcc_bl_digital, MCC.cd_ordenpractica as mcc_cd_ordenpractica, POP.*, TC.*, C.*, T_O.*, OP.*, POS.*, P.*, OS.*  FROM movcajaconcepto MCC";
         $sql .= " LEFT JOIN movcaja MC ON (MCC.cd_movcaja = MC.cd_movcaja)";
         $sql .= " LEFT JOIN practicaordenpractica POP ON (POP.cd_movcajaconcepto = MCC.cd_movcajaconcepto)";
         $sql .= " LEFT JOIN practicaobrasocial POS ON (POP.cd_practicaobrasocial = POS.cd_practicaobrasocial)";

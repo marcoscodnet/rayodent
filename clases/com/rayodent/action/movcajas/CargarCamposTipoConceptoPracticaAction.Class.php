@@ -12,6 +12,7 @@ class CargarCamposTipoConceptoPracticaAction extends Action {
         $xtpl->assign('nu_placas_label', RYT_MOVCAJA_NU_PLACAS);
         $xtpl->assign('nu_importe_label', RYT_MOVCAJA_NU_IMPORTE);
         $xtpl->assign('bl_tarjeta_label', RYT_MOVCAJA_BL_TARJETA);
+        $xtpl->assign('bl_digital_label', RYT_MOVCAJA_BL_DIGITAL);
         $xtpl->assign('ds_obrasocial_label', RYT_MOVCAJA_DS_OBRASOCIAL);
         $xtpl->assign('ds_practica_label', RYT_MOVCAJA_DS_PRACTICA);
         $xtpl->assign('ds_aporte_label', RYT_MOVCAJA_DS_APORTE);

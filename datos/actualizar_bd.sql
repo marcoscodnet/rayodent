@@ -130,4 +130,8 @@ UPDATE `practicaobrasocial` SET `bl_activa`='0' WHERE  `cd_practicaobrasocial`=1
 UPDATE `practicaobrasocial` SET `bl_activa`='0' WHERE  `cd_practicaobrasocial`=1235;
 
 ################################# 16-05-2023 #################################################################
-    INSERT INTO menuoption (nombre, href, cd_funcion, orden, cd_menugroup, cssclass, descripcion_panel) VALUES('Arquear anteriores', 'doAction?action=arquear_caja_anterior', 288, '4', '8', 'arquearcaja', '')
+    INSERT INTO menuoption (nombre, href, cd_funcion, orden, cd_menugroup, cssclass, descripcion_panel) VALUES('Arquear anteriores', 'doAction?action=arquear_caja_anterior', 288, '4', '8', 'arquearcaja', '');
+
+    #################################### 06-09-2023 ###########################################################
+ALTER TABLE `movcajaconcepto`
+    ADD COLUMN `bl_digital` INT(11) NULL AFTER `nu_importe`;

@@ -15,6 +15,7 @@ class Movcajaconcepto {
     private $oConcepto;
     private $nu_importe;
     private $bl_tarjeta;
+    private $bl_digital;
     private $cd_ordenpractica; //por si es un reintegro o una cancelación de deuda para saber a que orden está asociada
    	private $oPracticaordenpractica;
    //	private $oPracticaobrasocial;
@@ -29,6 +30,7 @@ class Movcajaconcepto {
         $this->oPracticaobrasocial = new Practicaobrasocial();*/
         $this->nu_importe = '';
         $this->bl_tarjeta = 0;
+        $this->bl_digital = 0;
         $this->cd_ordenpractica = 0;
    
     }
@@ -121,6 +123,16 @@ class Movcajaconcepto {
     public function setBl_tarjeta($bl_tarjeta)
     {
         $this->bl_tarjeta = $bl_tarjeta;
+    }
+
+    public function getBl_digital()
+    {
+        return $this->bl_digital;
+    }
+
+    public function setBl_digital($bl_digital)
+    {
+        $this->bl_digital = $bl_digital;
     }
 }
 ?>

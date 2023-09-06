@@ -14,11 +14,11 @@
 	$hash["ReporteAction.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//action/ReporteAction.Class.php";
 	$hash["SeleccionarAction.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//action/SeleccionarAction.Class.php";
 	$hash["ActionController.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/ActionController.Class.php";
+	$hash["ActionController.Class.php.bak"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/ActionController.Class.php.bak";
 	$hash["ActionFilter.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/ActionFilter.Class.php";
 	$hash["ActionMapHelper.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/ActionMapHelper.Class.php";
 	$hash["LoadNavigation.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//controller/LoadNavigation.Class.php";
 	$hash["DbManager.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/DbManager.Class.php";
-	$hash["DbManager.Class.php.bak"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/DbManager.Class.php.bak";
 	$hash["IDatabase.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/IDatabase.Class.php";
 	$hash["MsAccess.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/MsAccess.Class.php";
 	$hash["MsSQLServer.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//dao/bbdd/MsSQLServer.Class.php";
@@ -62,7 +62,6 @@
 	$hash["FuncionesComunes.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/FuncionesComunes.Class.php";
 	$hash["ImageUtils.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/ImageUtils.Class.php";
 	$hash["InputFilter.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/InputFilter.Class.php";
-	$hash["InputFilter.Class.php.bak"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/InputFilter.Class.php.bak";
 	$hash["ItemCollection.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/ItemCollection.Class.php";
 	$hash["Paginador.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/Paginador.Class.php";
 	$hash["QueryUtils.Class.php"]="D:/Documents/Mis Webs/codnet_mvc/codnet_1_2_18//utils/QueryUtils.Class.php";
@@ -296,8 +295,11 @@
 	$hash["AbrirCajaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/AbrirCajaAction.Class.php";
 	$hash["AbrirCajaInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/AbrirCajaInitAction.Class.php";
 	$hash["ArqueoCajaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/ArqueoCajaAction.Class.php";
+	$hash["ArqueoCajaAnteriorAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/ArqueoCajaAnteriorAction.Class.php";
 	$hash["CerrarCajaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/CerrarCajaAction.Class.php";
 	$hash["CerrarCajaInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/CerrarCajaInitAction.Class.php";
+	$hash["CrearComboAperturaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/CrearComboAperturaAction.Class.php";
+	$hash["ExcelArqueoAnteriorCajaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/ExcelArqueoAnteriorCajaAction.Class.php";
 	$hash["ExcelArqueoCajaAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/caja/ExcelArqueoCajaAction.Class.php";
 	$hash["AltaConceptoAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/conceptos/AltaConceptoAction.Class.php";
 	$hash["AltaConceptoInitAction.Class.php"]="D:/Documents/Mis Webs/rayodent//clases/com/rayodent//action/conceptos/AltaConceptoInitAction.Class.php";

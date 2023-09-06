@@ -23,6 +23,7 @@ class MovcajaconceptoNoConflictFactory extends GenericFactory {
         $oMovcajaconcepto->setCd_movcajaconcepto($next[$this->alias . 'cd_movcajaconcepto']);
         $oMovcajaconcepto->setNu_importe($next[$this->alias . 'nu_importe']);
         $oMovcajaconcepto->setBl_tarjeta($next[$this->alias . 'bl_tarjeta']);
+        $oMovcajaconcepto->setBl_digital($next[$this->alias . 'bl_digital']);
         $oMovcajaconcepto->setCd_ordenpractica($next[$this->alias . 'cd_ordenpractica']);
 
         if (array_key_exists('ds_concepto', $next)) {

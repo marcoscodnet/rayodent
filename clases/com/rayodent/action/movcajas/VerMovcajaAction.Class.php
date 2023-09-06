@@ -93,6 +93,8 @@ class VerMovcajaAction extends OutputAction {
             $xtpl->assign('nu_importe', "$" . ($oMovCajaConceptos->getNu_importe() * $coeficiente));
             $ds_posnet = ($oMovCajaConceptos->getBl_tarjeta()==1)?'SI':'NO';
             $xtpl->assign('ds_posnet', $ds_posnet);
+            $ds_digital = ($oMovCajaConceptos->getBl_digital()==1)?'SI':'NO';
+            $xtpl->assign('ds_digital', $ds_digital);
             $xtpl->assign('ds_concepto', $oMovCajaConceptos->getConcepto()->getDs_concepto());
 
             $criterio = new CriterioBusqueda();

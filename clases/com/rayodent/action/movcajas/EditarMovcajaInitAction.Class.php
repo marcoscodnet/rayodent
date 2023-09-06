@@ -115,6 +115,7 @@ abstract class EditarMovcajaInitAction extends EditarInitAction {
 			        }
 			        $collection->addItem($oMovcajaconcepto->getNu_importe(), 'nu_importe');
 			        $collection->addItem($oMovcajaconcepto->getBl_tarjeta(), 'bl_tarjeta');
+                    $collection->addItem($oMovcajaconcepto->getBl_digital(), 'bl_digital');
 			        $criterio = new CriterioBusqueda();
 			       	$criterio->addFiltro("MCC.cd_movcajaconcepto", $oMovcajaconcepto->getCd_movcajaconcepto(), "=");
 		            $practicaordenpracticaManager = new PracticaordenpracticaManager();
@@ -248,6 +249,8 @@ abstract class EditarMovcajaInitAction extends EditarInitAction {
                 $xtpl->assign('nu_importe', "$ " . ($item->getObjectByIndex('nu_importe') * $coeficiente));
                 $bl_tarjeta = ( $item->getObjectByIndex('bl_tarjeta') )?'SI':'NO';
 				$xtpl->assign ( 'ds_posnet', $bl_tarjeta );
+                $bl_digital = ( $item->getObjectByIndex('bl_digital') )?'SI':'NO';
+                $xtpl->assign ( 'ds_digital', $bl_digital );
                 //if (($item->getObjectByIndex('cd_obrasocial') == NULL) || ($item->getObjectByIndex('cd_obrasocial' != NULL) && ($item->getObjectByIndex('cd_obrasocial') != CD_OBRASOCIAL_PARTICULAR) )) {
                 if ($item->getObjectByIndex('cd_tipoconcepto') != CD_TIPO_CONCEPTO_PRACTICA || ($item->getObjectByIndex('cd_tipoconcepto') == CD_TIPO_CONCEPTO_PRACTICA && $item->getObjectByIndex('cd_obrasocial') == CD_OBRASOCIAL_PARTICULAR)) {
                     $total += $item->getObjectByIndex('nu_importe') * $coeficiente;

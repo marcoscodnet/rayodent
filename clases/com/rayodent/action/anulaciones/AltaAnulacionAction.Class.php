@@ -34,6 +34,7 @@ class AltaAnulacionAction extends EditarAction {
             $coeficiente = $this->getCoeficiente($cd_tipooperacion);
             $valor = $oMovCajaConceptos->getNu_importe() * $coeficiente;
             $bl_tarjeta = ($oMovCajaConceptos->getBl_tarjeta())?1:0;
+            $bl_digital = ($oMovCajaConceptos->getBl_digital())?1:0;
             if ($oMovCajaConceptos->getConcepto()->getCd_tipoconcepto() != CD_TIPO_CONCEPTO_PRACTICA || ($oMovCajaConceptos->getConcepto()->getCd_tipoconcepto() == CD_TIPO_CONCEPTO_PRACTICA && $oMovCajaConceptos->getPracticaordenpractica()->getPracticaobrasocial()->getCd_obrasocial() == CD_OBRASOCIAL_PARTICULAR)) {
                 $total += $valor;
             }
@@ -44,6 +45,7 @@ class AltaAnulacionAction extends EditarAction {
         $oMovcajaconcepto->setCd_movcaja($cd_movcaja);
         $oMovcajaconcepto->setNu_importe($total);
         $oMovcajaconcepto->setBl_tarjeta($bl_tarjeta);
+        $oMovcajaconcepto->setBl_digital($bl_digital);
         if ($total > 0) {
             $oMovcajaconcepto->setCd_concepto(CD_CONCEPTO_CONTRAASIENTO_NEGATIVO);
             $oMovcajaconcepto->setNu_importe($total);

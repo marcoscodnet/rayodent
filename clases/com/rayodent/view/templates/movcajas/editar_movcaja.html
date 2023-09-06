@@ -31,7 +31,7 @@
             cd_movcaja = document.getElementById('cd_movcaja').value;
             if(cd_obrasocial!=undefined && cd_obrasocial!="" && cd_practicaobrasocial!=undefined && cd_practicaobrasocial!="" && cd_practicaobrasocial!=null && cd_paciente!=""){
                 $.blockUI({
-                    message: "Controlando límite de repeticiones...",
+                    message: "Controlando lï¿½mite de repeticiones...",
                     fadeIn: 1000,
                     timeout:   1000
                 });
@@ -164,6 +164,7 @@
                     <td>{ds_obrasocial}</td>
                     <td>{nu_importe}</td>
                     <td>{ds_posnet}</td>
+                    <td>{ds_digital}</td>
                     <td><a href="" onclick="return confirmaEliminarAjax('doAction?action=eliminarmovcajaconcepto&k={key}', 'movcajaconceptos')"><img title="eliminar concepto" src="css/desktop/images/del.gif" class="hrefImg"/></a></td>
                 </tr>
                 <!-- END: movscajas_conceptos -->

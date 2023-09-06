@@ -57,6 +57,7 @@ abstract class EditarMovcajaAction extends EditarAction {
         $collection->addItem(FormatUtils::getParamPOST('ds_obrasocial'), 'ds_obrasocial');
         $collection->addItem(FormatUtils::getParamPOST('nu_importe'), 'nu_importe');
         $collection->addItem(FormatUtils::getParamPOST('bl_tarjeta'), 'bl_tarjeta');
+        $collection->addItem(FormatUtils::getParamPOST('bl_digital'), 'bl_digital');
         $collection->addItem(FormatUtils::getParamPOST('nu_reciboreintegro'), 'nu_reciboreintegro');
         $collection->addItem(FormatUtils::getParamPOST('nu_practicaos'), 'nu_practicaos');
         $collection->addItem(FormatUtils::getParamPOST('cd_practicaobrasocial'), 'cd_practicaobrasocial');
@@ -150,7 +151,9 @@ abstract class EditarMovcajaAction extends EditarAction {
                 $xtpl->assign('ds_obrasocial', utf8_encode($item->getObjectByIndex('ds_obrasocial')));
                 $xtpl->assign('nu_importe', "$ " . utf8_encode($item->getObjectByIndex('nu_importe') * $coeficiente));
                 $bl_tarjeta = ( $item->getObjectByIndex('bl_tarjeta') )?'SI':'NO';
+                $bl_digital = ( $item->getObjectByIndex('bl_digital') )?'SI':'NO';
 				$xtpl->assign ( 'ds_posnet', $bl_tarjeta );
+                $xtpl->assign ( 'ds_digital', $bl_digital );
                 //if (($item->getObjectByIndex('cd_obrasocial') == NULL) || ($item->getObjectByIndex('cd_obrasocial' != NULL) && ($item->getObjectByIndex('cd_obrasocial') != CD_OBRASOCIAL_PARTICULAR) )) {
                 if ($item->getObjectByIndex('cd_tipoconcepto') != CD_TIPO_CONCEPTO_PRACTICA || ($item->getObjectByIndex('cd_tipoconcepto') == CD_TIPO_CONCEPTO_PRACTICA && $item->getObjectByIndex('cd_obrasocial') == CD_OBRASOCIAL_PARTICULAR)) {
                     $total += $item->getObjectByIndex('nu_importe') * $coeficiente;
