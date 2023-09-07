@@ -14,6 +14,8 @@ class Practicaordenpractica {
     private $oPracticaobrasocial;
     private $oOrdenpractica;
     private $nu_cantplacas;
+    private $nu_cantdigital;
+    private $nu_cantnodigital;
     private $nu_repeticiones;
     private $oInforme;
     private $oMovcajaconcepto;
@@ -28,6 +30,8 @@ class Practicaordenpractica {
         $this->oPracticaobrasocial = new Practicaobrasocial();
         $this->oOrdenpractica = new Ordenpractica();
         $this->nu_cantplacas = '';
+        $this->nu_cantdigital = '';
+        $this->nu_cantnodigital = '';
         $this->nu_repeticiones = '';
         $this->oInforme = new Informe();
         $this->oMovcajaconcepto = new Movcajaconcepto();
@@ -65,6 +69,14 @@ class Practicaordenpractica {
 
     public function getNu_cantplacas() {
         return $this->nu_cantplacas;
+    }
+
+    public function getNu_cantdigital() {
+        return $this->nu_cantdigital;
+    }
+
+    public function getNu_cantnodigital() {
+        return $this->nu_cantnodigital;
     }
 
     public function getNu_importealiquidar() {
@@ -137,6 +149,14 @@ class Practicaordenpractica {
 
     public function setNu_cantplacas($value) {
         $this->nu_cantplacas = $value;
+    }
+
+    public function setNu_cantdigital($value) {
+        $this->nu_cantdigital = $value;
+    }
+
+    public function setNu_cantnodigital($value) {
+        $this->nu_cantnodigital = $value;
     }
 
     public function setNu_importealiquidar($value) {

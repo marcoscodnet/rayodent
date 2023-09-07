@@ -156,6 +156,24 @@ class MovcajaDAO {
             $sql = "INSERT INTO menuoption (nombre, href, cd_funcion, orden, cd_menugroup, cssclass, descripcion_panel) VALUES('Arquear anteriores', 'doAction?action=arquear_caja_anterior', 288, '4', '8', 'arquearcaja', '')";
             $result = $db->sql_query($sql);
         }
+
+        // Nombre de la tabla y nombre del campo que deseas agregar
+        $tabla = "movcajaconcepto";
+        $campo = "bl_digital";
+        $tipoDeDato = "INT(11)";
+
+        // Consulta SQL para verificar si el campo existe
+        $sql = "SHOW COLUMNS FROM $tabla LIKE '$campo'";
+        $result = $db->sql_query($sql);
+
+        if ($result->num_rows == 0) {
+            // El campo no existe, agregarlo
+            $sql = "ALTER TABLE $tabla ADD $campo $tipoDeDato";
+
+            if ($db->sql_query($sql) === TRUE) {
+                //echo "Campo agregado con éxito.";
+            }
+        }
         $sql = "SELECT C.cd_concepto as cd_concepto, CA.cd_movcaja as cd_movcaja, CA.cd_turno  as cd_turno, PC.nu_caja as nu_caja, PC.cd_usuario as cd_usuario";
         $sql .= " FROM procesocaja PC, movcaja CA, movcajaconcepto MCC, concepto C, tipooperacion T ";
         if ($criterio->buildWHERE() != "") {

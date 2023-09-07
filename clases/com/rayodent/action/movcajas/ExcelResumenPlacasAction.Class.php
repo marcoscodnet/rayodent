@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Acción para exportar a excel.
+ * Acciï¿½n para exportar a excel.
  * 
  * @author modelBuilder
  * @since 14-12-2011
@@ -78,6 +78,8 @@ class ExcelResumenPlacasAction extends Action {
         $xtpl->assign('dt_movcaja_label', RYT_MOVCAJA_DT_MOVCAJA);
         $xtpl->assign('ds_practica_label', RYT_PRACTICA_DS_PRACTICA);
         $xtpl->assign('nu_cantplacas_label', RYT_PRACTICAORDENPRACTICA_NU_CANTPLACAS);
+        $xtpl->assign('nu_cantdigital_label', RYT_PRACTICAORDENPRACTICA_NU_CANTDIGITAL);
+        $xtpl->assign('nu_cantnodigital_label', RYT_PRACTICAORDENPRACTICA_NU_CANTNODIGITAL);
         $xtpl->assign('nu_montoplacas_label', RYT_PRACTICAORDENPRACTICA_NU_IMPORTE);
     }
 
@@ -90,7 +92,7 @@ class ExcelResumenPlacasAction extends Action {
      * @return unknown_type
      */
     protected function parseHeader(XTemplate $xtpl) {
-        //Recupero los parámetros
+        //Recupero los parï¿½metros
 
         
         $dt_inicio_filtro = "";
@@ -203,6 +205,8 @@ class ExcelResumenPlacasAction extends Action {
         $xtpl->assign('dt_movcaja', substr(FuncionesComunes::fechaHoraMysqlaPHP($item->getDt_movcaja()), 0, 10));
         $xtpl->assign('ds_practica', $item->getDs_practica());
         $xtpl->assign('nu_cantplacas', $item->getNu_cantplacas());
+        $xtpl->assign('nu_cantdigital', $item->getNu_cantdigital());
+        $xtpl->assign('nu_cantnodigital', $item->getNu_cantnodigital());
         $xtpl->assign('nu_montoplacas', $item->getNu_importealiquidar());
     }
 
@@ -210,6 +214,8 @@ class ExcelResumenPlacasAction extends Action {
         $xtpl->assign('dt_movcaja', "");
         $xtpl->assign('ds_practica', "");
         $xtpl->assign('nu_cantplacas', "");
+        $xtpl->assign('nu_cantdigital', "");
+        $xtpl->assign('nu_cantnodigital', "");
         $xtpl->assign('nu_montoplacas', "");
     }
 
@@ -275,16 +281,18 @@ class ExcelResumenPlacasAction extends Action {
     protected function getFooter(ItemCollection $entidades, CriterioBusqueda $criterio) {
         $oPracticaOrdenPracticaManager = new PracticaordenpracticaManager();
         $totalplacas = $oPracticaOrdenPracticaManager->getTotalPlacas($criterio);
+        $totaldigital = $oPracticaOrdenPracticaManager->getTotalDigital($criterio);
+        $totalnodigital = $oPracticaOrdenPracticaManager->getTotalNODigital($criterio);
         $montoplacas = $oPracticaOrdenPracticaManager->getTotalMontoPlacas($criterio);
         $placas_por_practicas = $oPracticaOrdenPracticaManager->getTotalPlacasPorPractica($criterio);
         $totalpacientes = $oPracticaOrdenPracticaManager->getTotalPacientes($criterio);
         $html_footer = "";
         foreach ($placas_por_practicas as $oPracticaOrdenPractica) {
-            $html_footer .= "<p style='text-align:center;'>" . $oPracticaOrdenPractica->getDs_practica() . " : " . $oPracticaOrdenPractica->getNu_cantplacas() . " (".$oPracticaOrdenPractica->getNu_importealiquidar().")</p>";
+            $html_footer .= "<p style='text-align:center;'>" . $oPracticaOrdenPractica->getDs_practica() . " : " . $oPracticaOrdenPractica->getNu_cantplacas() . " (".$oPracticaOrdenPractica->getNu_importealiquidar().") Digitales: ".$oPracticaOrdenPractica->getNu_cantdigital()." NO Digitales: ".$oPracticaOrdenPractica->getNu_cantnodigital()."</p>";
         }
         $totalpacientes = $oPracticaOrdenPracticaManager->getTotalPacientes($criterio);
         //$html_footer .= "<p style='text-align:center;'><b>Cantidad de pacientes: $totalpacientes </b></p>";
-        $html_footer .= "<hr/><p style='text-align:center;'>TOTAL DE PLACAS: $totalplacas  ( $".$montoplacas.")</p>";
+        $html_footer .= "<hr/><p style='text-align:center;'>TOTAL DE PLACAS: $totalplacas  ( $".$montoplacas.") Digitales: ".$totaldigital." NO Digitales: ".$totalnodigital."</p>";
         return $html_footer;
     }
 

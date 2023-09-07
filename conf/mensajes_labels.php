@@ -150,6 +150,8 @@ define('RYT_PRACTICAORDENPRACTICA_CD_APORTEOS', 'Aporte');
 define('RYT_PRACTICAORDENPRACTICA_NU_REPETICIONES', 'Repeticiones');
 define('RYT_PRACTICAORDENPRACTICA_CD_INFORME', 'cd_informe');
 define('RYT_PRACTICAORDENPRACTICA_CD_MOVCAJACONCEPTO', 'cd_movcajaconcepto');
+define('RYT_PRACTICAORDENPRACTICA_NU_CANTDIGITAL', 'Cant. Digitales');
+define('RYT_PRACTICAORDENPRACTICA_NU_CANTNODIGITAL', 'Cant. NO Digitales');
 
 //labels para informe
 define('RYT_INFORME_CD_INFORME', 'cd_informe');

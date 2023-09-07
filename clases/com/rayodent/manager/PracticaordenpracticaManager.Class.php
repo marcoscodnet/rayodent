@@ -58,6 +58,14 @@ class PracticaordenpracticaManager implements IListar {
     public function getTotalPlacas(CriterioBusqueda $criterio) {
         return PracticaordenpracticaDAO::getTotalPlacas($criterio);
     }
+
+    public function getTotalDigital(CriterioBusqueda $criterio) {
+        return PracticaordenpracticaDAO::getTotalDigital($criterio);
+    }
+
+    public function getTotalNoDigital(CriterioBusqueda $criterio) {
+        return PracticaordenpracticaDAO::getTotalNoDigital($criterio);
+    }
     
 	public function getTotalMontoPlacas(CriterioBusqueda $criterio) {
         return PracticaordenpracticaDAO::getTotalMontoPlacas($criterio);

@@ -145,7 +145,7 @@ class MovcajaManager implements IListar {
     public function modificarMovcaja(Movcaja $oMovcaja, $anulacion=0) {
 //TODO validaciones;
 //persistir en la bbdd.
-		RYTUtils::logObject($_POST);
+		//RYTUtils::logObject($_POST);
         MovcajaDAO::modificarMovcaja($oMovcaja);
         if (!$anulacion) {
 

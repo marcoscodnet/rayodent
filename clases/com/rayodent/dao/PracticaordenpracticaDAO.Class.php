@@ -86,7 +86,7 @@ class PracticaordenpracticaDAO {
     public static function getPracticaordenpracticas(CriterioBusqueda $criterio) {
         $db = DbManager::getConnection();
 
-        $sql = "SELECT POP.*, I.*, POS.*, P.*, OS.*, MCC.*, MC.*, PA.*, OP.dt_carga, SUM(POP.nu_cantplacas) as nu_cantplacas, SUM(MCC.nu_importe) as nu_importealiquidar, SUBSTRING(OP.dt_carga, -14,8) FROM practicaordenpractica POP ";
+        $sql = "SELECT POP.*, I.*, POS.*, P.*, OS.*, MCC.*, MC.*, PA.*, OP.dt_carga, SUM(POP.nu_cantplacas) as nu_cantplacas, SUM(case WHEN MCC.bl_digital=1 THEN 1 ELSE 0 END) AS nu_cantdigital, SUM(case WHEN (MCC.bl_digital IS NULL OR MCC.bl_digital=0) THEN 1 ELSE 0 END) AS nu_cantnodigital, SUM(MCC.nu_importe) as nu_importealiquidar, SUBSTRING(OP.dt_carga, -14,8) FROM practicaordenpractica POP ";
         $sql .= "LEFT JOIN ordenpractica OP ON(OP.cd_ordenpractica = POP.cd_ordenpractica) ";
         $sql .= "LEFT JOIN informe I ON(POP.cd_informe = I.cd_informe) ";
         $sql .= "LEFT JOIN practicaobrasocial POS ON(POP.cd_practicaobrasocial = POS.cd_practicaobrasocial) ";
@@ -299,6 +299,52 @@ class PracticaordenpracticaDAO {
         $db->sql_freeresult($result);
         return ((float) $cant);
     }
+
+    public static function getTotalDigital(CriterioBusqueda $criterio) {
+        $db = DbManager::getConnection();
+        $sql = "SELECT SUM(case WHEN MCC.bl_digital=1 THEN 1 ELSE 0 END) AS digital";
+        $sql .= " FROM practicaordenpractica POP ";
+        $sql .= "INNER JOIN ordenpractica OP ON(OP.cd_ordenpractica = POP.cd_ordenpractica) ";
+        $sql .= "LEFT JOIN practicaobrasocial POS ON(POP.cd_practicaobrasocial = POS.cd_practicaobrasocial) ";
+        $sql .= "LEFT JOIN practica P ON(P.cd_practica = POS.cd_practica) ";
+        $sql .= "LEFT JOIN obrasocial OS ON(OS.cd_obrasocial = POS.cd_obrasocial) ";
+        $sql .= "LEFT JOIN movcajaconcepto MCC ON(POP.cd_movcajaconcepto = MCC.cd_movcajaconcepto) ";
+        $sql .= "LEFT JOIN movcaja MC ON(MC.cd_movcaja = MCC.cd_movcaja) ";
+        $sql .= "LEFT JOIN paciente PA ON(OP.cd_paciente = PA.cd_paciente) ";
+        $sql .= $criterio->buildWHERE();
+
+        $result = $db->sql_query($sql);
+        if (!$result)//hubo un error en la bbdd.
+            throw new DBException($db->sql_error());
+
+        $next = $db->sql_fetchassoc($result);
+        $cant = $next['digital'];
+        $db->sql_freeresult($result);
+        return ((float) $cant);
+    }
+
+    public static function getTotalNoDigital(CriterioBusqueda $criterio) {
+        $db = DbManager::getConnection();
+        $sql = "SELECT SUM(case WHEN (MCC.bl_digital IS NULL OR MCC.bl_digital=0) THEN 1 ELSE 0 END) AS nodigital";
+        $sql .= " FROM practicaordenpractica POP ";
+        $sql .= "INNER JOIN ordenpractica OP ON(OP.cd_ordenpractica = POP.cd_ordenpractica) ";
+        $sql .= "LEFT JOIN practicaobrasocial POS ON(POP.cd_practicaobrasocial = POS.cd_practicaobrasocial) ";
+        $sql .= "LEFT JOIN practica P ON(P.cd_practica = POS.cd_practica) ";
+        $sql .= "LEFT JOIN obrasocial OS ON(OS.cd_obrasocial = POS.cd_obrasocial) ";
+        $sql .= "LEFT JOIN movcajaconcepto MCC ON(POP.cd_movcajaconcepto = MCC.cd_movcajaconcepto) ";
+        $sql .= "LEFT JOIN movcaja MC ON(MC.cd_movcaja = MCC.cd_movcaja) ";
+        $sql .= "LEFT JOIN paciente PA ON(OP.cd_paciente = PA.cd_paciente) ";
+        $sql .= $criterio->buildWHERE();
+
+        $result = $db->sql_query($sql);
+        if (!$result)//hubo un error en la bbdd.
+            throw new DBException($db->sql_error());
+
+        $next = $db->sql_fetchassoc($result);
+        $cant = $next['nodigital'];
+        $db->sql_freeresult($result);
+        return ((float) $cant);
+    }
     
 	public static function getTotalMontoPlacas(CriterioBusqueda $criterio) {
         $db = DbManager::getConnection();
@@ -351,7 +397,7 @@ class PracticaordenpracticaDAO {
 
     public static function getTotalPlacasPorPractica(CriterioBusqueda $criterio) {
         $db = DbManager::getConnection();
-        $sql = "SELECT POP.*, POS.*, P.ds_practica, SUM(POP.nu_cantplacas) as nu_cantplacas, SUM(MCC.nu_importe) as nu_importealiquidar ";
+        $sql = "SELECT POP.*, POS.*, P.ds_practica, SUM(POP.nu_cantplacas) as nu_cantplacas, SUM(case WHEN MCC.bl_digital=1 THEN 1 ELSE 0 END) AS nu_cantdigital, SUM(case WHEN (MCC.bl_digital IS NULL OR MCC.bl_digital=0) THEN 1 ELSE 0 END) AS nu_cantnodigital, SUM(MCC.nu_importe) as nu_importealiquidar ";
         $sql .= " FROM practicaordenpractica POP ";
         $sql .= "INNER JOIN ordenpractica OP ON(OP.cd_ordenpractica = POP.cd_ordenpractica) ";
         $sql .= "LEFT JOIN practicaobrasocial POS ON(POP.cd_practicaobrasocial = POS.cd_practicaobrasocial) ";
